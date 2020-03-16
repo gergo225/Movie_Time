@@ -11,21 +11,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(title: 'Movie Time'),
+      home: MainApp(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  HomePage({Key key, this.title}) : super(key: key);
-  final String title;
+class MainApp extends StatelessWidget {
+  MainApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-    );
+    return Container();
   }
 }
