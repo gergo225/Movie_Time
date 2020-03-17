@@ -9,7 +9,7 @@ class GetMovieById {
 
   GetMovieById(this.repository);
 
-  Future<Either<Failure, MovieInfo>> execute({
+  Future<Either<Failure, MovieInfo>> call({
     @required int id,
   }) async {
     return await repository.getMovieById(id);
