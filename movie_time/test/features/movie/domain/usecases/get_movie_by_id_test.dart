@@ -34,7 +34,7 @@ void main() {
       when(mockMovieInfoRepository.getMovieById(any))
           .thenAnswer((_) async => Right(movieInfo));
       // The "act" phase of the test. Call the not-yet-existent method
-      final result = await usecase(id: movieId);
+      final result = await usecase(Params(id: movieId));
       // UseCase should simply return whatever was returned from the repository
       expect(result, Right(movieInfo));
       // Verify that the method has been called on the Repository
