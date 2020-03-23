@@ -2,9 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie_time/core/error/failures.dart';
+import 'package:movie_time/core/usecases/usecase.dart';
 import 'package:movie_time/features/movie/domain/entities/movie_info.dart';
 import 'package:movie_time/features/movie/domain/repositories/movie_info_repository.dart';
-import 'package:movie_time/features/movie/domain/usecases/get_movie_by_id.dart';
+import 'package:movie_time/features/movie/domain/usecases/get_random_movie.dart';
 
 class MockMovieInfoRepository extends Mock implements MovieInfoRepository {}
 
@@ -14,15 +15,15 @@ class TestFailure implements Failure {
 }
 
 void main() {
-  GetMovieById usecase;
+  GetRandomMovie usecase;
   MockMovieInfoRepository mockMovieInfoRepository;
 
   setUp(() {
     mockMovieInfoRepository = MockMovieInfoRepository();
-    usecase = GetMovieById(mockMovieInfoRepository);
+    usecase = GetRandomMovie(mockMovieInfoRepository);
   });
 
-  final movieId = 550;
+  final latestMovieId = 1000;
   final movieInfo = MovieInfo(
     title: "Fight Club",
     id: 550,
@@ -30,22 +31,19 @@ void main() {
     overview:
         "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
   );
-
   test(
-    "should get movie info of the movie with id from the repository",
+    "should get random movie info based on number between 0 and the latest movie id",
     () async {
-      // "On the fly" implementation of the Repository using the Mockito package.
-      // When getConcreteNumberTrivia is called with any argument, always answer with
-      // the Right "side" of Either containing a test NumberTrivia object.
+      when(mockMovieInfoRepository.getLatestMovieId())
+          .thenAnswer((_) async => Right(latestMovieId));
       when(mockMovieInfoRepository.getMovieById(any))
           .thenAnswer((_) async => Right(movieInfo));
-      // The "act" phase of the test. Call the not-yet-existent method
-      final result = await usecase(Params(id: movieId));
-      // UseCase should simply return whatever was returned from the repository
+      // since random number doesn't require any parameters, we pass in NoParams
+      final result = await usecase(NoParams());
+
       expect(result, Right(movieInfo));
-      // Verify that the method has been called on the Repository
-      verify(mockMovieInfoRepository.getMovieById(movieId));
-      // Only the above method should be called an nothing more
+      verify(mockMovieInfoRepository.getLatestMovieId());
+      verify(mockMovieInfoRepository.getMovieById(any));
       verifyNoMoreInteractions(mockMovieInfoRepository);
     },
   );
@@ -53,15 +51,15 @@ void main() {
   final failure = TestFailure();
 
   test(
-    "should get Failure when movie with id is not found",
+    "should return Failure when latest movie id is not found",
     () async {
-      when(mockMovieInfoRepository.getMovieById(any))
+      when(mockMovieInfoRepository.getLatestMovieId())
           .thenAnswer((_) async => Left(failure));
-
-      final result = await usecase(Params(id: movieId));
+      
+      final result = await usecase(NoParams());
 
       expect(result, Left(failure));
-      verify(mockMovieInfoRepository.getMovieById(movieId));
+      verify(mockMovieInfoRepository.getLatestMovieId());
       verifyNoMoreInteractions(mockMovieInfoRepository);
     },
   );
