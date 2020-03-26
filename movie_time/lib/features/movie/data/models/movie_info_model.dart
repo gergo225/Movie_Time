@@ -1,4 +1,4 @@
-import 'package:movie_time/features/movie/domain/entities/movie_info.dart';
+import '../../domain/entities/movie_info.dart';
 import 'package:meta/meta.dart';
 
 class MovieInfoModel extends MovieInfo {
