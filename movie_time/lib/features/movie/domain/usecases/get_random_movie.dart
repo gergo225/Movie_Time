@@ -1,10 +1,10 @@
 import 'dart:math';
 
-import 'package:movie_time/core/error/failures.dart';
+import 'package:movie_time/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:movie_time/core/usecases/usecase.dart';
-import 'package:movie_time/features/movie/domain/entities/movie_info.dart';
-import 'package:movie_time/features/movie/domain/repositories/movie_info_repository.dart';
+import '../../../../core/usecases/usecase.dart';
+import '../entities/movie_info.dart';
+import '../repositories/movie_info_repository.dart';
 
 class GetRandomMovie extends UseCase<MovieInfo, NoParams> {
   final MovieInfoRepository repository;

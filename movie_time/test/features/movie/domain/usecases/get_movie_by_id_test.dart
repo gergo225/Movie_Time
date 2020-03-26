@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:movie_time/core/error/failures.dart';
+import 'package:movie_time/core/error/failure.dart';
 import 'package:movie_time/features/movie/domain/entities/movie_info.dart';
 import 'package:movie_time/features/movie/domain/repositories/movie_info_repository.dart';
 import 'package:movie_time/features/movie/domain/usecases/get_movie_by_id.dart';
