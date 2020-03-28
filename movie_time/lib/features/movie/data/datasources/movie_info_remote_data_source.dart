@@ -9,5 +9,5 @@ abstract class MovieInfoRemoteDataSource {
   /// Calls the https://api.themoviedb.org/3/movie/latest?api_key=<<api_key>> TODO: get api key
   /// 
   /// Throws a [ServerException] for all error codes
-  Future<MovieInfoModel> getLatestMovieId();
+  Future<int> getLatestMovieId();
 }
