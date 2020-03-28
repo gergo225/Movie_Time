@@ -3,7 +3,7 @@ import 'package:meta/meta.dart';
 import 'package:movie_time/core/error/exception.dart';
 
 import '../../../../core/error/failure.dart';
-import '../../../../core/platform/network_info.dart';
+import '../../../../core/network/network_info.dart';
 import '../../domain/entities/movie_info.dart';
 import '../../domain/repositories/movie_info_repository.dart';
 import '../datasources/movie_info_remote_data_source.dart';
