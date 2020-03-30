@@ -23,7 +23,6 @@ void main() {
     usecase = GetRandomMovie(mockMovieInfoRepository);
   });
 
-  final latestMovieId = 1000;
   final movieInfo = MovieInfo(
     title: "Fight Club",
     id: 550,
@@ -32,17 +31,17 @@ void main() {
         "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
   );
   test(
-    "should get random movie info based on number between 0 and the latest movie id",
+    "should get random movie info based on number between 0 and the latest movie id (from latest movie info)",
     () async {
-      when(mockMovieInfoRepository.getLatestMovieId())
-          .thenAnswer((_) async => Right(latestMovieId));
+      when(mockMovieInfoRepository.getLatestMovie())
+          .thenAnswer((_) async => Right(movieInfo));
       when(mockMovieInfoRepository.getMovieById(any))
           .thenAnswer((_) async => Right(movieInfo));
       // since random number doesn't require any parameters, we pass in NoParams
       final result = await usecase(NoParams());
 
       expect(result, Right(movieInfo));
-      verify(mockMovieInfoRepository.getLatestMovieId());
+      verify(mockMovieInfoRepository.getLatestMovie());
       verify(mockMovieInfoRepository.getMovieById(any));
       verifyNoMoreInteractions(mockMovieInfoRepository);
     },
@@ -53,13 +52,13 @@ void main() {
   test(
     "should return Failure when latest movie id is not found",
     () async {
-      when(mockMovieInfoRepository.getLatestMovieId())
+      when(mockMovieInfoRepository.getLatestMovie())
           .thenAnswer((_) async => Left(failure));
       
       final result = await usecase(NoParams());
 
       expect(result, Left(failure));
-      verify(mockMovieInfoRepository.getLatestMovieId());
+      verify(mockMovieInfoRepository.getLatestMovie());
       verifyNoMoreInteractions(mockMovieInfoRepository);
     },
   );

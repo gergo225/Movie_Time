@@ -13,10 +13,10 @@ class GetRandomMovie extends UseCase<MovieInfo, NoParams> {
 
   @override
   Future<Either<Failure, MovieInfo>> call(NoParams params) async {
-    var latestMovieId = await repository.getLatestMovieId();
-    return latestMovieId.fold(
+    var latestMovie = await repository.getLatestMovie();
+    return latestMovie.fold(
       (failure) => Left(failure),
-      (id) => repository.getMovieById(Random().nextInt(id)),
+      (movieInfo) => repository.getMovieById(Random().nextInt(movieInfo.id)),
     );
   }
 }
