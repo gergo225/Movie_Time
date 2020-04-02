@@ -5,7 +5,7 @@ import 'package:movie_time/core/error/failure.dart';
 import 'package:movie_time/core/usecases/usecase.dart';
 import 'package:movie_time/features/movie/domain/entities/movie_info.dart';
 import 'package:movie_time/features/movie/domain/repositories/movie_info_repository.dart';
-import 'package:movie_time/features/movie/domain/usecases/get_random_movie.dart';
+import 'package:movie_time/features/movie/domain/usecases/get_latest_movie.dart';
 
 class MockMovieInfoRepository extends Mock implements MovieInfoRepository {}
 
@@ -15,12 +15,12 @@ class TestFailure implements Failure {
 }
 
 void main() {
-  GetRandomMovie usecase;
+  GetLatestMovie usecase;
   MockMovieInfoRepository mockMovieInfoRepository;
 
   setUp(() {
     mockMovieInfoRepository = MockMovieInfoRepository();
-    usecase = GetRandomMovie(mockMovieInfoRepository);
+    usecase = GetLatestMovie(mockMovieInfoRepository);
   });
 
   final movieInfo = MovieInfo(
@@ -31,13 +31,13 @@ void main() {
         "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
   );
   test(
-    "should get random movie info based on number between 0 and the latest movie id (from latest movie info)",
+    "should get latest movie info",
     () async {
       when(mockMovieInfoRepository.getLatestMovie())
           .thenAnswer((_) async => Right(movieInfo));
       when(mockMovieInfoRepository.getMovieById(any))
           .thenAnswer((_) async => Right(movieInfo));
-      // since random number doesn't require any parameters, we pass in NoParams
+      // since the latest movie doesn't require any parameters, we pass in NoParams
       final result = await usecase(NoParams());
 
       expect(result, Right(movieInfo));
