@@ -6,13 +6,13 @@ abstract class MovieInfoEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetMovieById extends MovieInfoEvent {
+class GetInfoForMovieById extends MovieInfoEvent {
   final idString;
 
-  GetMovieById(this.idString);
+  GetInfoForMovieById(this.idString);
 
   @override
   List<Object> get props => [idString];
 }
 
-class GetLatestMovie extends MovieInfoEvent {}
+class GetInfoForLatestMovie extends MovieInfoEvent {}
