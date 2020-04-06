@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'features/movie/presentation/pages/movie_info_page.dart';
 import 'injection_container.dart' as di;
 
 void main() {
@@ -14,17 +15,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        accentColor: Colors.blueAccent,
       ),
-      home: MainApp(),
+      home: MovieInfoPage(),
     );
-  }
-}
-
-class MainApp extends StatelessWidget {
-  MainApp({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
