@@ -78,7 +78,7 @@ void main() {
         MovieInfoModel.fromJson(json.decode(fixture("movie.json")));
 
     test(
-      "should perform GET request on a URL with a random id being at the endpoint",
+      "should perform GET request on a URL with latest being at the endpoint",
       () {
         // arrange
         setUpMockHttpClientSuccess200();
