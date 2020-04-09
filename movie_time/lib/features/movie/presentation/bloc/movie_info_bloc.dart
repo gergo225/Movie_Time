@@ -72,6 +72,8 @@ class MovieInfoBloc extends Bloc<MovieInfoEvent, MovieInfoState> {
     switch (failure.runtimeType) {
       case ServerFailure:
         return SERVER_FAILURE_MESSAGE;
+      case ConnectionFailure:
+        return CONNECTION_FAILURE_MESSAGE;
       default:
         return "Unexpected Error";
     }

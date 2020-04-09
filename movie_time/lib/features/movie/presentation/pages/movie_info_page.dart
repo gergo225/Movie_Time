@@ -30,18 +30,15 @@ class MovieInfoPage extends StatelessWidget {
               BlocBuilder<MovieInfoBloc, MovieInfoState>(
                 builder: (context, state) {
                   if (state is Empty) {
-                    return MessageDisplay(
-                      message: "Start searching!",
-                    );
+                    return MessageDisplay(message: "Start searching!");
                   } else if (state is Loading) {
                     return LoadingWidget();
                   } else if (state is Loaded) {
                     return InfoDisplay(movieInfo: state.movie);
                   } else if (state is Error) {
-                    return MessageDisplay(
-                      message: state.message,
-                    );
+                    return MessageDisplay(message: state.message);
                   }
+                  return null;
                 },
               ),
               SizedBox(height: 20),
