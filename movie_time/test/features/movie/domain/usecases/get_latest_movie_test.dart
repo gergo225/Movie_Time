@@ -29,20 +29,23 @@ void main() {
     releaseDate: "1999-10-12",
     overview:
         "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
+    backdropPath: "/fCayJrkfRaCRCTh8GqN30f8oyQF.jpg",
+    posterPath: null,
+    rating: 7.8,
+    genres: ["Drama"],
+    runtimeInMinutes: 139,
   );
+
   test(
     "should get latest movie info",
     () async {
       when(mockMovieInfoRepository.getLatestMovie())
-          .thenAnswer((_) async => Right(movieInfo));
-      when(mockMovieInfoRepository.getMovieById(any))
           .thenAnswer((_) async => Right(movieInfo));
       // since the latest movie doesn't require any parameters, we pass in NoParams
       final result = await usecase(NoParams());
 
       expect(result, Right(movieInfo));
       verify(mockMovieInfoRepository.getLatestMovie());
-      verify(mockMovieInfoRepository.getMovieById(any));
       verifyNoMoreInteractions(mockMovieInfoRepository);
     },
   );
@@ -50,7 +53,7 @@ void main() {
   final failure = TestFailure();
 
   test(
-    "should return Failure when latest movie id is not found",
+    "should return Failure when latest movie is not found",
     () async {
       when(mockMovieInfoRepository.getLatestMovie())
           .thenAnswer((_) async => Left(failure));

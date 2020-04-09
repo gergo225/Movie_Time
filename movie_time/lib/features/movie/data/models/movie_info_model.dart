@@ -7,8 +7,22 @@ class MovieInfoModel extends MovieInfo {
     @required int id,
     @required String releaseDate,
     @required String overview,
+    @required String backdropPath,
+    @required String posterPath,
+    @required double rating,
+    @required int runtimeInMinutes,
+    @required List<String> genres,
   }) : super(
-            title: title, id: id, releaseDate: releaseDate, overview: overview);
+          title: title,
+          id: id,
+          releaseDate: releaseDate,
+          overview: overview,
+          backdropPath: backdropPath,
+          posterPath: posterPath,
+          rating: rating,
+          runtimeInMinutes: runtimeInMinutes,
+          genres: genres,
+        );
 
   factory MovieInfoModel.fromJson(Map<String, dynamic> json) {
     return MovieInfoModel(
@@ -16,6 +30,14 @@ class MovieInfoModel extends MovieInfo {
       id: json["id"],
       releaseDate: json["release_date"],
       overview: json["overview"],
+      backdropPath: json["backdrop_path"],
+      posterPath: json["poster_path"],
+      rating: json["vote_average"],
+      runtimeInMinutes: json["runtime"],
+      genres: json["genres"]
+          .map((genre) => genre["name"])
+          .toList()
+          .cast<String>(), // get only genre names as strings
     );
   }
 
@@ -25,6 +47,11 @@ class MovieInfoModel extends MovieInfo {
       "id": id,
       "release_date": releaseDate,
       "overview": overview,
+      "backdrop_path": backdropPath,
+      "poster_path": posterPath,
+      "vote_average": rating,
+      "runtime": runtimeInMinutes,
+      "genres": genres,
     };
   }
 }

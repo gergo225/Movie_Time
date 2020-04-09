@@ -29,6 +29,11 @@ void main() {
     releaseDate: "1999-10-12",
     overview:
         "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
+    backdropPath: "/fCayJrkfRaCRCTh8GqN30f8oyQF.jpg",
+    posterPath: null,
+    rating: 7.8,
+    genres: ["Drama"],
+    runtimeInMinutes: 139,
   );
 
   test(
