@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-import 'search_movie_info.dart';
+import 'searched_movie_info.dart';
 
 class SearchResult extends Equatable {
-  final List<SearchMovieInfo> results;
+  final List<SearchedMovieInfo> results;
 
   SearchResult({@required this.results}) : super([results]);
 }

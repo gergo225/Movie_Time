@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-class SearchMovieInfo extends Equatable {
+class SearchedMovieInfo extends Equatable {
   final String title;
   final int id;
   final int releaseYear;
   final String posterPath;
   final double rating;
 
-  SearchMovieInfo({
+  SearchedMovieInfo({
     @required this.title,
     @required this.id,
     @required this.releaseYear,

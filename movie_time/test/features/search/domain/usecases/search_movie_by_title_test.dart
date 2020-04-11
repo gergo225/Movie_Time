@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:movie_time/features/search/domain/entities/search_movie_info.dart';
+import 'package:movie_time/features/search/domain/entities/searched_movie_info.dart';
 import 'package:movie_time/features/search/domain/entities/search_result.dart';
 import 'package:movie_time/features/search/domain/repositories/search_repository.dart';
 import 'package:movie_time/features/search/domain/usecases/search_movie_by_title.dart';
@@ -19,7 +19,7 @@ void main() {
 
   final movieTitle = "Avengers";
   final searchResult = SearchResult(results: [
-    SearchMovieInfo(
+    SearchedMovieInfo(
         title: "The Avengers",
         id: 24428,
         releaseYear: 2012,
