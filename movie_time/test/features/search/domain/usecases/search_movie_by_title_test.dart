@@ -17,14 +17,14 @@ void main() {
     usecase = SearchMovieByTitle(mockSearchRepository);
   });
 
-  final movieTitle = "fast";
+  final movieTitle = "Avengers";
   final searchResult = SearchResult(results: [
     SearchMovieInfo(
-        title: "Fast & Furious Presents: Hobbs & Shaw",
-        id: 384018,
-        releaseYear: 2019,
-        posterPath: "/kvpNZAQow5es1tSY6XW2jAZuPPG.jpg",
-        rating: 6.7),
+        title: "The Avengers",
+        id: 24428,
+        releaseYear: 2012,
+        posterPath: "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
+        rating: 7.33),
   ]);
 
   test(
