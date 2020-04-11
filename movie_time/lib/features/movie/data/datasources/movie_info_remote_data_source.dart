@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
+import '../../../../core/util/api_key.dart';
 import '../../../../core/error/exception.dart';
 
 import '../models/movie_info_model.dart';
@@ -17,8 +18,6 @@ abstract class MovieInfoRemoteDataSource {
   /// Throws a [ServerException] for all error codes
   Future<MovieInfoModel> getLatestMovie();
 }
-
-const API_KEY = "50991782afd87bf182e598cf8f7cb4d5";
 
 class MovieInfoRemoteDataSourceImpl implements MovieInfoRemoteDataSource {
   final http.Client client;
