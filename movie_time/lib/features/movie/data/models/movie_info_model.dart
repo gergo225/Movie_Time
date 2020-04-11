@@ -34,10 +34,8 @@ class MovieInfoModel extends MovieInfo {
       posterPath: json["poster_path"],
       rating: json["vote_average"],
       runtimeInMinutes: json["runtime"],
-      genres: json["genres"]
-          .map((genre) => genre["name"])
-          .toList()
-          .cast<String>(), // get only genre names as strings
+      genres: List<String>.from(json["genres"]
+          .map((genre) => genre["name"])), // get only genre names as strings
     );
   }
 
