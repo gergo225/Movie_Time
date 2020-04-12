@@ -14,8 +14,6 @@ import '../../domain/entities/movie_info.dart';
 part 'movie_info_event.dart';
 part 'movie_info_state.dart';
 
-const String SERVER_FAILURE_MESSAGE = "Server Failure";
-const String CONNECTION_FAILURE_MESSAGE = "Connection Failure";
 const String INVALID_INPUT_FAILURE_MESSAGE =
     "Invalid Input - The number must be a positive integer";
 
