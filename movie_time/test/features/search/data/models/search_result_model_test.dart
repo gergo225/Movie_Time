@@ -53,6 +53,8 @@ void main() {
           },
         ],
       };
+
+      expect(result, expectedJsonMap);
     },
   );
 }

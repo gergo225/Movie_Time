@@ -19,6 +19,6 @@ class SearchResultModel extends SearchResult {
   }
 
   Map<String, dynamic> toJson() {
-    return {"results": results.map((searchedMovie) => null)};
+    return {"results": results.map((searchedMovie) => searchedMovie.toJson())};
   }
 }
