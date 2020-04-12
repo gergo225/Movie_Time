@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie_time/core/error/exception.dart';
+import 'package:movie_time/core/util/api_key.dart';
 import 'package:movie_time/features/movie/data/datasources/movie_info_remote_data_source.dart';
 import 'package:movie_time/features/movie/data/models/movie_info_model.dart';
 import 'package:matcher/matcher.dart';
@@ -44,7 +45,7 @@ void main() {
         // act
         dataSource.getMovieById(movieId);
         // assert
-        verify(mockHttpClient.get("https://api.themoviedb.org/3/movie/$movieId?api_key=50991782afd87bf182e598cf8f7cb4d5"));
+        verify(mockHttpClient.get("https://api.themoviedb.org/3/movie/$movieId?api_key=$API_KEY"));
       },
     );
 
