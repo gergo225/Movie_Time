@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'features/movie/presentation/pages/movie_info_page.dart';
+import 'features/search/presentation/pages/search_page.dart';
 import 'injection_container.dart' as di;
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         accentColor: Colors.blueAccent,
       ),
-      home: MovieInfoPage(),
+      home: SearchPage(),
     );
   }
 }
