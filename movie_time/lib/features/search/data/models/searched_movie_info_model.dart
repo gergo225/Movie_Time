@@ -28,7 +28,7 @@ class SearchedMovieInfoModel extends SearchedMovieInfo {
       id: json["id"],
       releaseYear: int.parse(json["release_date"].substring(0, 4)),
       posterPath: json["poster_path"],
-      rating: json["vote_average"],
+      rating: json["vote_average"].toDouble(),
     );
   }
 
