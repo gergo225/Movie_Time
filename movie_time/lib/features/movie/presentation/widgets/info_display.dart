@@ -45,16 +45,8 @@ class InfoDisplay extends StatelessWidget {
                   style: TextStyle(fontSize: 24),
                   textAlign: TextAlign.center,
                 ),
-                CachedNetworkImage(
-                  imageUrl: createImageLink(movieInfo.posterPath),
-                  errorWidget: (context, url, error) => Text(error.toString()),
-                  placeholder: (context, url) => LoadingWidget(),
-                ),
-                CachedNetworkImage(
-                  imageUrl: createImageLink(movieInfo.backdropPath),
-                  errorWidget: (context, url, error) => Text(error.toString()),
-                  placeholder: (context, url) => LoadingWidget(),
-                ),
+                buildCachedNetworkImage(movieInfo.posterPath),
+                buildCachedNetworkImage(movieInfo.backdropPath),
               ],
             ),
           ),
@@ -62,4 +54,10 @@ class InfoDisplay extends StatelessWidget {
       ),
     );
   }
+
+  CachedNetworkImage buildCachedNetworkImage(String url) => CachedNetworkImage(
+        imageUrl: createImageLink(url),
+        errorWidget: (context, url, error) => Text(error.toString()),
+        placeholder: (context, url) => LoadingWidget(),
+      );
 }
