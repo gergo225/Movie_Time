@@ -61,19 +61,9 @@ class MovieInfoBloc extends Bloc<MovieInfoEvent, MovieInfoState> {
     Either<Failure, MovieInfo> either,
   ) async* {
     yield either.fold(
-      (failure) => Error(message: _mapFailureToMessage(failure)),
+      (failure) => Error(message: mapFailureToMessage(failure)),
       (movie) => Loaded(movie: movie),
     );
   }
-
-  String _mapFailureToMessage(Failure failure) {
-    switch (failure.runtimeType) {
-      case ServerFailure:
-        return SERVER_FAILURE_MESSAGE;
-      case ConnectionFailure:
-        return CONNECTION_FAILURE_MESSAGE;
-      default:
-        return "Unexpected Error";
-    }
-  }
+  
 }

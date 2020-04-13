@@ -12,3 +12,14 @@ abstract class Failure extends Equatable {
 class ServerFailure extends Failure {}
 
 class ConnectionFailure extends Failure {}
+
+String mapFailureToMessage(Failure failure) {
+    switch (failure.runtimeType) {
+      case ServerFailure:
+        return SERVER_FAILURE_MESSAGE;
+      case ConnectionFailure:
+        return CONNECTION_FAILURE_MESSAGE;
+      default:
+        return "Unexpected Error";
+    }
+  }
