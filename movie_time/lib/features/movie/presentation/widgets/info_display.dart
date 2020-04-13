@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_time/core/util/image_link_creator.dart';
-import 'package:movie_time/features/movie/presentation/widgets/loading_widget.dart';
+import '../../../../core/util/image_link_creator.dart';
 import '../../domain/entities/movie_info.dart';
+import 'loading_widget.dart';
 
 class InfoDisplay extends StatelessWidget {
   final MovieInfo movieInfo;

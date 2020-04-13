@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_time/features/movie/presentation/bloc/movie_info_bloc.dart';
+import '../bloc/movie_info_bloc.dart';
 
 class InfoControls extends StatefulWidget {
   const InfoControls({Key key}) : super(key: key);
