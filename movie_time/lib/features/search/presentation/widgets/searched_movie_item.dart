@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../core/util/image_link_creator.dart';
 import '../../domain/entities/searched_movie_info.dart';
 import 'loading_widget.dart';
-import 'message_display.dart';
 
 class SearchedMovieItem extends StatelessWidget {
   final SearchedMovieInfo searchedMovieInfo;
