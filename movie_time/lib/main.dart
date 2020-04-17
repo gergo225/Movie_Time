@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'features/movie/presentation/pages/movie_info_page.dart';
-import 'features/search/presentation/pages/search_page.dart';
+import 'package:movie_time/presentation/search/search_page.dart';
 import 'injection_container.dart' as di;
 
 void main() {

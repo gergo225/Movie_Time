@@ -1,20 +1,19 @@
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
-import 'package:movie_time/features/movie/data/repositories/movie_info_repository_impl.dart';
-import 'package:movie_time/features/movie/domain/repositories/movie_info_repository.dart';
-import 'package:movie_time/features/movie/domain/usecases/get_movie_by_id.dart';
-import 'package:movie_time/features/movie/presentation/bloc/movie_info_bloc.dart';
-import 'package:movie_time/features/search/data/datasources/search_remote_data_source.dart';
-import 'package:movie_time/features/search/data/repositories/search_repository_impl.dart';
-import 'package:movie_time/features/search/domain/usecases/search_movie_by_title.dart';
-
-import 'core/network/network_info.dart';
-import 'core/util/input_converter.dart';
-import 'features/movie/data/datasources/movie_info_remote_data_source.dart';
-import 'features/movie/domain/usecases/get_latest_movie.dart';
-import 'features/search/domain/repositories/search_repository.dart';
-import 'features/search/presentation/bloc/search_bloc.dart';
+import 'package:movie_time/data/core/network_info.dart';
+import 'package:movie_time/data/movie/movie_info_remote_data_source.dart';
+import 'package:movie_time/data/movie/movie_info_repository_impl.dart';
+import 'package:movie_time/data/search/search_remote_data_source.dart';
+import 'package:movie_time/data/search/search_repository_impl.dart';
+import 'package:movie_time/domain/movie/get_latest_movie.dart';
+import 'package:movie_time/domain/movie/get_movie_by_id.dart';
+import 'package:movie_time/domain/movie/movie_info_repository.dart';
+import 'package:movie_time/domain/search/search_movie_by_title.dart';
+import 'package:movie_time/domain/search/search_repository.dart';
+import 'package:movie_time/presentation/core/input_converter.dart';
+import 'package:movie_time/presentation/movie/movie_info_bloc.dart';
+import 'package:movie_time/presentation/search/search_bloc.dart';
 
 final sl = GetIt.instance;
 
