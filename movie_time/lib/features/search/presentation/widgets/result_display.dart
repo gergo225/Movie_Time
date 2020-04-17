@@ -22,7 +22,7 @@ class ResultDisplay extends StatelessWidget {
         itemBuilder: (_, index) => SearchedMovieItem(
           searchedMovieInfo: searchResult.results[index],
         ),
-        separatorBuilder: (_, __) => Divider(),
+        separatorBuilder: (_, __) => SizedBox(height: 8),
       );
     }
   }
