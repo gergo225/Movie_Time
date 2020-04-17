@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:movie_time/core/util/image_link_creator.dart';
 
 class SearchedMovieInfo extends Equatable {
   final String title;
@@ -15,4 +16,6 @@ class SearchedMovieInfo extends Equatable {
     @required this.posterPath,
     @required this.rating,
   }) : super([title, id, releaseYear, posterPath, rating]);
+
+  String get posterPathUrl => createImageLink(this.posterPath);
 }
