@@ -5,12 +5,10 @@ import 'package:movie_time/data/movie/movie_info_remote_data_source.dart';
 import 'package:movie_time/data/movie/movie_info_repository_impl.dart';
 import 'package:movie_time/data/search/search_remote_data_source.dart';
 import 'package:movie_time/data/search/search_repository_impl.dart';
-import 'package:movie_time/domain/movie/get_latest_movie.dart';
 import 'package:movie_time/domain/movie/get_movie_by_id.dart';
 import 'package:movie_time/domain/movie/movie_info_repository.dart';
 import 'package:movie_time/domain/search/search_movie_by_title.dart';
 import 'package:movie_time/domain/search/search_repository.dart';
-import 'package:movie_time/presentation/core/input_converter.dart';
 import 'package:movie_time/presentation/movie/movie_info_bloc.dart';
 import 'package:movie_time/presentation/search/search_bloc.dart';
 
@@ -22,7 +20,6 @@ void init() {
   setUpSearchFeature();
 
   //! Core
-  sl.registerLazySingleton(() => InputConverter());
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl());
   //! External
   sl.registerLazySingleton(() => http.Client());
@@ -33,13 +30,10 @@ void setUpMovieFeature() {
   sl.registerFactory(
     () => MovieInfoBloc(
       byId: sl(),
-      latest: sl(),
-      inputConverter: sl(),
     ),
   );
   // Use cases
   sl.registerLazySingleton(() => GetMovieById(sl()));
-  sl.registerLazySingleton(() => GetLatestMovie(sl()));
   // Repository
   sl.registerLazySingleton<MovieInfoRepository>(
     () => MovieInfoRepositoryImpl(

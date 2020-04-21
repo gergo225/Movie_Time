@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/search/searched_movie_info.dart';
-import 'loading_widget.dart';
+import 'package:movie_time/presentation/core/widgets/loading_widget.dart';
 
 import 'package:flutter/foundation.dart' show kIsWeb;
 

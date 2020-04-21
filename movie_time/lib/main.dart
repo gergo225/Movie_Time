@@ -1,10 +1,12 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_time/presentation/movie/movie_info_page.dart';
 import 'package:movie_time/presentation/search/search_page.dart';
 import 'injection_container.dart' as di;
 
 void main() {
   di.init();
-  runApp(MyApp());
+  runApp(DevicePreview(builder: (context) => MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         accentColor: Colors.blueAccent,
       ),
-      home: SearchPage(),
+      home: MovieInfoPage(),
     );
   }
 }

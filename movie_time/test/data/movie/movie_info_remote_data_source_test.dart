@@ -74,44 +74,4 @@ void main() {
     );
   });
 
-  group("getLatestMovie", () {
-    final movieInfoModel =
-        MovieInfoModel.fromJson(json.decode(fixture("movie.json")));
-
-    test(
-      "should perform GET request on a URL with latest being at the endpoint",
-      () {
-        // arrange
-        setUpMockHttpClientSuccess200();
-        // act
-        dataSource.getLatestMovie();
-        // assert
-        verify(mockHttpClient.get("https://api.themoviedb.org/3/movie/latest?api_key=50991782afd87bf182e598cf8f7cb4d5"));
-      },
-    );
-
-    test(
-      "should return latest MovieInfo when the response code is 200 (success)",
-      () async {
-        // arrange
-        setUpMockHttpClientSuccess200();
-        // act
-        final result = await dataSource.getLatestMovie();
-        // assert
-        expect(result, equals(movieInfoModel));
-      },
-    );
-
-    test(
-      "should throw a ServerException when the response code is 404 or other",
-      () async {
-        // arrange
-        setUpMockHttpClientFailure404();
-        // act
-        final call = dataSource.getLatestMovie;
-        // assert
-        expect(() => call(), throwsA(TypeMatcher<ServerException>()));
-      },
-    );
-  });
 }

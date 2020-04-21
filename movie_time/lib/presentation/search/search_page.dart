@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_time/injection_container.dart';
+import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'widgets/widgets.dart';
 import 'search_bloc.dart';
 

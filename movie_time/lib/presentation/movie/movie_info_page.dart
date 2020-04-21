@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_time/injection_container.dart';
+import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'movie_info_bloc.dart';
-import 'widgets/widgets.dart';
 
 class MovieInfoPage extends StatelessWidget {
   @override
@@ -29,21 +29,16 @@ class MovieInfoPage extends StatelessWidget {
               // Top half
               BlocBuilder<MovieInfoBloc, MovieInfoState>(
                 builder: (context, state) {
-                  if (state is Empty) {
-                    return MessageDisplay(message: "Start searching!");
-                  } else if (state is Loading) {
+                  // TODO: display pages for the states
+                  if (state is Loading) {
                     return LoadingWidget();
                   } else if (state is Loaded) {
-                    return InfoDisplay(movieInfo: state.movie);
                   } else if (state is Error) {
                     return MessageDisplay(message: state.message);
                   }
                   return null;
                 },
               ),
-              SizedBox(height: 20),
-              // Bottom half
-              InfoControls()
             ],
           ),
         ),

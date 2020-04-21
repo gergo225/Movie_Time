@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/search/search_result.dart';
-import 'message_display.dart';
+import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'searched_movie_item.dart';
 
 const String NO_SEARCH_RESULTS_MESSAGE = "No results were found";

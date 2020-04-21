@@ -4,5 +4,4 @@ import 'movie_info.dart';
 
 abstract class MovieInfoRepository {
   Future<Either<Failure, MovieInfo>> getMovieById(int id);
-  Future<Either<Failure, MovieInfo>> getLatestMovie();
 }

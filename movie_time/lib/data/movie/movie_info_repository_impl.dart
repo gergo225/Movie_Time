@@ -8,8 +8,6 @@ import 'package:movie_time/domain/movie/movie_info_repository.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
 import 'movie_info_remote_data_source.dart';
 
-typedef Future<MovieInfo> _ByIdOrLatestChooser();
-
 class MovieInfoRepositoryImpl implements MovieInfoRepository {
   final MovieInfoRemoteDataSource remoteDataSource;
   final NetworkInfo networkInfo;
@@ -21,24 +19,9 @@ class MovieInfoRepositoryImpl implements MovieInfoRepository {
 
   @override
   Future<Either<Failure, MovieInfo>> getMovieById(int id) async {
-    return await _getMovie(() {
-      return remoteDataSource.getMovieById(id);
-    });
-  }
-
-  @override
-  Future<Either<Failure, MovieInfo>> getLatestMovie() async {
-    return await _getMovie(() {
-      return remoteDataSource.getLatestMovie();
-    });
-  }
-
-  Future<Either<Failure, MovieInfo>> _getMovie(
-    _ByIdOrLatestChooser getByIdOrLatest,
-  ) async {
     if (await networkInfo.isConnected) {
       try {
-        final remoteMovie = await getByIdOrLatest();
+        final remoteMovie = await remoteDataSource.getMovieById(id);
         return Right(remoteMovie);
       } on ServerException {
         return Left(ServerFailure());
@@ -47,4 +30,5 @@ class MovieInfoRepositoryImpl implements MovieInfoRepository {
       return Left(ConnectionFailure());
     }
   }
+
 }
