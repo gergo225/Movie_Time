@@ -6,7 +6,8 @@ import 'injection_container.dart' as di;
 
 void main() {
   di.init();
-  runApp(DevicePreview(builder: (context) => MyApp()));
+  // runApp(DevicePreview(builder: (context) => MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

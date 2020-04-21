@@ -27,7 +27,7 @@ class MovieInfoBloc extends Bloc<MovieInfoEvent, MovieInfoState> {
     MovieInfoEvent event,
   ) async* {
     if (event is GetInfoForMovieById) {
-      final failureOrMovie = await getMovieById(Params(id: 550)); // TODO: change id to event.movieId
+      final failureOrMovie = await getMovieById(Params(id: event.movieId));
       yield* _eitherLoadedOrErrorState(failureOrMovie);
     }
   }

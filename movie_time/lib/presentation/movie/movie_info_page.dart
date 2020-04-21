@@ -29,10 +29,12 @@ class MovieInfoPage extends StatelessWidget {
               // Top half
               BlocBuilder<MovieInfoBloc, MovieInfoState>(
                 builder: (context, state) {
-                  // TODO: display pages for the states
+                  BlocProvider.of<MovieInfoBloc>(context).add(GetInfoForMovieById(429617));
                   if (state is Loading) {
                     return LoadingWidget();
                   } else if (state is Loaded) {
+                    // TODO: Add Loaded page
+                    return MessageDisplay(message: "${state.movie.props}");
                   } else if (state is Error) {
                     return MessageDisplay(message: state.message);
                   }
