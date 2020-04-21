@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:movie_time/domain/search/searched_movie_info.dart';
 import 'loading_widget.dart';
 
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 class SearchedMovieItem extends StatelessWidget {
   final SearchedMovieInfo searchedMovieInfo;
 
@@ -19,14 +21,7 @@ class SearchedMovieItem extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            CachedNetworkImage(
-              imageUrl: searchedMovieInfo.posterPathUrl,
-              placeholder: (context, url) => LoadingWidget(),
-              errorWidget: (context, url, error) =>
-                  Placeholder(fallbackWidth: 64,strokeWidth: 1,),
-              fit: BoxFit.contain,
-              width: 64,
-            ),
+            _imageOnWebOrOther(),
             SizedBox(width: 4),
             Expanded(
               child: Column(
@@ -60,4 +55,36 @@ class SearchedMovieItem extends StatelessWidget {
     );
   }
 
+  Widget _imageOnWebOrOther() {
+    Widget placeholder = Placeholder(
+      fallbackWidth: 64,
+      strokeWidth: 1,
+    );
+
+    if (kIsWeb) {
+      if (searchedMovieInfo.posterPath == null) {
+        return placeholder;
+      } else {
+        return Image.network(
+          searchedMovieInfo.posterPathUrl,
+          loadingBuilder: (context, child, loadingProgress) {
+            if (loadingProgress == null) return child;
+            return Center(
+              child: LoadingWidget(),
+            );
+          },
+          fit: BoxFit.contain,
+          width: 64,
+        );
+      }
+    } else {
+      return CachedNetworkImage(
+        imageUrl: searchedMovieInfo.posterPathUrl,
+        placeholder: (context, url) => LoadingWidget(),
+        errorWidget: (context, url, error) => placeholder,
+        fit: BoxFit.contain,
+        width: 64,
+      );
+    }
+  }
 }
