@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie_time/data/core/exception.dart';
-import 'package:movie_time/data/core/network_info.dart';
+import 'package:movie_time/data/core/network/network_info.dart';
 import 'package:movie_time/data/search/search_remote_data_source.dart';
 import 'package:movie_time/data/search/search_repository_impl.dart';
 import 'package:movie_time/data/search/search_result_model.dart';

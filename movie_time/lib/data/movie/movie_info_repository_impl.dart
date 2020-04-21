@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:movie_time/data/core/exception.dart';
-import 'package:movie_time/data/core/network_info.dart';
+import 'package:movie_time/data/core/network/network_info.dart';
 import 'package:movie_time/domain/core/failure.dart';
 
 import 'package:movie_time/domain/movie/movie_info_repository.dart';

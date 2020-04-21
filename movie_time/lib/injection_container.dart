@@ -1,7 +1,6 @@
-import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
-import 'package:movie_time/data/core/network_info.dart';
+import 'package:movie_time/data/core/network/network_info.dart';
 import 'package:movie_time/data/movie/movie_info_remote_data_source.dart';
 import 'package:movie_time/data/movie/movie_info_repository_impl.dart';
 import 'package:movie_time/data/search/search_remote_data_source.dart';
@@ -18,16 +17,15 @@ import 'package:movie_time/presentation/search/search_bloc.dart';
 final sl = GetIt.instance;
 
 void init() {
-  //! Features - Movie Info, search
+  //! Features - Movie Info, Search
   setUpMovieFeature();
   setUpSearchFeature();
 
   //! Core
   sl.registerLazySingleton(() => InputConverter());
-  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
+  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl());
   //! External
   sl.registerLazySingleton(() => http.Client());
-  sl.registerLazySingleton(() => DataConnectionChecker());
 }
 
 void setUpMovieFeature() {
