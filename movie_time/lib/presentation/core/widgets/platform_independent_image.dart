@@ -6,8 +6,11 @@ class PlatformIndependentImage extends StatelessWidget {
   final String imageUrl;
   final Widget errorWidget;
   final Widget loadingWidget;
+    /// Width of the picture. By default fits the parent
   final double width;
   final BoxFit boxFit;
+    /// Alignment of the picture. Default is Alignment.center
+  final AlignmentGeometry alignment;
 
   /// Network image class for both web and mobile
   const PlatformIndependentImage({
@@ -16,13 +19,12 @@ class PlatformIndependentImage extends StatelessWidget {
     @required this.errorWidget,
     @required this.loadingWidget,
     @required this.boxFit,
-    this.width,
+    this.width = double.infinity,
+    this.alignment = Alignment.center,
   });
 
   @override
   Widget build(BuildContext context) {
-    double nonNullWidth = width ?? double.infinity;
-
     if (kIsWeb) {
       if (imageUrl == null) {
         return errorWidget;
@@ -35,8 +37,9 @@ class PlatformIndependentImage extends StatelessWidget {
               child: loadingWidget,
             );
           },
+          alignment: alignment,
           fit: boxFit,
-          width: nonNullWidth,
+          width: width,
         );
       }
     } else {
@@ -45,7 +48,8 @@ class PlatformIndependentImage extends StatelessWidget {
         placeholder: (context, url) => loadingWidget,
         errorWidget: (context, url, error) => errorWidget,
         fit: boxFit,
-        width: nonNullWidth,
+        width: width,
+        alignment: alignment,
       );
     }
   }
