@@ -4,6 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:movie_time/domain/core/failure.dart';
 import 'package:movie_time/domain/movie/get_movie_by_id.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
+import 'package:movie_time/domain/movie/short_actor_info.dart';
 import 'package:movie_time/presentation/movie/movie_info_bloc.dart';
 
 class MockGetMovieById extends Mock implements GetMovieById {}
@@ -32,9 +33,17 @@ void main() {
       rating: 7.8,
       genres: ["Drama"],
       runtimeInMinutes: 139,
+      actors: [
+        ShortActorInfo(
+          id: "52fe4250c3a36847f80149f3",
+          name: "Edward Norton",
+          character: "The Narrator",
+          profileImagePath: "/eIkFHNlfretLS1spAcIoihKUS62.jpg",
+        )
+      ],
+      trailerYouTubeKey: "BdJKm16Co6M",
     );
 
-    
     test(
       "should get data from the concrete usecase",
       () async {

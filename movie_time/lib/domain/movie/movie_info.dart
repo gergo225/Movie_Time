@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:movie_time/domain/core/image_link_creator.dart';
+import 'package:movie_time/domain/core/date_utils.dart';
+import 'package:movie_time/domain/movie/short_actor_info.dart';
 
 class MovieInfo extends Equatable {
   final String title;
@@ -12,6 +14,8 @@ class MovieInfo extends Equatable {
   final double rating;
   final int runtimeInMinutes;
   final List<String> genres;
+  final List<ShortActorInfo> actors;
+  final String trailerYouTubeKey;
 
   MovieInfo({
     @required this.title,
@@ -23,6 +27,8 @@ class MovieInfo extends Equatable {
     @required this.rating,
     @required this.runtimeInMinutes,
     @required this.genres,
+    @required this.actors,
+    @required this.trailerYouTubeKey,
   }) : super([
           title,
           id,
@@ -32,9 +38,17 @@ class MovieInfo extends Equatable {
           posterPath,
           rating,
           runtimeInMinutes,
-          genres
+          genres,
+          actors,
+          trailerYouTubeKey,
         ]);
 
-  String get posterPathUrl => createImageLink(posterPath);
-  String get backdropPathUrl => createImageLink(backdropPath);
+  String get posterPathUrl => createSmallImageLink(posterPath);
+  String get backdropPathUrl => createOriginalImageLink(backdropPath);
+  String get runtimeInHoursAndMinutes =>
+      "${runtimeInMinutes ~/ 60}h ${runtimeInMinutes % 60}min";
+  String get genresString => "${genres.join(", ")}";
+  String get releaseYearAndMonth =>
+      "${releaseDate.substring(0, 4)} ${monthNumberAndName[releaseDate.substring(5, 7)]}";
+  String get trailerYouTubeUrl => createYouTubeLink(trailerYouTubeKey);
 }

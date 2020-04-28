@@ -17,5 +17,5 @@ class SearchedMovieInfo extends Equatable {
     @required this.rating,
   }) : super([title, id, releaseYear, posterPath, rating]);
 
-  String get posterPathUrl => createImageLink(posterPath);
+  String get posterPathUrl => createSmallImageLink(posterPath);
 }
