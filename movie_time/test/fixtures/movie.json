@@ -81,5 +81,53 @@
   "title": "Fight Club",
   "video": false,
   "vote_average": 7.8,
-  "vote_count": 3439
+  "vote_count": 3439,
+  "credits": {
+    "cast": [
+      {
+        "cast_id": 4,
+        "character": "The Narrator",
+        "credit_id": "52fe4250c3a36847f80149f3",
+        "gender": 2,
+        "id": 819,
+        "name": "Edward Norton",
+        "order": 0,
+        "profile_path": "/5XBzD5WuTyVQZeS4VI25z2moMeY.jpg"
+      },
+      {
+        "cast_id": 5,
+        "character": "Tyler Durden",
+        "credit_id": "52fe4250c3a36847f80149f7",
+        "gender": 2,
+        "id": 287,
+        "name": "Brad Pitt",
+        "order": 1,
+        "profile_path": "/tJiSUYst4ddIaz1zge2LqCtu9tw.jpg"
+      }
+    ]
+  },
+  "videos": {
+    "results": [
+      {
+        "id": "5c9294240e0a267cd516835f",
+        "iso_639_1": "en",
+        "iso_3166_1": "US",
+        "key": "BdJKm16Co6M",
+        "name": "Fight Club | #TBT Trailer | 20th Century FOX",
+        "site": "YouTube",
+        "size": 1080,
+        "type": "Trailer"
+      },
+      {
+        "id": "5e382d1b4ca676001453826d",
+        "iso_639_1": "en",
+        "iso_3166_1": "US",
+        "key": "6JnN1DmbqoU",
+        "name": "Fight Club - Theatrical Trailer Remastered in HD",
+        "site": "YouTube",
+        "size": 1080,
+        "type": "Trailer"
+      }
+    ]
+  }
 }

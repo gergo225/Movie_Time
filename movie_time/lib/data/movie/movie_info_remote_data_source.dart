@@ -8,7 +8,7 @@ import 'package:movie_time/data/core/exception.dart';
 import 'movie_info_model.dart';
 
 abstract class MovieInfoRemoteDataSource {
-  /// Calls the https://api.themoviedb.org/3/movie/{id}?api_key=<<api_key>>
+  /// Calls the https://api.themoviedb.org/3/movie/{id}?api_key=<<api_key>>&append_to_response=images,credits,videos
   ///
   /// Throws a [ServerException] for all error codes
   Future<MovieInfoModel> getMovieById(int id);
@@ -21,7 +21,7 @@ class MovieInfoRemoteDataSourceImpl implements MovieInfoRemoteDataSource {
 
   @override
   Future<MovieInfoModel> getMovieById(int id) => _getMovieFromUrl(
-      "https://api.themoviedb.org/3/movie/$id?api_key=$API_KEY");
+      "https://api.themoviedb.org/3/movie/$id?api_key=$API_KEY&append_to_response=images,credits,videos");
 
   Future<MovieInfoModel> _getMovieFromUrl(String url) async {
     final response = await client.get(url);

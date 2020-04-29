@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:movie_time/data/movie/movie_info_model.dart';
+import 'package:movie_time/data/movie/short_actor_info_model.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
 
 import '../../fixtures/fixture_reader.dart';
@@ -18,6 +19,21 @@ void main() {
     rating: 7.8,
     genres: ["Drama"],
     runtimeInMinutes: 139,
+    actors: [
+      ShortActorInfoModel(
+        id: "52fe4250c3a36847f80149f3",
+        name: "Edward Norton",
+        character: "The Narrator",
+        profileImagePath: "/5XBzD5WuTyVQZeS4VI25z2moMeY.jpg",
+      ),
+      ShortActorInfoModel(
+        id: "52fe4250c3a36847f80149f7",
+        name: "Brad Pitt",
+        character: "Tyler Durden",
+        profileImagePath: "/tJiSUYst4ddIaz1zge2LqCtu9tw.jpg",
+      ),
+    ],
+    trailerYouTubeKey: "BdJKm16Co6M",
   );
 
   test(
@@ -54,6 +70,23 @@ void main() {
         "vote_average": 7.8,
         "runtime": 139,
         "genres": ["Drama"],
+        "credits": {
+          "cast": [
+            {
+              "id": "52fe4250c3a36847f80149f3",
+              "name": "Edward Norton",
+              "character": "The Narrator",
+              "profile_path": "/5XBzD5WuTyVQZeS4VI25z2moMeY.jpg"
+            },
+            {
+              "id": "52fe4250c3a36847f80149f7",
+              "name": "Brad Pitt",
+              "character": "Tyler Durden",
+              "profile_path": "/tJiSUYst4ddIaz1zge2LqCtu9tw.jpg",
+            }
+          ]
+        },
+        "videos": {"results": [{"key": "BdJKm16Co6M"}]}
       };
 
       expect(result, expectedJsonMap);

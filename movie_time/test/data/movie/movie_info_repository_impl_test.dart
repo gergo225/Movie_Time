@@ -6,6 +6,7 @@ import 'package:movie_time/data/core/network/network_info.dart';
 import 'package:movie_time/data/movie/movie_info_model.dart';
 import 'package:movie_time/data/movie/movie_info_remote_data_source.dart';
 import 'package:movie_time/data/movie/movie_info_repository_impl.dart';
+import 'package:movie_time/data/movie/short_actor_info_model.dart';
 import 'package:movie_time/domain/core/failure.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
 
@@ -60,6 +61,21 @@ void main() {
       rating: 7.8,
       genres: ["Drama"],
       runtimeInMinutes: 139,
+      actors: [
+        ShortActorInfoModel(
+          id: "52fe4250c3a36847f80149f3",
+          name: "Edward Norton",
+          character: "The Narrator",
+          profileImagePath: "/5XBzD5WuTyVQZeS4VI25z2moMeY.jpg",
+        ),
+        ShortActorInfoModel(
+          id: "52fe4250c3a36847f80149f7",
+          name: "Brad Pitt",
+          character: "Tyler Durden",
+          profileImagePath: "/tJiSUYst4ddIaz1zge2LqCtu9tw.jpg",
+        ),
+      ],
+      trailerYouTubeKey: "BdJKm16Co6M",
     );
     final MovieInfo movieInfo = movieInfoModel;
 
@@ -112,5 +128,4 @@ void main() {
       );
     });
   });
-
 }

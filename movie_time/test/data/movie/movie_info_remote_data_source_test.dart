@@ -45,7 +45,7 @@ void main() {
         // act
         dataSource.getMovieById(movieId);
         // assert
-        verify(mockHttpClient.get("https://api.themoviedb.org/3/movie/$movieId?api_key=$API_KEY"));
+        verify(mockHttpClient.get("https://api.themoviedb.org/3/movie/$movieId?api_key=$API_KEY&append_to_response=images,credits,videos"));
       },
     );
 
