@@ -20,10 +20,7 @@ class SearchedMovieItem extends StatelessWidget {
           children: [
             PlatformIndependentImage(
               imageUrl: searchedMovieInfo.posterPathUrl,
-              errorWidget: Placeholder(
-                fallbackWidth: 64,
-                strokeWidth: 1,
-              ),
+              errorWidget: NoImageWidget.poster(),
               loadingWidget: LoadingWidget(),
               width: 64,
               boxFit: BoxFit.contain,
