@@ -6,10 +6,12 @@ class PlatformIndependentImage extends StatelessWidget {
   final String imageUrl;
   final Widget errorWidget;
   final Widget loadingWidget;
-    /// Width of the picture. By default fits the parent
+
+  /// Width of the picture. By default fits the parent
   final double width;
   final BoxFit boxFit;
-    /// Alignment of the picture. Default is Alignment.center
+
+  /// Alignment of the picture. Default is Alignment.center
   final AlignmentGeometry alignment;
 
   /// Network image class for both web and mobile
@@ -25,10 +27,13 @@ class PlatformIndependentImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (kIsWeb) {
-      if (imageUrl == null) {
-        return errorWidget;
-      } else {
+    if (imageUrl == null) {
+      return Container(
+        width: width,
+        child: errorWidget,
+      );
+    } else {
+      if (kIsWeb) {
         return Image.network(
           imageUrl,
           loadingBuilder: (context, child, loadingProgress) {
@@ -41,16 +46,16 @@ class PlatformIndependentImage extends StatelessWidget {
           fit: boxFit,
           width: width,
         );
+      } else {
+        return CachedNetworkImage(
+          imageUrl: imageUrl,
+          placeholder: (context, url) => loadingWidget,
+          errorWidget: (context, url, error) => errorWidget,
+          fit: boxFit,
+          width: width,
+          alignment: alignment,
+        );
       }
-    } else {
-      return CachedNetworkImage(
-        imageUrl: imageUrl,
-        placeholder: (context, url) => loadingWidget,
-        errorWidget: (context, url, error) => errorWidget,
-        fit: boxFit,
-        width: width,
-        alignment: alignment,
-      );
     }
   }
 }
