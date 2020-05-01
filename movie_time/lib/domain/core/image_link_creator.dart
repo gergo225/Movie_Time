@@ -13,9 +13,5 @@ String createSmallImageLink(String path) =>
 String _imageLinkWithSizeAndPath(String size, String path) =>
     _linkOrNull(path, "https://image.tmdb.org/t/p/$size$path");
 
-/// Create link for YouTube video base on video key
-String createYouTubeLink(String videoKey) =>
-    _linkOrNull(videoKey, "https://www.youtube.com/watch?v=$videoKey");
-
 String _linkOrNull(String nullable, String link) =>
     (nullable != null) ? link : null;

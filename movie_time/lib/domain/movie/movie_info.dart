@@ -50,5 +50,4 @@ class MovieInfo extends Equatable {
   String get genresString => "${genres.join(", ")}";
   String get releaseYearAndMonth =>
       "${releaseDate.substring(0, 4)} ${monthNumberAndName[releaseDate.substring(5, 7)]}";
-  String get trailerYouTubeUrl => createYouTubeLink(trailerYouTubeKey);
 }
