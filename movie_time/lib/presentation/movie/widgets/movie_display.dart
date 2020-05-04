@@ -141,8 +141,7 @@ class MovieDisplay extends StatelessWidget {
               ),
             ),
             Container(
-              height: 210,
-              color: Colors.red, // TODO: Change color
+              height: 214,
               child: Row(
                 children: [
                   Expanded(
@@ -167,7 +166,11 @@ class MovieDisplay extends StatelessWidget {
                 style: movieBodySubtitleTextStyle,
               ),
             ),
-            YouTubeVideo(youTubeVideoKey: movieInfo.trailerYouTubeKey),
+            Container(
+              padding: padding,
+              height: 240,
+              child: YouTubeVideo(movieInfo.trailerYouTubeKey),
+            ),
           ],
         ),
       ),
