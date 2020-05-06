@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_time/injection_container.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
@@ -15,6 +16,7 @@ class SearchPage extends StatelessWidget {
   }
 
   BlocProvider<SearchBloc> buildBody(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([]);
     return BlocProvider(
       create: (_) => sl<SearchBloc>(),
       child: Center(

@@ -7,9 +7,12 @@ import 'package:movie_time/presentation/movie/widgets/movie_display.dart';
 import 'movie_info_bloc.dart';
 
 class MovieInfoPage extends StatelessWidget {
+  final int movieId;
+
+  MovieInfoPage({@required this.movieId}) : assert(movieId != null);
+
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([]);
 
     return Scaffold(
       body: buildBody(context),
@@ -23,12 +26,11 @@ class MovieInfoPage extends StatelessWidget {
       child: BlocBuilder<MovieInfoBloc, MovieInfoState>(
         builder: (context, state) {
           BlocProvider.of<MovieInfoBloc>(context).add(GetInfoForMovieById(
-              429617)); // TODO: remove after page is finished
+              movieId));
           if (state is Loading) {
             return LoadingWidget();
           } else if (state is Loaded) {
-            // TODO: Add Loaded page
-            return MovieDisplay(movieInfo: state.movie,);
+            return MovieDisplay(movieInfo: state.movie);
           } else if (state is Error) {
             return MessageDisplay(message: state.message);
           }

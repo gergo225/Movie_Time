@@ -14,10 +14,29 @@ class MovieDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
+      child: Stack(
         children: [
-          Flexible(child: _moviePartTop(context)),
-          _moviePartBottom(context),
+          Column(
+            children: [
+              Flexible(child: _moviePartTop(context)),
+              _moviePartBottom(context),
+            ],
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.only(bottomRight: Radius.circular(32)),
+                color: Colors.white54,
+              ),
+              child: IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -148,7 +167,7 @@ class MovieDisplay extends StatelessWidget {
                     child: ListView.separated(
                       padding: padding,
                       scrollDirection: Axis.horizontal,
-                      itemCount: 10,
+                      itemCount: movieInfo.actors.length >= 10 ? 10 : movieInfo.actors.length,
                       itemBuilder: (context, index) => ActorInfoItem(
                         actorInfo: movieInfo.actors[index],
                       ),
@@ -171,6 +190,7 @@ class MovieDisplay extends StatelessWidget {
               height: 240,
               child: YouTubeVideo(movieInfo.trailerYouTubeKey),
             ),
+            SizedBox(height: 32)
           ],
         ),
       ),

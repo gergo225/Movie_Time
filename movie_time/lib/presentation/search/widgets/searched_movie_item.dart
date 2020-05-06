@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/search/searched_movie_info.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
+import 'package:movie_time/presentation/movie/movie_info_page.dart';
 
 class SearchedMovieItem extends StatelessWidget {
   final SearchedMovieInfo searchedMovieInfo;
@@ -11,7 +12,8 @@ class SearchedMovieItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return InkWell(
+      onTap: () => openMoviePage(searchedMovieInfo.id, context),
       child: Container(
         width: double.infinity,
         height: 76,
@@ -58,4 +60,11 @@ class SearchedMovieItem extends StatelessWidget {
     );
   }
 
+  void openMoviePage(int movieId, BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) {
+        return MovieInfoPage(movieId: movieId);
+      },
+    ));
+  }
 }
