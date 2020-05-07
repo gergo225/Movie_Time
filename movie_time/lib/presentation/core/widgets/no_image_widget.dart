@@ -12,6 +12,11 @@ class NoImageWidget extends StatelessWidget {
     return NoImageWidget(aspectRatio: 2 / 3);
   }
 
+  /// Widget with 16/9 aspect ratio
+  factory NoImageWidget.wide() {
+    return NoImageWidget(aspectRatio: 16/9);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
