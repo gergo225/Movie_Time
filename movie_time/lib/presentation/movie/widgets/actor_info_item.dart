@@ -13,40 +13,43 @@ class ActorInfoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: Colors.white,
-      ),
-      width: 100,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: PlatformIndependentImage(
-              imageUrl: actorInfo.profileImagePathUrl,
-              errorWidget: NoImageWidget.poster(),
-              loadingWidget: LoadingWidget(),
-              boxFit: BoxFit.contain,
+    return AspectRatio(
+      aspectRatio: 1/2,
+          child: Container(
+        padding: EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.white,
+        ),
+        width: 100,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: PlatformIndependentImage(
+                imageUrl: actorInfo.profileImagePathUrl,
+                errorWidget: NoImageWidget.poster(),
+                loadingWidget: LoadingWidget(),
+                boxFit: BoxFit.contain,
+              ),
             ),
-          ),
-          Text(
-            actorInfo.name,
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 14,
+            Text(
+              actorInfo.name,
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
+              ),
             ),
-          ),
-          Text(
-            actorInfo.character,
-            style: TextStyle(
-              fontSize: 11,
-              color: Colors.grey,
+            Text(
+              actorInfo.character,
+              style: TextStyle(
+                fontSize: 11,
+                color: Colors.grey,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

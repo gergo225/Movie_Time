@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_time/injection_container.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
-import 'package:movie_time/presentation/movie/widgets/movie_display.dart';
+import 'package:movie_time/presentation/movie/widgets/movie_display/movie_display.dart';
 import 'movie_info_bloc.dart';
 
 class MovieInfoPage extends StatelessWidget {

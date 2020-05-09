@@ -44,6 +44,7 @@ class MovieInfo extends Equatable {
         ]);
 
   String get posterPathUrl => createSmallImageLink(posterPath);
+  String get bigPosterPathUrl => createPosterImageLink(posterPath);
   String get backdropPathUrl => createOriginalImageLink(backdropPath);
   String get runtimeInHoursAndMinutes =>
       "${runtimeInMinutes ~/ 60}h ${runtimeInMinutes % 60}min";

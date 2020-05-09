@@ -3,39 +3,34 @@ import 'package:movie_time/domain/movie/movie_info.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/widgets/widgets.dart';
 
-class MovieDisplay extends StatelessWidget {
+class MovieDisplayMobile extends StatelessWidget {
   final MovieInfo movieInfo;
   final Color backgroundColor = Colors.blue; // TODO: Change color
 
-  const MovieDisplay({Key key, @required this.movieInfo})
+  const MovieDisplayMobile({Key key, @required this.movieInfo})
       : assert(movieInfo != null),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final double topPartHeight = MediaQuery.of(context).size.width / 16 * 9 + 100; 
+
     return Container(
       child: Stack(
         children: [
           Column(
             children: [
-              Flexible(child: _moviePartTop(context)),
+              Container(
+                height: topPartHeight,
+                child: _moviePartTop(context),
+              ),
               _moviePartBottom(context),
             ],
           ),
           Positioned(
             top: 0,
             left: 0,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.only(bottomRight: Radius.circular(32)),
-                color: Colors.white54,
-              ),
-              child: IconButton(
-                icon: Icon(Icons.arrow_back),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-            ),
+            child: CustomBackButton(),
           ),
         ],
       ),
@@ -50,9 +45,9 @@ class MovieDisplay extends StatelessWidget {
             right: 0,
             child: PlatformIndependentImage(
               imageUrl: movieInfo.backdropPathUrl,
-              errorWidget: _errorWidget(),
+              errorWidget: NoImageWidget.wide(),
               loadingWidget: LoadingWidget(),
-              boxFit: BoxFit.fitWidth,
+              boxFit: BoxFit.cover,
             ),
           ),
           Positioned(
@@ -75,7 +70,7 @@ class MovieDisplay extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                     child: PlatformIndependentImage(
                       imageUrl: movieInfo.posterPathUrl,
-                      errorWidget: _errorWidget(),
+                      errorWidget: NoImageWidget.poster(),
                       loadingWidget: LoadingWidget(),
                       boxFit: BoxFit.scaleDown,
                       width: 100,
@@ -160,14 +155,16 @@ class MovieDisplay extends StatelessWidget {
               ),
             ),
             Container(
-              height: 214,
+              height: 200,
               child: Row(
                 children: [
                   Expanded(
                     child: ListView.separated(
                       padding: padding,
                       scrollDirection: Axis.horizontal,
-                      itemCount: movieInfo.actors.length >= 10 ? 10 : movieInfo.actors.length,
+                      itemCount: movieInfo.actors.length >= 10
+                          ? 10
+                          : movieInfo.actors.length,
                       itemBuilder: (context, index) => ActorInfoItem(
                         actorInfo: movieInfo.actors[index],
                       ),
@@ -185,10 +182,12 @@ class MovieDisplay extends StatelessWidget {
                 style: movieBodySubtitleTextStyle,
               ),
             ),
-            Container(
+            Padding(
               padding: padding,
-              height: 240,
-              child: YouTubeVideo(movieInfo.trailerYouTubeKey),
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                child: YouTubeVideo(movieInfo.trailerYouTubeKey),
+              ),
             ),
             SizedBox(height: 32)
           ],
@@ -196,6 +195,4 @@ class MovieDisplay extends StatelessWidget {
       ),
     );
   }
-
-  Widget _errorWidget() => Text("Error", style: TextStyle(color: Colors.red));
 }
