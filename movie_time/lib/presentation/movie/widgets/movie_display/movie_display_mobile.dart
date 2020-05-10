@@ -13,7 +13,8 @@ class MovieDisplayMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double topPartHeight = MediaQuery.of(context).size.width / 16 * 9 + 100; 
+    final double topPartHeight =
+        MediaQuery.of(context).size.height / 3;
 
     return Container(
       child: Stack(
@@ -165,9 +166,8 @@ class MovieDisplayMobile extends StatelessWidget {
                       itemCount: movieInfo.actors.length >= 10
                           ? 10
                           : movieInfo.actors.length,
-                      itemBuilder: (context, index) => ActorInfoItem(
-                        actorInfo: movieInfo.actors[index],
-                      ),
+                      itemBuilder: (context, index) => ActorInfoItem.mobile(
+                          actorInfo: movieInfo.actors[index]),
                       separatorBuilder: (context, index) => SizedBox(width: 8),
                     ),
                   ),

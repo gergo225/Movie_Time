@@ -6,16 +6,46 @@ import 'package:movie_time/presentation/core/widgets/platform_independent_image.
 
 class ActorInfoItem extends StatelessWidget {
   final ShortActorInfo actorInfo;
+  final double nameFontSize;
+  final double characterFontSize;
+  final double aspectRatio;
+  final int maxNameLines;
 
-  const ActorInfoItem({Key key, @required this.actorInfo})
-      : assert(actorInfo != null),
+  factory ActorInfoItem.mobile({
+    @required ShortActorInfo actorInfo,
+  }) =>
+      ActorInfoItem(
+        actorInfo: actorInfo,
+        aspectRatio: 1 / 2,
+        nameFontSize: 14,
+        characterFontSize: 11,
+        maxNameLines: 2,
+      );
+
+  factory ActorInfoItem.desktop({@required ShortActorInfo actorInfo}) =>
+      ActorInfoItem(
+        actorInfo: actorInfo,
+        nameFontSize: 11,
+        characterFontSize: 10,
+        aspectRatio: 10 / 18,
+        maxNameLines: 1,
+      );
+
+  const ActorInfoItem({
+    Key key,
+    @required this.actorInfo,
+    @required this.aspectRatio,
+    @required this.nameFontSize,
+    @required this.characterFontSize,
+    @required this.maxNameLines,
+  })  : assert(actorInfo != null),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 1/2,
-          child: Container(
+      aspectRatio: aspectRatio,
+      child: Container(
         padding: EdgeInsets.all(4),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
@@ -36,15 +66,17 @@ class ActorInfoItem extends StatelessWidget {
             ),
             Text(
               actorInfo.name,
+              maxLines: maxNameLines,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
-                fontSize: 14,
+                fontSize: nameFontSize,
               ),
             ),
             Text(
               actorInfo.character,
               style: TextStyle(
-                fontSize: 11,
+                fontSize: characterFontSize,
                 color: Colors.grey,
               ),
             ),

@@ -133,7 +133,7 @@ class MovieDisplayDesktop extends StatelessWidget {
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
         ),
         LimitedBox(
-          maxWidth: 532,
+          maxWidth: 482,
           maxHeight: 700,
           // TODO: Unsolved error on horizontal overflow on screens with width smaller than 982
           child: Wrap(
@@ -141,10 +141,8 @@ class MovieDisplayDesktop extends StatelessWidget {
             runSpacing: 8,
             children: List<Widget>.from(movieInfo.actors.take(actorsCount).map(
                   (actor) => Container(
-                    width: 100,
-                    child: ActorInfoItem(
-                      actorInfo: actor,
-                    ),
+                    width: 90,
+                    child: ActorInfoItem.desktop(actorInfo: actor),
                   ),
                 )),
           ),
