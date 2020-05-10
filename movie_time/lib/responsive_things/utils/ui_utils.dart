@@ -5,9 +5,12 @@ import '../enums/device_screen_type.dart';
 DeviceScreenType getDeviceType(MediaQueryData mediaQuery) {
   double deviceWidth = mediaQuery.size.shortestSide;
 
-  if (deviceWidth > 768) {
+  bool isDesktopSize = mediaQuery.size.height > 768 &&
+      mediaQuery.orientation == Orientation.landscape;
+
+  if (deviceWidth > 992 || isDesktopSize) {
     return DeviceScreenType.Desktop;
   }
-  
+
   return DeviceScreenType.Mobile;
 }
