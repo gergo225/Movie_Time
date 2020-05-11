@@ -87,6 +87,8 @@ class ActorInfoItem extends StatelessWidget {
             ),
             Text(
               actorInfo.character,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: characterFontSize,
                 color: textColor.withOpacity(.5),

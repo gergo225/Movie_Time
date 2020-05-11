@@ -35,7 +35,6 @@ class SearchedMovieItem extends StatelessWidget {
                   Text(
                     searchedMovieInfo.title,
                     style: TextStyle(fontSize: 18),
-                    overflow: TextOverflow.visible,
                   ),
                   SizedBox(height: 2),
                   Row(
