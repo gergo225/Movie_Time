@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
-import 'package:movie_time/presentation/core/widgets/no_image_widget.dart';
 import 'package:movie_time/presentation/core/widgets/platform_independent_image.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/widgets/widgets.dart';

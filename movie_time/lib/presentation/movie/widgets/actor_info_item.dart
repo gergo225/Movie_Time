@@ -11,15 +11,22 @@ class ActorInfoItem extends StatelessWidget {
   final double aspectRatio;
   final int maxNameLines;
 
+  final Color backgroundColor;
+  final Color textColor;
+
   factory ActorInfoItem.mobile({
     @required ShortActorInfo actorInfo,
+    Color backgroundColor,
+    Color textColor,
   }) =>
       ActorInfoItem(
         actorInfo: actorInfo,
-        aspectRatio: 1 / 2,
+        aspectRatio: 1 / 2.1,
         nameFontSize: 14,
         characterFontSize: 11,
         maxNameLines: 2,
+        backgroundColor: backgroundColor,
+        textColor: textColor,
       );
 
   factory ActorInfoItem.desktop({@required ShortActorInfo actorInfo}) =>
@@ -38,7 +45,11 @@ class ActorInfoItem extends StatelessWidget {
     @required this.nameFontSize,
     @required this.characterFontSize,
     @required this.maxNameLines,
+    Color backgroundColor,
+    Color textColor,
   })  : assert(actorInfo != null),
+        backgroundColor = backgroundColor ?? Colors.white,
+        textColor = textColor ?? Colors.black,
         super(key: key);
 
   @override
@@ -49,7 +60,7 @@ class ActorInfoItem extends StatelessWidget {
         padding: EdgeInsets.all(4),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: Colors.white,
+          color: backgroundColor,
         ),
         width: 100,
         child: Column(
@@ -71,13 +82,14 @@ class ActorInfoItem extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: nameFontSize,
+                color: textColor,
               ),
             ),
             Text(
               actorInfo.character,
               style: TextStyle(
                 fontSize: characterFontSize,
-                color: Colors.grey,
+                color: textColor.withOpacity(.5),
               ),
             ),
           ],
