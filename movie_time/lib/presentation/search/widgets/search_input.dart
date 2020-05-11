@@ -30,7 +30,7 @@ class _SearchInputState extends State<SearchInput> {
                 inputStr = value;
               },
               onSubmitted: (_) {
-                addSearchByTitle();
+                addSearchByTitle(FocusScope.of(context));
               },
             ),
           ),
@@ -41,14 +41,19 @@ class _SearchInputState extends State<SearchInput> {
             child: Text("Search"),
             color: Theme.of(context).accentColor,
             textTheme: ButtonTextTheme.primary,
-            onPressed: addSearchByTitle,
+            onPressed: (() {
+              addSearchByTitle(FocusScope.of(context));
+            }),
           ),
         ],
       ),
     );
   }
 
-  void addSearchByTitle() {
+  void addSearchByTitle(FocusScopeNode focus) {
     BlocProvider.of<SearchBloc>(context).add(GetSearchesForTitle(inputStr));
+    if (!focus.hasPrimaryFocus) {
+      focus.unfocus();
+    }
   }
 }
