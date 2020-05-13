@@ -10,6 +10,7 @@ class SearchInput extends StatefulWidget {
 }
 
 class _SearchInputState extends State<SearchInput> {
+  final controller = TextEditingController();
   String inputStr;
 
   @override
@@ -19,6 +20,7 @@ class _SearchInputState extends State<SearchInput> {
         children: <Widget>[
           Expanded(
             child: TextField(
+              controller: controller,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 isDense: true,
@@ -27,7 +29,7 @@ class _SearchInputState extends State<SearchInput> {
                 hintText: "Search for movies",
               ),
               onChanged: (value) {
-                inputStr = value;
+                inputStr = value.trim();
               },
               onSubmitted: (_) {
                 addSearchByTitle(FocusScope.of(context));
@@ -51,6 +53,7 @@ class _SearchInputState extends State<SearchInput> {
   }
 
   void addSearchByTitle(FocusScopeNode focus) {
+    controller.text = inputStr;
     BlocProvider.of<SearchBloc>(context).add(GetSearchesForTitle(inputStr));
     if (!focus.hasPrimaryFocus) {
       focus.unfocus();

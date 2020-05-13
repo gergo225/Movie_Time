@@ -13,6 +13,9 @@ class SearchMovieByTitle extends UseCase<SearchResult, Params> {
 
   @override
   Future<Either<Failure, SearchResult>> call(params) async {
+    if (params.title.trim().isEmpty) {
+      return Left(SearchEmptyFailure());
+    }
     return await repository.searchMovieByTitle(params.title);
   }
 }
