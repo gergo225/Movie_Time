@@ -18,6 +18,7 @@ class ResultDisplay extends StatelessWidget {
       return MessageDisplay(message: NO_SEARCH_RESULTS_MESSAGE);
     } else {
       return ListView.separated(
+        padding: EdgeInsets.zero,
         itemCount: searchResult.results.length,
         itemBuilder: (_, index) => SearchedMovieItem(
           searchedMovieInfo: searchResult.results[index],

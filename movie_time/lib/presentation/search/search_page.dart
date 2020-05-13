@@ -21,7 +21,7 @@ class SearchPage extends StatelessWidget {
       create: (_) => sl<SearchBloc>(),
       child: Center(
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
           child: Column(
             children: [
               // Search bar
