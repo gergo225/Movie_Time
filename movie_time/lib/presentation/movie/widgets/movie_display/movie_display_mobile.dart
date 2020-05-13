@@ -38,37 +38,44 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
       backgroundColor = paletteColor.color;
       textColor = paletteColor.bodyTextColor;
 
-      PaletteColor actorColor = palette.darkVibrantColor ?? palette.lightVibrantColor;
+      PaletteColor actorColor =
+          palette.darkVibrantColor ?? palette.lightVibrantColor;
       actorBackgroundColor = actorColor.color;
       actorTextColor = actorColor.bodyTextColor;
+      setState(() {});
+    } else {
+      actorBackgroundColor = Colors.white;
+      actorTextColor = Colors.black;
     }
-    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     final double topPartHeight = MediaQuery.of(context).size.height / 3;
-
-    return Container(
-      child: Stack(
-        children: [
-          Column(
-            children: [
-              Container(
-                height: topPartHeight,
-                child: _moviePartTop(context),
-              ),
-              _moviePartBottom(context),
-            ],
-          ),
-          Positioned(
-            top: 0,
-            left: 0,
-            child: CustomBackButton(),
-          ),
-        ],
-      ),
-    );
+    if (actorBackgroundColor == null) {
+      return LoadingWidget();
+    } else {
+      return Container(
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                Container(
+                  height: topPartHeight,
+                  child: _moviePartTop(context),
+                ),
+                _moviePartBottom(context),
+              ],
+            ),
+            Positioned(
+              top: 0,
+              left: 0,
+              child: CustomBackButton(),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
   Widget _moviePartTop(BuildContext context) => Stack(
