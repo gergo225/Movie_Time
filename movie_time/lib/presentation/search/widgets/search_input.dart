@@ -11,7 +11,7 @@ class SearchInput extends StatefulWidget {
 
 class _SearchInputState extends State<SearchInput> {
   final controller = TextEditingController();
-  String inputStr;
+  String inputStr = "";
 
   @override
   Widget build(BuildContext context) {
