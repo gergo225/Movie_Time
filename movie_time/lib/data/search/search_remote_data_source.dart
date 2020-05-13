@@ -20,6 +20,7 @@ class SearchRemoteDataSourceImpl implements SearchRemoteDataSource {
 
   @override
   Future<SearchResultModel> searchMovieByTitle(String title) async {
+    title = title.trim().replaceAll(" ", "%20");
     final response = await client.get(
         "https://api.themoviedb.org/3/search/movie?api_key=$API_KEY&language=en-US&query=$title&page=1");
     if (response.statusCode == 200) {
