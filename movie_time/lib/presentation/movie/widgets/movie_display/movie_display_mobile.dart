@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
+import 'package:movie_time/presentation/core/utils/color_utils.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/widgets/widgets.dart';
 import 'package:palette_generator/palette_generator.dart';
@@ -16,10 +17,13 @@ class MovieDisplayMobile extends StatefulWidget {
 }
 
 class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
+  bool initialising = true;
+
   Color backgroundColor = Colors.white;
   Color textColor = Colors.black;
-  Color actorBackgroundColor;
-  Color actorTextColor;
+  Color subtitleTextColor = Colors.black;
+  Color actorBackgroundColor = Colors.white;
+  Color actorTextColor = Colors.black;
 
   @override
   void initState() {
@@ -37,22 +41,23 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
       PaletteColor paletteColor = palette.mutedColor ?? palette.dominantColor;
       backgroundColor = paletteColor.color;
       textColor = paletteColor.bodyTextColor;
+      subtitleTextColor = paletteColor.titleTextColor;
 
-      PaletteColor actorColor =
-          palette.darkVibrantColor ?? palette.lightVibrantColor;
+      PaletteColor actorColor = palette.darkVibrantColor ??
+          palette.lightVibrantColor ??
+          PaletteColor(darkenColorBy(backgroundColor, 16), 1);
       actorBackgroundColor = actorColor.color;
       actorTextColor = actorColor.bodyTextColor;
+
       setState(() {});
-    } else {
-      actorBackgroundColor = Colors.white;
-      actorTextColor = Colors.black;
     }
+    initialising = false;
   }
 
   @override
   Widget build(BuildContext context) {
     final double topPartHeight = MediaQuery.of(context).size.height / 3;
-    if (actorBackgroundColor == null) {
+    if (initialising) {
       return LoadingWidget();
     } else {
       return Container(
@@ -163,33 +168,30 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
       );
 
   Widget _valueAndDescription(
-    BuildContext context,
-    String value,
-    String description,
-  ) =>
-      Column(
-        children: [
-          Text(
-            value,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-              color: textColor,
-            ),
+      BuildContext context, String value, String description) {
+    return Column(
+      children: [
+        Text(
+          value,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+            color: textColor,
           ),
-          Text(
-            description,
-            style:
-                Theme.of(context).textTheme.bodyText2.apply(color: textColor),
-          ),
-        ],
-      );
+        ),
+        Text(
+          description,
+          style: Theme.of(context).textTheme.bodyText2.apply(color: textColor),
+        ),
+      ],
+    );
+  }
 
   Widget _moviePartBottom(BuildContext context) {
-    final TextStyle movieBodySubtitleTextStyle = TextStyle(
+    final TextStyle subtitleTextStyle = TextStyle(
       fontSize: 22,
       fontWeight: FontWeight.w500,
-      color: textColor,
+      color: subtitleTextColor,
     );
     var padding = EdgeInsets.symmetric(horizontal: 12);
 
@@ -217,7 +219,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
               padding: padding,
               child: Text(
                 "Actors",
-                style: movieBodySubtitleTextStyle,
+                style: subtitleTextStyle,
               ),
             ),
             Container(
@@ -247,7 +249,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
               padding: padding,
               child: Text(
                 "Trailer",
-                style: movieBodySubtitleTextStyle,
+                style: subtitleTextStyle,
               ),
             ),
             Padding(
