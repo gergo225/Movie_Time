@@ -22,6 +22,7 @@ class _SearchInputState extends State<SearchInput> {
             child: TextField(
               controller: controller,
               keyboardType: TextInputType.text,
+              textInputAction: TextInputAction.search,
               decoration: InputDecoration(
                 isDense: true,
                 contentPadding: EdgeInsets.all(10),
@@ -35,17 +36,6 @@ class _SearchInputState extends State<SearchInput> {
                 addSearchByTitle(FocusScope.of(context));
               },
             ),
-          ),
-          SizedBox(
-            width: 8,
-          ),
-          RaisedButton(
-            child: Text("Search"),
-            color: Theme.of(context).accentColor,
-            textTheme: ButtonTextTheme.primary,
-            onPressed: (() {
-              addSearchByTitle(FocusScope.of(context));
-            }),
           ),
         ],
       ),
