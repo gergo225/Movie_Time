@@ -48,7 +48,7 @@ class MovieInfo extends Equatable {
   String get backdropPathUrl => createOriginalImageLink(backdropPath);
   String get runtimeInHoursAndMinutes =>
       "${runtimeInMinutes ~/ 60}h ${runtimeInMinutes % 60}min";
-  String get genresString => "${genres.join(", ")}";
+  String get genresString => "${genres.take(3).join(", ")}";
   String get releaseYearAndMonth =>
       "${releaseDate.substring(0, 4)} ${monthNumberAndName[releaseDate.substring(5, 7)]}";
 }
