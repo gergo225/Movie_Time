@@ -60,23 +60,26 @@ class MovieDisplayDesktop extends StatelessWidget {
           ),
         ),
         SizedBox(height: 12),
-        OpacityOnHoverChanger(
-          defaultOpacity: .7,
-          opacityOnHover: 1,
-          child: Row(children: [
-            Text("Play trailer", style: TextStyle(fontSize: 24)),
-            Icon(
-              Icons.play_arrow,
-              color: Colors.red,
-              size: 32,
-            ),
-          ]),
-          onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => YouTubeVideo(movieInfo.trailerYouTubeKey),
-            ));
-          },
-        ),
+        (movieInfo.trailerYouTubeKey == null)
+            ? OpacityOnHoverChanger(
+                defaultOpacity: .7,
+                opacityOnHover: 1,
+                child: Row(children: [
+                  Text("Play trailer", style: TextStyle(fontSize: 24)),
+                  Icon(
+                    Icons.play_arrow,
+                    color: Colors.red,
+                    size: 32,
+                  ),
+                ]),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        YouTubeVideo(movieInfo.trailerYouTubeKey),
+                  ));
+                },
+              )
+            : Container(),
       ],
     );
   }

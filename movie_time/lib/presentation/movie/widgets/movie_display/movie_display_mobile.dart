@@ -195,6 +195,29 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
     );
     var padding = EdgeInsets.symmetric(horizontal: 12);
 
+    Widget trailerOrEmpty = (widget.movieInfo.trailerYouTubeKey != null)
+        ? Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 16),
+              Padding(
+                padding: padding,
+                child: Text(
+                  "Trailer",
+                  style: subtitleTextStyle,
+                ),
+              ),
+              Padding(
+                padding: padding,
+                child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: YouTubeVideo(widget.movieInfo.trailerYouTubeKey),
+                ),
+              ),
+            ],
+          )
+        : Container();
+
     return Expanded(
       child: Container(
         decoration: BoxDecoration(
@@ -244,21 +267,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
                 ],
               ),
             ),
-            SizedBox(height: 16),
-            Padding(
-              padding: padding,
-              child: Text(
-                "Trailer",
-                style: subtitleTextStyle,
-              ),
-            ),
-            Padding(
-              padding: padding,
-              child: AspectRatio(
-                aspectRatio: 16 / 9,
-                child: YouTubeVideo(widget.movieInfo.trailerYouTubeKey),
-              ),
-            ),
+            trailerOrEmpty,
             SizedBox(height: 32)
           ],
         ),

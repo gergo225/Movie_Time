@@ -48,7 +48,9 @@ class MovieInfoModel extends MovieInfo {
         json["credits"]["cast"]
             .map((actorJson) => ShortActorInfoModel.from(actorJson)),
       ),
-      trailerYouTubeKey: json["videos"]["results"][0]["key"]
+      trailerYouTubeKey: (!json["videos"]["results"].isEmpty)
+          ? json["videos"]["results"][0]["key"]
+          : null,
     );
   }
 
@@ -64,7 +66,11 @@ class MovieInfoModel extends MovieInfo {
       "runtime": runtimeInMinutes,
       "genres": genres,
       "credits": {"cast": actors.map((actor) => actor.toJson())},
-      "videos": {"results": [{"key": trailerYouTubeKey}]},
+      "videos": {
+        "results": [
+          {"key": trailerYouTubeKey}
+        ]
+      },
     };
   }
 }
