@@ -12,6 +12,7 @@ class SearchInput extends StatefulWidget {
 class _SearchInputState extends State<SearchInput> {
   final controller = TextEditingController();
   String inputStr = "";
+  String previousInputStr = "";
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +44,11 @@ class _SearchInputState extends State<SearchInput> {
   }
 
   void addSearchByTitle(FocusScopeNode focus) {
+    if (previousInputStr != inputStr) {
+      BlocProvider.of<SearchBloc>(context).add(GetSearchesForTitle(inputStr));
+      previousInputStr = inputStr;
+    }
     controller.text = inputStr;
-    BlocProvider.of<SearchBloc>(context).add(GetSearchesForTitle(inputStr));
     if (!focus.hasPrimaryFocus) {
       focus.unfocus();
     }
