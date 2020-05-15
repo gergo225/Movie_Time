@@ -12,7 +12,7 @@ class SearchResultModel extends SearchResult {
   factory SearchResultModel.from(Map<String, dynamic> json) {
     return SearchResultModel(
       results: List<SearchedMovieInfoModel>.from(
-        json["results"].map(
+        json["results"].where((movieJson) => movieJson["video"] == false).map(
             (searchMovieJson) => SearchedMovieInfoModel.from(searchMovieJson)),
       ),
     );
