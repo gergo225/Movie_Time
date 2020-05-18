@@ -9,10 +9,7 @@ import 'package:movie_time/domain/movie/short_actor_info.dart';
 
 class MockMovieInfoRepository extends Mock implements MovieInfoRepository {}
 
-class TestFailure implements Failure {
-  @override
-  List get props => throw UnimplementedError();
-}
+class TestFailure extends Failure {}
 
 void main() {
   GetMovieById usecase;
