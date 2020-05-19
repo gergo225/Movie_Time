@@ -5,7 +5,6 @@ import 'package:movie_time/domain/core/failure.dart';
 import 'package:movie_time/domain/core/genre_utils.dart';
 import 'package:movie_time/domain/core/usecase.dart';
 import 'package:movie_time/domain/home/get_home_info.dart';
-import 'package:movie_time/domain/home/home_info.dart';
 import 'package:movie_time/domain/home/home_info_repository.dart';
 import 'package:movie_time/domain/home/movie_list.dart';
 import 'package:movie_time/domain/home/short_movie_info.dart';
