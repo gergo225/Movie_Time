@@ -23,11 +23,9 @@ class MovieInfoPage extends StatelessWidget {
 
   BlocProvider<MovieInfoBloc> buildBody(BuildContext context) {
     return BlocProvider(
-      create: (_) => sl<MovieInfoBloc>(),
+      create: (_) => sl<MovieInfoBloc>()..add(GetInfoForMovieById(movieId)),
       child: BlocBuilder<MovieInfoBloc, MovieInfoState>(
         builder: (context, state) {
-          BlocProvider.of<MovieInfoBloc>(context).add(GetInfoForMovieById(
-              movieId));
           if (state is Loading) {
             return LoadingWidget();
           } else if (state is Loaded) {
