@@ -22,8 +22,8 @@ void main() {
     bloc = HomeBloc(getHomeInfo: mockGetHomeInfo);
   });
 
-  test("initial state should be Empty", () {
-    expect(bloc.initialState, equals(Empty()));
+  test("initial state should be Loading", () {
+    expect(bloc.initialState, equals(Loading()));
   });
 
   group("GetInfoForHome", () {
@@ -70,7 +70,6 @@ void main() {
       when(mockGetHomeInfo(any)).thenAnswer((_) async => Right(homeInfo));
       // assert later
       final expected = [
-        Empty(),
         Loading(),
         Loaded(homeInfo: homeInfo),
       ];
@@ -84,7 +83,6 @@ void main() {
       when(mockGetHomeInfo(any)).thenAnswer((_) async => Left(ServerFailure()));
       // assert later
       final expected = [
-        Empty(),
         Loading(),
         Error(message: SERVER_FAILURE_MESSAGE),
       ];

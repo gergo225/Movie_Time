@@ -17,7 +17,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({@required this.getHomeInfo}) : assert(getHomeInfo != null);
 
   @override
-  HomeState get initialState => Empty();
+  HomeState get initialState => Loading();
 
   @override
   Stream<HomeState> mapEventToState(

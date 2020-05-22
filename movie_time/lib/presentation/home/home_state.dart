@@ -5,8 +5,6 @@ abstract class HomeState extends Equatable {
   HomeState([List props = const <dynamic>[]]) : super(props);
 }
 
-class Empty extends HomeState {}
-
 class Loading extends HomeState {}
 
 class Loaded extends HomeState {
