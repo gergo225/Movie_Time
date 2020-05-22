@@ -9,14 +9,14 @@ import 'search_bloc.dart';
 class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([]);
+    
     return Scaffold(
-      appBar: AppBar(title: Text("Movie Time")),
       body: buildBody(context),
     );
   }
 
   BlocProvider<SearchBloc> buildBody(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([]);
     return BlocProvider(
       create: (_) => sl<SearchBloc>(),
       child: Center(
