@@ -39,7 +39,7 @@ class SearchPage extends StatelessWidget {
                     } else if (state is Error) {
                       return MessageDisplay(message: state.message);
                     }
-                    return null;
+                    return Container();
                   },
                 ),
               ),
