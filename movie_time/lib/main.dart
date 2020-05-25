@@ -1,6 +1,6 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:movie_time/presentation/home/home_info_page.dart';
 import 'package:movie_time/presentation/movie/movie_info_page.dart';
 import 'package:movie_time/presentation/search/search_page.dart';
 import 'injection_container.dart' as di;
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         accentColor: Colors.blueAccent,
       ),
-      home: SearchPage(),
+      home: HomeInfoPage(),
     );
   }
 }

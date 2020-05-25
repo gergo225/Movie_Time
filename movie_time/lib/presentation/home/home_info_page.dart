@@ -19,20 +19,17 @@ class HomeInfoPage extends StatelessWidget {
   BlocProvider<HomeBloc> buildBody() {
     return BlocProvider(
       create: (_) => sl<HomeBloc>()..add(GetInfoForHome()),
-      child: Padding(
-        padding: EdgeInsets.only(top: 10),
-        child: BlocBuilder<HomeBloc, HomeState>(
-          builder: (context, state) {
-            if (state is Loading) {
-              return LoadingWidget();
-            } else if (state is Loaded) {
-              return HomeDisplay(homeInfo: state.homeInfo);
-            } else if (state is Error) {
-              return MessageDisplay(message: state.message);
-            }
-            return Container();
-          },
-        ),
+      child: BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+          if (state is Loading) {
+            return LoadingWidget();
+          } else if (state is Loaded) {
+            return HomeDisplay(homeInfo: state.homeInfo);
+          } else if (state is Error) {
+            return MessageDisplay(message: state.message);
+          }
+          return Container();
+        },
       ),
     );
   }
