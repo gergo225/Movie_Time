@@ -57,9 +57,9 @@ class HomeInfoRemoteDataSourceImpl implements HomeInfoRemoteDataSource {
       int listLength;
 
       if (T == ShortMovieInfoModel) {
-        listLength = 7;
-      } else if (T == TrendingMovieInfoModel) {
         listLength = 10;
+      } else if (T == TrendingMovieInfoModel) {
+        listLength = 7;
       }
 
       return MovieListModel.fromJson(
