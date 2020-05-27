@@ -1,8 +1,5 @@
-import 'package:dartz/dartz_unsafe.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_time/data/home/movie_list_model.dart';
-import 'package:movie_time/domain/core/genre_utils.dart';
 import 'package:movie_time/domain/home/home_info.dart';
 import 'package:movie_time/domain/home/short_movie_info.dart';
 import 'package:movie_time/domain/home/trending_movie_info.dart';
