@@ -11,12 +11,6 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
     
-    return Scaffold(
-      body: buildBody(context),
-    );
-  }
-
-  BlocProvider<SearchBloc> buildBody(BuildContext context) {
     return BlocProvider(
       create: (_) => sl<SearchBloc>(),
       child: Center(
@@ -49,4 +43,5 @@ class SearchPage extends StatelessWidget {
       ),
     );
   }
+
 }

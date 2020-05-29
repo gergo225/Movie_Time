@@ -11,12 +11,6 @@ class HomeInfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
 
-    return Scaffold(
-      body: buildBody(),
-    );
-  }
-
-  BlocProvider<HomeBloc> buildBody() {
     return BlocProvider(
       create: (_) => sl<HomeBloc>()..add(GetInfoForHome()),
       child: BlocBuilder<HomeBloc, HomeState>(
