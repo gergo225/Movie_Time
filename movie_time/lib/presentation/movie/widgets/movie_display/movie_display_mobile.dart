@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
 import 'package:movie_time/presentation/core/utils/color_utils.dart';
@@ -197,7 +199,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
 
     Widget trailerOrEmpty = (widget.movieInfo.trailerYouTubeKey != null)
         ? Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 16),
               Padding(
@@ -217,6 +219,25 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
             ],
           )
         : Container();
+
+    Widget actorsOrNone = (widget.movieInfo.actors.isNotEmpty)
+        ? ListView.separated(
+            padding: padding,
+            scrollDirection: Axis.horizontal,
+            itemCount: min(widget.movieInfo.actors.length, 10),
+            itemBuilder: (context, index) => ActorInfoItem.mobile(
+              actorInfo: widget.movieInfo.actors[index],
+              backgroundColor: actorBackgroundColor,
+              textColor: actorTextColor,
+            ),
+            separatorBuilder: (context, index) => SizedBox(width: 8),
+          )
+        : Center(
+            child: Text(
+              "No info available",
+              style: TextStyle(color: textColor),
+            ),
+          );
 
     return Expanded(
       child: Container(
@@ -247,25 +268,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
             ),
             Container(
               height: 200,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: ListView.separated(
-                      padding: padding,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: widget.movieInfo.actors.length >= 10
-                          ? 10
-                          : widget.movieInfo.actors.length,
-                      itemBuilder: (context, index) => ActorInfoItem.mobile(
-                        actorInfo: widget.movieInfo.actors[index],
-                        backgroundColor: actorBackgroundColor,
-                        textColor: actorTextColor,
-                      ),
-                      separatorBuilder: (context, index) => SizedBox(width: 8),
-                    ),
-                  ),
-                ],
-              ),
+              child: actorsOrNone,
             ),
             trailerOrEmpty,
             SizedBox(height: 32)

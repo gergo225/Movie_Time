@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
 import 'package:movie_time/presentation/core/widgets/platform_independent_image.dart';
@@ -60,7 +62,7 @@ class MovieDisplayDesktop extends StatelessWidget {
           ),
         ),
         SizedBox(height: 12),
-        (movieInfo.trailerYouTubeKey == null)
+        (movieInfo.trailerYouTubeKey != null)
             ? OpacityOnHoverChanger(
                 defaultOpacity: .7,
                 opacityOnHover: 1,
@@ -85,8 +87,7 @@ class MovieDisplayDesktop extends StatelessWidget {
   }
 
   Widget _movieDetails(BuildContext context) {
-    final int actorsCount =
-        movieInfo.actors.length >= 10 ? 10 : movieInfo.actors.length;
+    final int actorsCount = min(movieInfo.actors.length, 10);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
