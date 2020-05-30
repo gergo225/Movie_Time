@@ -49,6 +49,7 @@ class MovieInfo extends Equatable {
   String get runtimeInHoursAndMinutes =>
       "${runtimeInMinutes ~/ 60}h ${runtimeInMinutes % 60}min";
   String get genresString => "${genres.take(3).join(", ")}";
-  String get releaseYearAndMonth =>
-      "${releaseDate.substring(0, 4)} ${monthNumberAndName[releaseDate.substring(5, 7)]}";
+  String get releaseYearAndMonth => (releaseDate == "")
+      ? "-"
+      : "${releaseDate.substring(0, 4)} ${monthNumberAndName[releaseDate.substring(5, 7)]}";
 }

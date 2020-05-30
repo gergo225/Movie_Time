@@ -40,7 +40,7 @@ class SearchedMovieItem extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Text(
-                        searchedMovieInfo.releaseYear.toString(),
+                        searchedMovieInfo.releaseYearString,
                         style: Theme.of(context).textTheme.bodyText2,
                       ),
                       Spacer(),
