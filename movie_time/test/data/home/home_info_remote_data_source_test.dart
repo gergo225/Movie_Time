@@ -8,8 +8,6 @@ import 'package:movie_time/data/core/api_key.dart';
 import 'package:movie_time/data/core/exception.dart';
 import 'package:movie_time/data/home/home_info_remote_datasource.dart';
 import 'package:movie_time/data/home/movie_list_model.dart';
-import 'package:movie_time/data/home/short_movie_info_model.dart';
-import 'package:movie_time/data/home/trending_movie_info_model.dart';
 import 'package:matcher/matcher.dart';
 import 'package:movie_time/domain/core/genre_utils.dart';
 
@@ -32,16 +30,15 @@ void main() {
   }
 
   void setUpMockHttpClientFailure404() {
-    when(mockHttpClient.get(any, headers: anyNamed("headers") ))
+    when(mockHttpClient.get(any, headers: anyNamed("headers")))
         .thenAnswer((_) async => http.Response("Something went wrong", 404));
   }
 
   group("getTrendingMovies", () {
     final fixtureName = "trending_movie_list.json";
 
-    final trendingMovieListModel =
-        MovieListModel<TrendingMovieInfoModel>.fromJson(
-            json.decode(fixture(fixtureName)), "Trending", 7);
+    final trendingMovieListModel = MovieListModel.fromJson(
+        json.decode(fixture(fixtureName)), "Trending", 10);
 
     test(
         "should perform GET request on a URL with 'trending/movie/day' being at the endponint",
@@ -60,7 +57,7 @@ void main() {
     });
 
     test(
-      "should return MovieListModel<TrendingMovieInfoModel> when the response code is 200(success)",
+      "should return MovieListModel for trending movies when the response code is 200(success)",
       () async {
         // arrange
         setUpMockHttpClientSuccess200(fixtureName);
@@ -87,10 +84,10 @@ void main() {
     final fixtureName = "short_movie_list.json";
     final genreId = GenreUtil.action;
 
-    final genreMovieListModel = MovieListModel<ShortMovieInfoModel>.fromJson(
+    final genreMovieListModel = MovieListModel.fromJson(
         json.decode(fixture(fixtureName)),
         GenreUtil.genreIdAndName[genreId],
-        7);
+        10);
 
     test(
         "should perform GET request on a URL with 'discover/with_genres' being at the endponint",
@@ -109,7 +106,7 @@ void main() {
     });
 
     test(
-      "should return MovieListModel<ShortMovieInfoModel> when the response code is 200(success)",
+      "should return MovieListModel for genre movies when the response code is 200(success)",
       () async {
         // arrange
         setUpMockHttpClientSuccess200(fixtureName);
@@ -131,5 +128,4 @@ void main() {
       expect(() => call(genreId), throwsA(TypeMatcher<ServerException>()));
     });
   });
-
 }

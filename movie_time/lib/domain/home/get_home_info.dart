@@ -5,8 +5,6 @@ import 'package:movie_time/domain/core/usecase.dart';
 import 'package:movie_time/domain/home/home_info.dart';
 import 'package:movie_time/domain/home/home_info_repository.dart';
 import 'package:movie_time/domain/home/movie_list.dart';
-import 'package:movie_time/domain/home/short_movie_info.dart';
-import 'package:movie_time/domain/home/trending_movie_info.dart';
 
 class GetHomeInfo extends UseCase<HomeInfo, NoParams> {
   final HomeInfoRepository repository;
@@ -18,10 +16,10 @@ class GetHomeInfo extends UseCase<HomeInfo, NoParams> {
     bool failureOccurred = false;
     Failure failure;
 
-    Either<Failure, MovieList<TrendingMovieInfo>> eitherTrendingOrFailure =
+    Either<Failure, MovieList> eitherTrendingOrFailure =
         await repository.getTrendingMovies();
 
-    MovieList<TrendingMovieInfo> trendingMovies;
+    MovieList trendingMovies;
     eitherTrendingOrFailure.fold(
       (f) {
         failureOccurred = true;
@@ -32,7 +30,7 @@ class GetHomeInfo extends UseCase<HomeInfo, NoParams> {
       },
     );
 
-    Map<int, MovieList<ShortMovieInfo>> genreMovies = {};
+    Map<int, MovieList> genreMovies = {};
 
     await Future.forEach(GenreUtil.allGenres, (genreId) async {
       final failureOrMovies = await repository.getMoviesByGenre(genreId);

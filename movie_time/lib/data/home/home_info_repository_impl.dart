@@ -5,11 +5,9 @@ import 'package:movie_time/data/home/home_info_remote_datasource.dart';
 import 'package:movie_time/domain/core/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:movie_time/domain/home/home_info_repository.dart';
-import 'package:movie_time/domain/home/trending_movie_info.dart';
-import 'package:movie_time/domain/home/short_movie_info.dart';
 import 'package:movie_time/domain/home/movie_list.dart';
 
-typedef Future<MovieList<T>> _TrendingOrGenreChooser<T>();
+typedef Future<MovieList> _TrendingOrGenreChooser();
 
 class HomeInfoRepositoryImpl implements HomeInfoRepository {
   final NetworkInfo networkInfo;
@@ -21,21 +19,21 @@ class HomeInfoRepositoryImpl implements HomeInfoRepository {
   });
 
   @override
-  Future<Either<Failure, MovieList<ShortMovieInfo>>> getMoviesByGenre(
+  Future<Either<Failure, MovieList>> getMoviesByGenre(
       int genreId) async {
-    return await _getMovieList<ShortMovieInfo>(() {
+    return await _getMovieList(() {
       return remoteDataSource.getMoviesByGenre(genreId);
     });
   }
 
   @override
-  Future<Either<Failure, MovieList<TrendingMovieInfo>>> getTrendingMovies() async {
-    return await _getMovieList<TrendingMovieInfo>(() {
+  Future<Either<Failure, MovieList>> getTrendingMovies() async {
+    return await _getMovieList(() {
       return remoteDataSource.getTrendingMovies();
     });
   }
 
-  Future<Either<Failure, MovieList<T>>> _getMovieList<T>(
+  Future<Either<Failure, MovieList>> _getMovieList(
       _TrendingOrGenreChooser getTrendingOrGenre) async {
     if (await networkInfo.isConnected) {
       try {

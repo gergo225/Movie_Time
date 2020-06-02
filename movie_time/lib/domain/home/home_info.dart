@@ -1,19 +1,17 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:movie_time/domain/home/movie_list.dart';
-import 'package:movie_time/domain/home/short_movie_info.dart';
-import 'package:movie_time/domain/home/trending_movie_info.dart';
 
 class HomeInfo extends Equatable {
-  final MovieList<TrendingMovieInfo> trendingMovies;
-  final MovieList<ShortMovieInfo> actionMovies;
-  final MovieList<ShortMovieInfo> adventureMovies;
-  final MovieList<ShortMovieInfo> animationMovies;
-  final MovieList<ShortMovieInfo> dramaMovies;
-  final MovieList<ShortMovieInfo> comedyMovies;
-  final MovieList<ShortMovieInfo> thrillerMovies;
-  final MovieList<ShortMovieInfo> horrorMovies;
-  final MovieList<ShortMovieInfo> romanceMovies;
+  final MovieList trendingMovies;
+  final MovieList actionMovies;
+  final MovieList adventureMovies;
+  final MovieList animationMovies;
+  final MovieList dramaMovies;
+  final MovieList comedyMovies;
+  final MovieList thrillerMovies;
+  final MovieList horrorMovies;
+  final MovieList romanceMovies;
 
   HomeInfo({
     @required this.trendingMovies,

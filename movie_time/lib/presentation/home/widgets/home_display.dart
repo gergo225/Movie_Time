@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:movie_time/data/home/movie_list_model.dart';
 import 'package:movie_time/domain/home/home_info.dart';
 import 'package:movie_time/domain/home/short_movie_info.dart';
-import 'package:movie_time/domain/home/trending_movie_info.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/movie_info_page.dart';
 
@@ -26,7 +25,7 @@ class _HomeDisplayState extends State<HomeDisplay> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    List<MovieListModel<ShortMovieInfo>> genreMovies = [
+    List<MovieListModel> genreMovies = [
       widget.homeInfo.actionMovies,
       widget.homeInfo.adventureMovies,
       widget.homeInfo.animationMovies,
@@ -99,7 +98,7 @@ class _HomeDisplayState extends State<HomeDisplay> {
         itemCount: widget.homeInfo.trendingMovies.movieList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          TrendingMovieInfo movieInfo =
+          ShortMovieInfo movieInfo =
               widget.homeInfo.trendingMovies.movieList[index];
           return Container(
             padding: EdgeInsets.all(8),

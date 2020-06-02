@@ -7,12 +7,9 @@ import 'package:movie_time/data/home/home_info_remote_datasource.dart';
 import 'package:movie_time/data/home/home_info_repository_impl.dart';
 import 'package:movie_time/data/home/movie_list_model.dart';
 import 'package:movie_time/data/home/short_movie_info_model.dart';
-import 'package:movie_time/data/home/trending_movie_info_model.dart';
 import 'package:movie_time/domain/core/failure.dart';
 import 'package:movie_time/domain/core/genre_utils.dart';
 import 'package:movie_time/domain/home/movie_list.dart';
-import 'package:movie_time/domain/home/short_movie_info.dart';
-import 'package:movie_time/domain/home/trending_movie_info.dart';
 
 class MockNetworkInfo extends Mock implements NetworkInfo {}
 
@@ -53,10 +50,10 @@ void main() {
   }
 
   group("getTrendingMovies", () {
-    final trendingMovieListModel = MovieListModel<TrendingMovieInfoModel>(
+    final trendingMovieListModel = MovieListModel(
       listName: "Trending",
       movieList: [
-        TrendingMovieInfoModel(
+        ShortMovieInfoModel(
           id: 299536,
           title: "Avengers: Infinity War",
           genres: [GenreUtil.genreIdAndName[28]],
@@ -64,8 +61,7 @@ void main() {
         ),
       ],
     );
-    final MovieList<TrendingMovieInfo> trendingMovieList =
-        trendingMovieListModel;
+    final MovieList trendingMovieList = trendingMovieListModel;
 
     test("should check if the device is online", () {
       // arrange
@@ -114,18 +110,19 @@ void main() {
 
   group("getMoviesByGenre", () {
     final genreId = GenreUtil.action;
-    final shortMovieListModel = MovieListModel<ShortMovieInfoModel>(
+    final shortMovieListModel = MovieListModel(
       listName: GenreUtil.genreIdAndName[genreId],
       movieList: [
         ShortMovieInfoModel(
           id: 338762,
           title: "Bloodshot",
           posterPath: "/8WUVHemHFH2ZIP6NWkwlHWsyrEL.jpg",
+          genres: [GenreUtil.genreIdAndName[28]],
         ),
       ],
     );
-    final MovieList<ShortMovieInfo> shortMovieList = shortMovieListModel; 
-    
+    final MovieList shortMovieList = shortMovieListModel;
+
     test("should check if the device is online", () {
       // arrange
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
@@ -169,7 +166,5 @@ void main() {
         expect(result, equals(Left(ConnectionFailure())));
       });
     });
-
   });
-
 }

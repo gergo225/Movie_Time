@@ -8,7 +8,6 @@ import 'package:movie_time/domain/home/get_home_info.dart';
 import 'package:movie_time/domain/home/home_info_repository.dart';
 import 'package:movie_time/domain/home/movie_list.dart';
 import 'package:movie_time/domain/home/short_movie_info.dart';
-import 'package:movie_time/domain/home/trending_movie_info.dart';
 
 class MockHomeInfoRepository extends Mock implements HomeInfoRepository {}
 
@@ -23,10 +22,10 @@ void main() {
     usecase = GetHomeInfo(mockHomeInfoRepository);
   });
 
-  final trendingMovies = MovieList<TrendingMovieInfo>(
+  final trendingMovies = MovieList(
     listName: "Trending",
     movieList: [
-      TrendingMovieInfo(
+      ShortMovieInfo(
         id: 299536,
         title: "Avengers: Infinity War",
         genres: [GenreUtil.genreIdAndName[28]],
@@ -36,13 +35,14 @@ void main() {
   );
 
   final genreId = 28;
-  final genreMovies = MovieList<ShortMovieInfo>(
+  final genreMovies = MovieList(
     listName: GenreUtil.genreIdAndName[genreId],
     movieList: [
       ShortMovieInfo(
         id: 338762,
         title: "Bloodshot",
         posterPath: "/8WUVHemHFH2ZIP6NWkwlHWsyrEL.jpg",
+        genres: [GenreUtil.genreIdAndName[28]]
       ),
     ],
   );

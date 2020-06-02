@@ -5,16 +5,19 @@ import 'package:movie_time/domain/core/image_link_creator.dart';
 class ShortMovieInfo extends Equatable {
   final int id;
   final String title;
+  final List<String> genres;
   final String posterPath;
 
   ShortMovieInfo({
     @required this.id,
     @required this.title,
+    @required this.genres,
     @required this.posterPath,
   });
 
   @override
-  List get props => [id, title, posterPath];
+  List get props => [id, title, genres, posterPath];
 
   String get posterPathUrl => createPosterImageLink(posterPath);
+  String get genresString => "${genres.take(3).join(", ")}";
 }
