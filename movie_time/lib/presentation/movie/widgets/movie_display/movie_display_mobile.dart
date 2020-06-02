@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
 import 'package:movie_time/presentation/core/utils/color_utils.dart';
@@ -30,7 +31,11 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
   @override
   void initState() {
     super.initState();
-    _initialisePalette();
+    if (kIsWeb) {
+      initialising = false;
+    } else {
+      _initialisePalette();
+    }
   }
 
   void _initialisePalette() async {
