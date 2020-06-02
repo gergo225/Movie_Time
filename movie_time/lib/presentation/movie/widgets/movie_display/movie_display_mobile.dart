@@ -40,7 +40,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
       PaletteGenerator palette = await PaletteGenerator.fromImageProvider(
           NetworkImage(imagePath, scale: 1));
 
-      PaletteColor paletteColor = palette.mutedColor ?? palette.dominantColor;
+      PaletteColor paletteColor = palette.dominantColor;
       backgroundColor = paletteColor.color;
       textColor = paletteColor.bodyTextColor;
       subtitleTextColor = paletteColor.titleTextColor;
