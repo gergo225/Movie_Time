@@ -40,6 +40,8 @@ class MyApp extends StatelessWidget {
                 ),
                 bottomNavigationBar: BottomNavigationBar(
                   currentIndex: state.index,
+                  selectedFontSize: 0,
+                  unselectedFontSize: 0,
                   items: [
                     BottomNavigationBarItem(
                         icon: Icon(Icons.home), title: Text("")),
