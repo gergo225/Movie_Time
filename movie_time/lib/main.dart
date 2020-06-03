@@ -8,6 +8,8 @@ import 'package:movie_time/presentation/search/search_page.dart';
 import 'injection_container.dart' as di;
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   di.init();
   // runApp(DevicePreview(builder: (context) => MyApp()));
   runApp(MyApp());
