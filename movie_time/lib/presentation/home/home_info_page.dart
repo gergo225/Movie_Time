@@ -20,7 +20,12 @@ class HomeInfoPage extends StatelessWidget {
           } else if (state is Loaded) {
             return HomeDisplay(homeInfo: state.homeInfo);
           } else if (state is Error) {
-            return MessageDisplay(message: state.message);
+            return ErrorTryAgain(
+              errorMessage: state.message,
+              tryAgain: () {
+                BlocProvider.of<HomeBloc>(context).add(GetInfoForHome());
+              },
+            );
           }
           return Container();
         },
