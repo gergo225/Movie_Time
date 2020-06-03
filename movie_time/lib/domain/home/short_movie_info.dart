@@ -18,6 +18,6 @@ class ShortMovieInfo extends Equatable {
   @override
   List get props => [id, title, genres, posterPath];
 
-  String get posterPathUrl => createPosterImageLink(posterPath);
+  String get posterPathUrl => createLargeImageLink(posterPath);
   String get genresString => "${genres.take(3).join(", ")}";
 }

@@ -10,6 +10,10 @@ String createPosterImageLink(String path) =>
 String createSmallImageLink(String path) =>
     _imageLinkWithSizeAndPath("w185", path);
 
+/// Create link for w780 size image. Works with poster and backdrop
+String createLargeImageLink(String path) =>
+    _imageLinkWithSizeAndPath("w780", path);
+
 String _imageLinkWithSizeAndPath(String size, String path) =>
     _linkOrNull(path, "https://image.tmdb.org/t/p/$size$path");
 
