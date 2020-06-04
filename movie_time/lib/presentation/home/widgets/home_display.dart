@@ -25,7 +25,6 @@ class _HomeDisplayState extends State<HomeDisplay> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     List<MovieList> movieLists = [
       widget.homeInfo.trendingMovies,
       widget.homeInfo.actionMovies,
@@ -42,102 +41,117 @@ class _HomeDisplayState extends State<HomeDisplay> {
       movieLists.map((movieList) => movieList.listName),
     );
 
-    return NotificationListener(
-      onNotification: (notification) {
-        if (notification is ScrollUpdateNotification) {
-          setState(() {
-            backgroundLeftOffset = -pageController.page * screenWidth;
-          });
-        }
-      },
-      child: Container(
-        child: Stack(
-          children: [
-            Positioned.fill(
-              left: backgroundLeftOffset,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: movieLists[selectedListIndex].movieList.length,
-                itemBuilder: (context, index) {
-                  return PlatformIndependentImage(
-                    imageUrl: movieLists[selectedListIndex]
-                        .movieList[index]
-                        .posterPathUrl,
-                    errorWidget: Container(),
-                    loadingWidget: Container(),
-                    boxFit: BoxFit.cover,
-                    width: screenWidth,
-                  );
-                },
+    return LayoutBuilder(builder: (context, constraints) {
+      final screenWidth = constraints.maxWidth;
+
+      return NotificationListener(
+        onNotification: (notification) {
+          if (notification is ScrollUpdateNotification) {
+            setState(() {
+              backgroundLeftOffset = -pageController.page * screenWidth;
+            });
+          }
+        },
+        child: Container(
+          child: Stack(
+            children: [
+              Positioned.fill(
+                left: backgroundLeftOffset,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: movieLists[selectedListIndex].movieList.length,
+                  itemBuilder: (context, index) {
+                    return PlatformIndependentImage(
+                      imageUrl: movieLists[selectedListIndex]
+                          .movieList[index]
+                          .posterPathUrl,
+                      errorWidget: Container(),
+                      loadingWidget: Container(),
+                      boxFit: BoxFit.cover,
+                      width: screenWidth,
+                    );
+                  },
+                ),
               ),
-            ),
-            Positioned.fill(
-              top: 32,
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                child: Center(
-                  child: _buildTrendingMovies(
-                    context,
-                    movieLists[selectedListIndex],
+              Positioned.fill(
+                top: 32,
+                bottom: 0,
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                  child: Center(
+                    child: _buildTrendingMovies(
+                        context,
+                        movieLists[selectedListIndex],
+                        Size(constraints.maxWidth, constraints.maxHeight)),
                   ),
                 ),
               ),
-            ),
-            Positioned(
-              top: 16,
-              height: 32,
-              left: 0,
-              right: 0,
-              child: ListView.separated(
-                padding: EdgeInsets.only(left: 24),
-                itemCount: movieListNames.length,
-                scrollDirection: Axis.horizontal,
-                separatorBuilder: (context, index) {
-                  return SizedBox(width: 8);
-                },
-                itemBuilder: (context, index) {
-                  bool isSelected = index == selectedListIndex;
-                  return FlatButton(
-                    visualDensity: VisualDensity.compact,
-                    color:
-                        isSelected ? Colors.blue : Colors.grey.withOpacity(0.4),
-                    onPressed: () {
-                      setState(() {
-                        if (index != selectedListIndex) {
-                          selectedListIndex = index;
-                        }
-                        pageController.animateToPage(
-                          0,
-                          duration: Duration(milliseconds: 600),
-                          curve: Curves.easeOut,
-                        );
-                      });
-                    },
-                    child: Text(
-                      movieListNames[index],
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: isSelected ? Colors.black.withAlpha(210) : Colors.white,
-                      ),
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                  );
-                },
+              Positioned(
+                top: 16,
+                height: 32,
+                left: 0,
+                right: 0,
+                child: _buildCategoryChooser(movieListNames),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+      );
+    });
+  }
+
+  Widget _buildCategoryChooser(List<String> movieListNames) {
+    return ListView.separated(
+      padding: EdgeInsets.only(left: 24),
+      itemCount: movieListNames.length,
+      scrollDirection: Axis.horizontal,
+      separatorBuilder: (context, index) {
+        return SizedBox(width: 8);
+      },
+      itemBuilder: (context, index) {
+        bool isSelected = index == selectedListIndex;
+        return FlatButton(
+          visualDensity: VisualDensity.compact,
+          color: isSelected ? Colors.blue : Colors.grey.withOpacity(0.4),
+          onPressed: () {
+            setState(() {
+              if (index != selectedListIndex) {
+                selectedListIndex = index;
+              }
+              pageController.animateToPage(
+                0,
+                duration: Duration(milliseconds: 600),
+                curve: Curves.easeOut,
+              );
+            });
+          },
+          child: Text(
+            movieListNames[index],
+            style: TextStyle(
+              fontSize: 17,
+              color: isSelected ? Colors.black.withAlpha(210) : Colors.white,
+            ),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24),
+          ),
+        );
+      },
     );
   }
 
-  Widget _buildTrendingMovies(BuildContext context, MovieList movieList) {
+  Widget _buildTrendingMovies(
+      BuildContext context, MovieList movieList, Size screenSize) {
+    final pageViewHeight = screenSize.height * 0.8;
+    final pageViewWidth = screenSize.width * pageController.viewportFraction;
+    final titleHeight = 55;
+    final posterHeight = pageViewHeight - titleHeight;
+    final horizontalMovieItemPadding =
+        (3 * pageViewWidth - 2 * posterHeight) / 6;
+
     return Container(
-      // TODO: Figure out height using LayoutBuilder
-      height: 516, // 610 with categories at the bottom
+      height: pageViewHeight,
       child: PageView.builder(
         controller: pageController,
         itemCount: movieList.movieList.length,
@@ -145,8 +159,14 @@ class _HomeDisplayState extends State<HomeDisplay> {
         itemBuilder: (context, index) {
           ShortMovieInfo movieInfo = movieList.movieList[index];
           return Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.symmetric(
+              vertical: 8,
+              horizontal: (horizontalMovieItemPadding > 0)
+                  ? horizontalMovieItemPadding
+                  : 8,
+            ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
@@ -181,33 +201,6 @@ class _HomeDisplayState extends State<HomeDisplay> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                // Container(
-                //   height: 26,
-                //   child: ListView.separated(
-                //     scrollDirection: Axis.horizontal,
-                //     itemCount: movieInfo.genres.length,
-                //     separatorBuilder: (context, index) {
-                //       return SizedBox(width: 6);
-                //     },
-                //     itemBuilder: (context, index) {
-                //       return Container(
-                //         decoration: BoxDecoration(
-                //           borderRadius: BorderRadius.circular(16),
-                //           color: Colors.grey.withOpacity(.4),
-                //         ),
-                //         child: Padding(
-                //           padding: const EdgeInsets.symmetric(horizontal: 8),
-                //           child: Center(
-                //             child: Text(
-                //               movieInfo.genres[index],
-                //               style: TextStyle(color: Colors.white),
-                //             ),
-                //           ),
-                //         ),
-                //       );
-                //     },
-                //   ),
-                // ),
               ],
             ),
           );
