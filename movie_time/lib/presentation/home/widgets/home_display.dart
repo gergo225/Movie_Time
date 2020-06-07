@@ -51,6 +51,7 @@ class _HomeDisplayState extends State<HomeDisplay> {
               backgroundLeftOffset = -pageController.page * screenWidth;
             });
           }
+          return true;
         },
         child: Container(
           child: Stack(
