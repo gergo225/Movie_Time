@@ -162,7 +162,6 @@ class _HomeDisplayState extends State<HomeDisplay> {
         itemCount: movieList.movieList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          debugPrint("$horizontalMovieItemPadding");
           ShortMovieInfo movieInfo = movieList.movieList[index];
           return Container(
             padding: EdgeInsets.symmetric(
