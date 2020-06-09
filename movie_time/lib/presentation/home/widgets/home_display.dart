@@ -146,10 +146,14 @@ class _HomeDisplayState extends State<HomeDisplay> {
       BuildContext context, MovieList movieList, Size screenSize) {
     final pageViewHeight = screenSize.height * 0.8;
     final pageViewWidth = screenSize.width * pageController.viewportFraction;
-    final titleHeight = 55;
+    double titleHeight = 73;
     final posterHeight = pageViewHeight - titleHeight;
     final horizontalMovieItemPadding =
         (3 * pageViewWidth - 2 * posterHeight) / 6;
+    
+    if(horizontalMovieItemPadding > 0) {
+      titleHeight -= 16;
+    }
 
     return Container(
       height: pageViewHeight,
@@ -158,13 +162,12 @@ class _HomeDisplayState extends State<HomeDisplay> {
         itemCount: movieList.movieList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
+          debugPrint("$horizontalMovieItemPadding");
           ShortMovieInfo movieInfo = movieList.movieList[index];
           return Container(
             padding: EdgeInsets.symmetric(
               vertical: 8,
-              horizontal: (horizontalMovieItemPadding > 0)
-                  ? horizontalMovieItemPadding
-                  : 8,
+              horizontal: horizontalMovieItemPadding.abs(),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -185,21 +188,24 @@ class _HomeDisplayState extends State<HomeDisplay> {
                     ),
                   ),
                 ),
-                Text(
-                  movieInfo.title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.white.withOpacity(.8),
-                    shadows: [
-                      Shadow(
-                        color: Colors.black,
-                        blurRadius: 4,
-                        offset: Offset(.5, 1),
-                      )
-                    ],
-                    fontWeight: FontWeight.bold,
+                Container(
+                  height: titleHeight,
+                  child: Text(
+                    movieInfo.title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white.withOpacity(.8),
+                      shadows: [
+                        Shadow(
+                          color: Colors.black,
+                          blurRadius: 4,
+                          offset: Offset(.5, 1),
+                        )
+                      ],
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],
