@@ -30,15 +30,16 @@ class MyApp extends StatelessWidget {
         create: (_) => sl<BottomNavigationBloc>()..add(AppStarted()),
         child: BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
           builder: (context, state) {
-
             if (state is PageLoaded) {
               return Scaffold(
-                body: IndexedStack(
-                  index: state.index,
-                  children: [
-                    HomeInfoPage(),
-                    SearchPage(),
-                  ],
+                body: SafeArea(
+                  child: IndexedStack(
+                    index: state.index,
+                    children: [
+                      HomeInfoPage(),
+                      SearchPage(),
+                    ],
+                  ),
                 ),
                 bottomNavigationBar: BottomNavigationBar(
                   currentIndex: state.index,
@@ -51,7 +52,8 @@ class MyApp extends StatelessWidget {
                         icon: Icon(Icons.search), title: Text("")),
                   ],
                   onTap: (value) {
-                    BlocProvider.of<BottomNavigationBloc>(context).add(PageTapped(value));
+                    BlocProvider.of<BottomNavigationBloc>(context)
+                        .add(PageTapped(value));
                   },
                 ),
               );
