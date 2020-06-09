@@ -161,7 +161,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
                             _valueAndDescription(
                                 context,
                                 widget.movieInfo.releaseYearAndMonth,
-                                "Release date"),
+                                "Release"),
                           ],
                         ),
                       ],
