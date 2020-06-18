@@ -12,20 +12,30 @@ class SearchedMovieItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final itemHeight = 128.0;
+    final posterWidth = 2 / 3 * itemHeight;
+
     return InkWell(
       onTap: () => openMoviePage(searchedMovieInfo.id, context),
       child: Container(
-        width: double.infinity,
-        height: 76,
+        height: itemHeight,
+        
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(4)
+        ),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            PlatformIndependentImage(
-              imageUrl: searchedMovieInfo.posterPathUrl,
-              errorWidget: NoImageWidget.poster(),
-              loadingWidget: LoadingWidget(),
-              width: 64,
-              boxFit: BoxFit.contain,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: PlatformIndependentImage(
+                imageUrl: searchedMovieInfo.posterPathUrl,
+                errorWidget: NoImageWidget.poster(),
+                loadingWidget: LoadingWidget(),
+                width: posterWidth,
+                boxFit: BoxFit.contain,
+              ),
             ),
             SizedBox(width: 4),
             Expanded(
@@ -34,19 +44,23 @@ class SearchedMovieItem extends StatelessWidget {
                 children: [
                   Text(
                     searchedMovieInfo.title,
-                    style: TextStyle(fontSize: 18),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 2),
+                  Text(
+                    searchedMovieInfo.releaseYearString,
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                  SizedBox(height: 4),
                   Row(
-                    children: <Widget>[
+                    children: [
+                      StarRating(
+                          rating: searchedMovieInfo.rating, starSize: 20),
                       Text(
-                        searchedMovieInfo.releaseYearString,
-                        style: Theme.of(context).textTheme.bodyText2,
-                      ),
-                      Spacer(),
-                      Text(
-                        searchedMovieInfo.rating.toString(),
-                        style: Theme.of(context).textTheme.bodyText2,
+                        "${searchedMovieInfo.rating}",
+                        style: TextStyle(color: Colors.grey[600]),
                       ),
                     ],
                   ),
