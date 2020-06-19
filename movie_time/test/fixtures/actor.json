@@ -1,0 +1,67 @@
+{
+    "birthday": "1963-12-18",
+    "known_for_department": "Acting",
+    "deathday": null,
+    "id": 287,
+    "name": "Brad Pitt",
+    "movie_credits": {
+        "cast": [
+            {
+                "poster_path": "/oV3BVdY3UtEHRxpixmntpxHJwSc.jpg",
+                "adult": false,
+                "backdrop_path": "/3guCfwRt3MrmO6q56I4F5xN1LYB.jpg",
+                "vote_count": 4859,
+                "video": false,
+                "id": 163,
+                "popularity": 28.893,
+                "genre_ids": [
+                    80,
+                    53
+                ],
+                "original_language": "en",
+                "title": "Ocean's Twelve",
+                "original_title": "Ocean's Twelve",
+                "release_date": "2004-12-09",
+                "character": "Rusty Ryan",
+                "vote_average": 6.5,
+                "overview": "Danny Ocean reunites with his old flame and the rest of his merry band of thieves in carrying out three huge heists in Rome, Paris and Amsterdam - but a Europol agent is hot on their heels.",
+                "credit_id": "52fe4221c3a36847f80062e5"
+            }
+        ],
+        "crew": [
+            {
+                "id": 402970,
+                "department": "Crew",
+                "original_language": "en",
+                "original_title": "Notes on an American Film Director at Work",
+                "job": "Thanks",
+                "overview": "Filmmaker Jonas Mekas follows his friend, film director Martin Scorsese, and his cast and crew, through various locations during the shooting of his film The Departed, released in 2006.",
+                "genre_ids": [
+                    99
+                ],
+                "video": false,
+                "credit_id": "5ebdf4f1bc8abc0022c2e548",
+                "release_date": "2008-01-01",
+                "popularity": 3.428,
+                "vote_average": 0,
+                "vote_count": 0,
+                "title": "Notes on an American Film Director at Work",
+                "adult": false,
+                "backdrop_path": "/1Q0FrRbywFPjseam7mwt6MYKXe7.jpg",
+                "poster_path": "/8Ah2goGOhoR1i7jwOOaie10reoS.jpg"
+            }
+        ]
+    },
+    "also_known_as": [
+        "William Bradley \"Brad\" Pitt",
+        "William Bradley Pitt"
+    ],
+    "gender": 2,
+    "biography": "William Bradley \"Brad\" Pitt (born December 18, 1963) is an American actor and film producer. Pitt has received two Academy Award nominations and four Golden Globe Award nominations, winning one. He has been described as one of the world's most attractive men, a label for which he has received substantial media attention. Pitt began his acting career with television guest appearances, including a role on the CBS prime-time soap opera Dallas in 1987. He later gained recognition as the cowboy hitchhiker who seduces Geena Davis's character in the 1991 road movie Thelma & Louise. Pitt's first leading roles in big-budget productions came with A River Runs Through It (1992) and Interview with the Vampire (1994). He was cast opposite Anthony Hopkins in the 1994 drama Legends of the Fall, which earned him his first Golden Globe nomination. In 1995 he gave critically acclaimed performances in the crime thriller Seven and the science fiction film 12 Monkeys, the latter securing him a Golden Globe Award for Best Supporting Actor and an Academy Award nomination.\n\nFour years later, in 1999, Pitt starred in the cult hit Fight Club. He then starred in the major international hit as Rusty Ryan in Ocean's Eleven (2001) and its sequels, Ocean's Twelve (2004) and Ocean's Thirteen (2007). His greatest commercial successes have been Troy (2004) and Mr. & Mrs. Smith (2005).\n\nPitt received his second Academy Award nomination for his title role performance in the 2008 film The Curious Case of Benjamin Button. Following a high-profile relationship with actress Gwyneth Paltrow, Pitt was married to actress Jennifer Aniston for five years. Pitt lives with actress Angelina Jolie in a relationship that has generated wide publicity. He and Jolie have six children-Maddox, Pax, Zahara, Shiloh, Knox, and Vivienne.\n\nSince beginning his relationship with Jolie, he has become increasingly involved in social issues both in the United States and internationally. Pitt owns a production company named Plan B Entertainment, whose productions include the 2007 Academy Award winning Best Picture, The Departed.",
+    "popularity": 30.84,
+    "place_of_birth": "Shawnee, Oklahoma, USA",
+    "profile_path": "/kU3B75TyRiCgE270EyZnHjfivoq.jpg",
+    "adult": false,
+    "imdb_id": "nm0000093",
+    "homepage": null
+}
