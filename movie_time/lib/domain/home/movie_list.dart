@@ -10,4 +10,7 @@ class MovieList extends Equatable {
     @required this.listName,
     @required this.movieList,
   });
+
+  @override
+  List get props => [listName, movieList];
 }

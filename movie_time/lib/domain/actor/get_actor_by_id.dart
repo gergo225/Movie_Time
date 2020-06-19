@@ -21,5 +21,8 @@ class GetActorById extends UseCase<ActorInfo, Params> {
 class Params extends Equatable {
   final int id;
 
-  Params({@required this.id}) : super([id]);
+  Params({@required this.id});
+
+  @override
+  List get props => [id];
 }

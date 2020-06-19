@@ -13,12 +13,10 @@ class ShortActorInfo extends Equatable {
     @required this.name,
     @required this.character,
     @required this.profileImagePath,
-  }) : super([
-          id,
-          name,
-          character,
-          profileImagePath,
-        ]);
+  });
 
   String get profileImagePathUrl => createSmallImageLink(profileImagePath);
+
+  @override
+  List get props => [id, name, character, profileImagePath];
 }

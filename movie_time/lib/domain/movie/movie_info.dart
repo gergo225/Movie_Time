@@ -29,19 +29,7 @@ class MovieInfo extends Equatable {
     @required this.genres,
     @required this.actors,
     @required this.trailerYouTubeKey,
-  }) : super([
-          title,
-          id,
-          releaseDate,
-          overview,
-          backdropPath,
-          posterPath,
-          rating,
-          runtimeInMinutes,
-          genres,
-          actors,
-          trailerYouTubeKey,
-        ]);
+  });
 
   String get posterPathUrl => createSmallImageLink(posterPath);
   String get bigPosterPathUrl => createPosterImageLink(posterPath);
@@ -52,4 +40,19 @@ class MovieInfo extends Equatable {
   String get releaseYearAndMonth => (releaseDate == "")
       ? "-"
       : "${releaseDate.substring(0, 4)} ${monthNumberAndName[releaseDate.substring(5, 7)]}";
+
+  @override
+  List get props => [
+        title,
+        id,
+        releaseDate,
+        overview,
+        backdropPath,
+        posterPath,
+        rating,
+        runtimeInMinutes,
+        genres,
+        actors,
+        trailerYouTubeKey,
+      ];
 }

@@ -15,8 +15,11 @@ class SearchedMovieInfo extends Equatable {
     @required this.releaseYear,
     @required this.posterPath,
     @required this.rating,
-  }) : super([title, id, releaseYear, posterPath, rating]);
+  });
 
   String get posterPathUrl => createSmallImageLink(posterPath);
   String get releaseYearString => (releaseYear != null) ? "$releaseYear" : "-";
+
+  @override
+  List get props => [title, id, releaseYear, posterPath, rating];
 }

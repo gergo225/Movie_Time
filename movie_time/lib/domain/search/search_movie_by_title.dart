@@ -23,5 +23,8 @@ class SearchMovieByTitle extends UseCase<SearchResult, Params> {
 class Params extends Equatable {
   final String title;
 
-  Params({@required this.title}) : super([title]);
+  Params({@required this.title});
+
+  @override
+  List get props => [title];
 }

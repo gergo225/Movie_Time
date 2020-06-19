@@ -2,7 +2,8 @@ part of 'home_bloc.dart';
 
 @immutable
 abstract class HomeState extends Equatable {
-  HomeState([List props = const <dynamic>[]]) : super(props);
+  @override
+  List get props => [];
 }
 
 class Loading extends HomeState {}
@@ -10,11 +11,17 @@ class Loading extends HomeState {}
 class Loaded extends HomeState {
   final HomeInfo homeInfo;
   
-  Loaded({@required this.homeInfo}) : super([homeInfo]);
+  Loaded({@required this.homeInfo});
+
+  @override
+  List get props => [homeInfo];
 }
 
 class Error extends HomeState {
   final String message;
 
-  Error({@required this.message}) : super([message]);
+  Error({@required this.message});
+
+  @override
+  List get props => [message];
 }

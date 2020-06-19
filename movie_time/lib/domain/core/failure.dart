@@ -7,7 +7,8 @@ const String SEARCH_EMPTY_FAILURE_MESSAGE = "Please enter a title to search for"
 abstract class Failure extends Equatable {
   // If the subclasses have some properties, they'll get passed to this constructor
   // so that Equatable can perform value comparison.
-  Failure([List properties = const<dynamic>[]]) : super(properties);
+  @override
+  List get props => [];
 }
 
 class ServerFailure extends Failure {}

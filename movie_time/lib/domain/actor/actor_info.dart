@@ -17,6 +17,8 @@ class ActorInfo extends Equatable {
     @required this.birthday,
     @required this.imagePath,
     @required this.movies,
-  }) : super([id, name, bio, birthday, imagePath, movies]);
+  });
 
+  @override
+  List get props => [id, name, bio, birthday, imagePath, movies];
 }
