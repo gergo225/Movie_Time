@@ -6,6 +6,7 @@ import 'package:movie_time/domain/home/movie_list.dart';
 import 'package:movie_time/domain/home/short_movie_info.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/movie_info_page.dart';
+import 'package:movie_time/presentation/search/search_page.dart';
 
 class HomeDisplay extends StatefulWidget {
   final HomeInfo homeInfo;
@@ -41,65 +42,91 @@ class _HomeDisplayState extends State<HomeDisplay> {
       movieLists.map((movieList) => movieList.listName),
     );
 
-    return LayoutBuilder(builder: (context, constraints) {
-      final screenWidth = constraints.maxWidth;
+    return Scaffold(
+      body: SafeArea(
+        child: LayoutBuilder(builder: (context, constraints) {
+          final screenWidth = constraints.maxWidth;
+          final statusBarHeight = MediaQuery.of(context).padding.top;
 
-      return NotificationListener(
-        onNotification: (notification) {
-          if (notification is ScrollUpdateNotification) {
-            setState(() {
-              backgroundLeftOffset = -pageController.page * screenWidth;
-            });
-          }
-          return true;
-        },
-        child: Container(
-          child: Stack(
-            children: [
-              Positioned.fill(
-                left: backgroundLeftOffset,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: movieLists[selectedListIndex].movieList.length,
-                  itemBuilder: (context, index) {
-                    return PlatformIndependentImage(
-                      imageUrl: movieLists[selectedListIndex]
-                          .movieList[index]
-                          .posterPathUrl,
-                      errorWidget: Container(),
-                      loadingWidget: Container(),
-                      boxFit: BoxFit.cover,
-                      width: screenWidth,
-                    );
-                  },
-                ),
-              ),
-              Positioned.fill(
-                top: 32,
-                bottom: 0,
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                  child: Center(
-                    child: _buildTrendingMovies(
-                        context,
-                        movieLists[selectedListIndex],
-                        Size(constraints.maxWidth, constraints.maxHeight)),
+          return NotificationListener(
+            onNotification: (notification) {
+              if (notification is ScrollUpdateNotification) {
+                setState(() {
+                  backgroundLeftOffset = -pageController.page * screenWidth;
+                });
+              }
+              return true;
+            },
+            child: Container(
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    left: backgroundLeftOffset,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: movieLists[selectedListIndex].movieList.length,
+                      itemBuilder: (context, index) {
+                        return PlatformIndependentImage(
+                          imageUrl: movieLists[selectedListIndex]
+                              .movieList[index]
+                              .posterPathUrl,
+                          errorWidget: Container(),
+                          loadingWidget: Container(),
+                          boxFit: BoxFit.cover,
+                          width: screenWidth,
+                        );
+                      },
+                    ),
                   ),
-                ),
+                  Positioned.fill(
+                    top: 80 + statusBarHeight,
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                      child: Center(
+                        child: _buildTrendingMovies(
+                            context,
+                            movieLists[selectedListIndex],
+                            Size(constraints.maxWidth, constraints.maxHeight)),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 64 + statusBarHeight,
+                    height: 32,
+                    left: 0,
+                    right: 0,
+                    child: _buildCategoryChooser(movieListNames),
+                  ),
+                  Positioned(
+                    top: statusBarHeight,
+                    right: 0,
+                    child: _buildSearchButton(),
+                  ),
+                ],
               ),
-              Positioned(
-                top: 16,
-                height: 32,
-                left: 0,
-                right: 0,
-                child: _buildCategoryChooser(movieListNames),
-              ),
-            ],
-          ),
-        ),
-      );
-    });
+            ),
+          );
+        }),
+      ),
+    );
+  }
+
+  Widget _buildSearchButton() {
+    return Material(
+      color: Colors.white54,
+      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(24)),
+      type: MaterialType.button,
+      child: IconButton(
+        icon: Icon(Icons.search),
+        iconSize: 28,
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => SearchPage(),
+          ));
+        },
+      ),
+    );
   }
 
   Widget _buildCategoryChooser(List<String> movieListNames) {
@@ -150,8 +177,8 @@ class _HomeDisplayState extends State<HomeDisplay> {
     final posterHeight = pageViewHeight - titleHeight;
     final horizontalMovieItemPadding =
         (3 * pageViewWidth - 2 * posterHeight) / 6;
-    
-    if(horizontalMovieItemPadding > 0) {
+
+    if (horizontalMovieItemPadding > 0) {
       titleHeight -= 16;
     }
 

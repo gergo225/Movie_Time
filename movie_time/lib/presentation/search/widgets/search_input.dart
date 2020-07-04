@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/search/search_bloc.dart';
 
 class SearchInput extends StatefulWidget {
@@ -17,18 +18,23 @@ class _SearchInputState extends State<SearchInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 52,
       child: Row(
         children: <Widget>[
+          CustomBackButton(),
           Expanded(
             child: TextField(
               controller: controller,
-              keyboardType: TextInputType.text,
               textInputAction: TextInputAction.search,
+              textAlignVertical: TextAlignVertical.center,
+              style: TextStyle(fontSize: 18),
               decoration: InputDecoration(
-                isDense: true,
-                contentPadding: EdgeInsets.all(10),
-                border: OutlineInputBorder(),
                 hintText: "Search for movies",
+                filled: true,
+                fillColor: Colors.white,
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
+                contentPadding: EdgeInsets.only(left: 12),
               ),
               onChanged: (value) {
                 inputStr = value.trim();
@@ -38,6 +44,7 @@ class _SearchInputState extends State<SearchInput> {
               },
             ),
           ),
+          SizedBox(width: 8),
         ],
       ),
     );

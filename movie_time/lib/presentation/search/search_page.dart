@@ -10,35 +10,39 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => sl<SearchBloc>(),
-      child: Center(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-          child: Column(
-            children: [
-              // Search bar
-              SearchInput(),
-              SizedBox(height: 12),
-              Expanded(
-                child: BlocBuilder<SearchBloc, SearchState>(
-                  builder: (context, state) {
-                    if (state is Empty) {
-                      return MessageDisplay(message: "Start searching!");
-                    } else if (state is Loading) {
-                      return LoadingWidget();
-                    } else if (state is Loaded) {
-                      return ResultDisplay(searchResult: state.searchResult);
-                    } else if (state is Error) {
-                      return MessageDisplay(message: state.message);
-                    }
-                    return Container();
-                  },
+      child: Scaffold(
+        body: SafeArea(
+          child: Center(
+            child: Column(
+              children: [
+                // Search bar
+                SearchInput(),
+                SizedBox(height: 12),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: BlocBuilder<SearchBloc, SearchState>(
+                      builder: (context, state) {
+                        if (state is Empty) {
+                          return MessageDisplay(message: "Start searching!");
+                        } else if (state is Loading) {
+                          return LoadingWidget();
+                        } else if (state is Loaded) {
+                          return ResultDisplay(
+                              searchResult: state.searchResult);
+                        } else if (state is Error) {
+                          return MessageDisplay(message: state.message);
+                        }
+                        return Container();
+                      },
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
     );
   }
-
 }

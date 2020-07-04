@@ -13,7 +13,6 @@ import 'package:movie_time/domain/movie/get_movie_by_id.dart';
 import 'package:movie_time/domain/movie/movie_info_repository.dart';
 import 'package:movie_time/domain/search/search_movie_by_title.dart';
 import 'package:movie_time/domain/search/search_repository.dart';
-import 'package:movie_time/presentation/bottom_navigation/bottom_navigation_bloc.dart';
 import 'package:movie_time/presentation/home/home_bloc.dart';
 import 'package:movie_time/presentation/movie/movie_info_bloc.dart';
 import 'package:movie_time/presentation/search/search_bloc.dart';
@@ -21,8 +20,7 @@ import 'package:movie_time/presentation/search/search_bloc.dart';
 final sl = GetIt.instance;
 
 void init() {
-  //! Features - Movie Info, Search, Home, Bottom Navigation
-  setUpBottomNavigation();
+  //! Features - Movie Info, Search, Home
   setUpMovieFeature();
   setUpSearchFeature();
   setUpHomeFeature();
@@ -31,13 +29,6 @@ void init() {
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl());
   //! External
   sl.registerLazySingleton(() => http.Client());
-}
-
-void setUpBottomNavigation() {
-  // Bloc
-  sl.registerFactory(
-    () => BottomNavigationBloc(),
-  );
 }
 
 void setUpHomeFeature() {
