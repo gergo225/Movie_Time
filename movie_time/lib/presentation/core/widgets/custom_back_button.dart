@@ -8,9 +8,7 @@ class CustomBackButton extends StatelessWidget {
         borderRadius: BorderRadius.only(bottomRight: Radius.circular(32)),
         color: Colors.white54,
       ),
-      child: BackButton(
-        onPressed: () => Navigator.of(context).pop(),
-      ),
+      child: BackButton(),
     );
   }
 }
