@@ -43,79 +43,85 @@ class _HomeDisplayState extends State<HomeDisplay> {
     );
 
     return Scaffold(
-      body: SafeArea(
-        child: LayoutBuilder(builder: (context, constraints) {
-          final screenWidth = constraints.maxWidth;
-          final statusBarHeight = MediaQuery.of(context).padding.top;
+      body: LayoutBuilder(builder: (context, constraints) {
+        final screenWidth = constraints.maxWidth;
 
-          return NotificationListener(
-            onNotification: (notification) {
-              if (notification is ScrollUpdateNotification) {
-                setState(() {
-                  backgroundLeftOffset = -pageController.page * screenWidth;
-                });
-              }
-              return true;
-            },
-            child: Container(
-              child: Stack(
-                children: [
-                  Positioned.fill(
-                    left: backgroundLeftOffset,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: movieLists[selectedListIndex].movieList.length,
-                      itemBuilder: (context, index) {
-                        return PlatformIndependentImage(
-                          imageUrl: movieLists[selectedListIndex]
-                              .movieList[index]
-                              .posterPathUrl,
-                          errorWidget: Container(),
-                          loadingWidget: Container(),
-                          boxFit: BoxFit.cover,
-                          width: screenWidth,
-                        );
-                      },
+        return NotificationListener(
+          onNotification: (notification) {
+            if (notification is ScrollUpdateNotification) {
+              setState(() {
+                backgroundLeftOffset = -pageController.page * screenWidth;
+              });
+            }
+            return true;
+          },
+          child: Container(
+            child: Stack(
+              children: [
+                Positioned.fill(
+                  left: backgroundLeftOffset,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: movieLists[selectedListIndex].movieList.length,
+                    itemBuilder: (context, index) {
+                      return PlatformIndependentImage(
+                        imageUrl: movieLists[selectedListIndex]
+                            .movieList[index]
+                            .posterPathUrl,
+                        errorWidget: Container(),
+                        loadingWidget: Container(),
+                        boxFit: BoxFit.cover,
+                        width: screenWidth,
+                      );
+                    },
+                  ),
+                ),
+                Positioned.fill(
+                  child: SafeArea(
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                          top: 80,
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                            child: Center(
+                              child: _buildTrendingMovies(
+                                  context,
+                                  movieLists[selectedListIndex],
+                                  Size(constraints.maxWidth,
+                                      constraints.maxHeight)),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 64,
+                          height: 32,
+                          left: 0,
+                          right: 0,
+                          child: _buildCategoryChooser(movieListNames),
+                        ),
+                        Positioned(
+                          top: 0,
+                          right: 0,
+                          child: _buildSearchButton(),
+                        ),
+                      ],
                     ),
                   ),
-                  Positioned.fill(
-                    top: 80 + statusBarHeight,
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                      child: Center(
-                        child: _buildTrendingMovies(
-                            context,
-                            movieLists[selectedListIndex],
-                            Size(constraints.maxWidth, constraints.maxHeight)),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 64 + statusBarHeight,
-                    height: 32,
-                    left: 0,
-                    right: 0,
-                    child: _buildCategoryChooser(movieListNames),
-                  ),
-                  Positioned(
-                    top: statusBarHeight,
-                    right: 0,
-                    child: _buildSearchButton(),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          );
-        }),
-      ),
+          ),
+        );
+      }),
     );
   }
 
   Widget _buildSearchButton() {
     return ClipRRect(
       borderRadius: BorderRadius.only(bottomLeft: Radius.circular(24)),
-          child: Material(
+      child: Material(
         color: Colors.white54,
         type: MaterialType.button,
         child: IconButton(
