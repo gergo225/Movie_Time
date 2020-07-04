@@ -113,18 +113,20 @@ class _HomeDisplayState extends State<HomeDisplay> {
   }
 
   Widget _buildSearchButton() {
-    return Material(
-      color: Colors.white54,
+    return ClipRRect(
       borderRadius: BorderRadius.only(bottomLeft: Radius.circular(24)),
-      type: MaterialType.button,
-      child: IconButton(
-        icon: Icon(Icons.search),
-        iconSize: 28,
-        onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => SearchPage(),
-          ));
-        },
+          child: Material(
+        color: Colors.white54,
+        type: MaterialType.button,
+        child: IconButton(
+          icon: Icon(Icons.search),
+          iconSize: 28,
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => SearchPage(),
+            ));
+          },
+        ),
       ),
     );
   }
