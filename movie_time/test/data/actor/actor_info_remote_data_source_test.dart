@@ -32,7 +32,7 @@ void main() {
         .thenAnswer((_) async => http.Response("Somethings went wrong", 404));
   }
 
-  group("getMovieById", () {
+  group("getActorById", () {
     final actorId = 287;
     final movieInfoModel =
         ActorInfoModel.fromJson(json.decode(fixture("actor.json")));
