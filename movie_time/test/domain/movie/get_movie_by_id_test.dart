@@ -34,7 +34,7 @@ void main() {
     runtimeInMinutes: 139,
     actors: [
       ShortActorInfo(
-        id: "52fe4250c3a36847f80149f3",
+        id: 819,
         name: "Edward Norton",
         character: "The Narrator",
         profileImagePath: "/eIkFHNlfretLS1spAcIoihKUS62.jpg",

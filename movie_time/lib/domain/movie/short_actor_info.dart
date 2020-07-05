@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:movie_time/domain/core/image_link_creator.dart';
 
 class ShortActorInfo extends Equatable {
-  final String id;
+  final int id;
   final String name;
   final String character;
   final String profileImagePath;

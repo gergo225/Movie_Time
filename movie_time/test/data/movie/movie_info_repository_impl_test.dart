@@ -63,13 +63,13 @@ void main() {
       runtimeInMinutes: 139,
       actors: [
         ShortActorInfoModel(
-          id: "52fe4250c3a36847f80149f3",
+          id: 819,
           name: "Edward Norton",
           character: "The Narrator",
           profileImagePath: "/5XBzD5WuTyVQZeS4VI25z2moMeY.jpg",
         ),
         ShortActorInfoModel(
-          id: "52fe4250c3a36847f80149f7",
+          id: 287,
           name: "Brad Pitt",
           character: "Tyler Durden",
           profileImagePath: "/tJiSUYst4ddIaz1zge2LqCtu9tw.jpg",

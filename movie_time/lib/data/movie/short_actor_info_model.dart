@@ -3,7 +3,7 @@ import 'package:movie_time/domain/movie/short_actor_info.dart';
 
 class ShortActorInfoModel extends ShortActorInfo {
   ShortActorInfoModel({
-    @required String id,
+    @required int id,
     @required String name,
     @required String character,
     @required String profileImagePath,
@@ -16,7 +16,7 @@ class ShortActorInfoModel extends ShortActorInfo {
 
   factory ShortActorInfoModel.from(Map<String, dynamic> json) {
     return ShortActorInfoModel(
-      id: json["credit_id"],
+      id: json["id"],
       name: json["name"],
       character: json["character"],
       profileImagePath: json["profile_path"],

@@ -8,7 +8,7 @@ import '../../fixtures/fixture_reader.dart';
 
 void main() {
   final shortActorInfoModel = ShortActorInfoModel(
-    id: "52fe4250c3a36847f80149f3",
+    id: 819,
     name: "Edward Norton",
     character: "The Narrator",
     profileImagePath: "/eIkFHNlfretLS1spAcIoihKUS62.jpg",
@@ -31,7 +31,7 @@ void main() {
     final result = shortActorInfoModel.toJson();
 
     final expectedJsonMap = {
-      "id": "52fe4250c3a36847f80149f3",
+      "id": 819,
       "name": "Edward Norton",
       "character": "The Narrator",
       "profile_path": "/eIkFHNlfretLS1spAcIoihKUS62.jpg",
