@@ -18,7 +18,7 @@ class _SearchInputState extends State<SearchInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 52,
+      height: 48,
       child: Row(
         children: <Widget>[
           CustomBackButton(),
