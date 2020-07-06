@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
+import 'package:movie_time/presentation/core/utils/res/app_strings.dart';
 import 'package:movie_time/presentation/core/widgets/platform_independent_image.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/widgets/widgets.dart';
@@ -68,7 +69,10 @@ class MovieDisplayDesktop extends StatelessWidget {
                 defaultOpacity: .7,
                 opacityOnHover: 1,
                 child: Row(children: [
-                  Text("Play trailer", style: TextStyle(fontSize: 24)),
+                  Text(
+                    AppStrings.playTrailer,
+                    style: TextStyle(fontSize: 24),
+                  ),
                   Icon(
                     Icons.play_arrow,
                     color: AppColors.trailerPlayButtonWeb,
@@ -132,14 +136,14 @@ class MovieDisplayDesktop extends StatelessWidget {
           children: [
             Container(
               width: 160,
-              child: Text("Release: ${movieInfo.releaseYearAndMonth}"),
+              child: Text("${AppStrings.release}: ${movieInfo.releaseYearAndMonth}"),
             ),
-            Text("Runtime: ${movieInfo.runtimeInHoursAndMinutes}"),
+            Text("${AppStrings.runtime}: ${movieInfo.runtimeInHoursAndMinutes}"),
           ],
         ),
         SizedBox(height: 24),
         Text(
-          "Actors",
+          AppStrings.actors,
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
         ),
         LimitedBox(

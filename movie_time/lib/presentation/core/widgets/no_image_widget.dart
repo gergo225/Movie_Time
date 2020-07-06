@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
+import 'package:movie_time/presentation/core/utils/res/app_strings.dart';
 
 class NoImageWidget extends StatelessWidget {
   final double aspectRatio;
@@ -27,7 +28,7 @@ class NoImageWidget extends StatelessWidget {
         aspectRatio: aspectRatio,
         child: Center(
           child: Text(
-            "No image found",
+            AppStrings.noImage,
             style: TextStyle(
               fontSize: 12,
               color: AppColors.noImageBackground,

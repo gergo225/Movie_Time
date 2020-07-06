@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
 import 'package:movie_time/presentation/core/utils/color_utils.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
+import 'package:movie_time/presentation/core/utils/res/app_strings.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/widgets/widgets.dart';
 import 'package:palette_generator/palette_generator.dart';
@@ -158,11 +159,11 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
                             _valueAndDescription(
                                 context,
                                 widget.movieInfo.runtimeInHoursAndMinutes,
-                                "Runtime"),
+                                AppStrings.runtime),
                             _valueAndDescription(
                                 context,
                                 widget.movieInfo.releaseYearAndMonth,
-                                "Release"),
+                                AppStrings.release),
                           ],
                         ),
                       ],
@@ -211,7 +212,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
               Padding(
                 padding: padding,
                 child: Text(
-                  "Trailer",
+                  AppStrings.trailer,
                   style: subtitleTextStyle,
                 ),
               ),
@@ -240,7 +241,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
           )
         : Center(
             child: Text(
-              "No info available",
+              AppStrings.noInfo,
               style: TextStyle(color: textColor),
             ),
           );
@@ -268,7 +269,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
             Padding(
               padding: padding,
               child: Text(
-                "Actors",
+                AppStrings.actors,
                 style: subtitleTextStyle,
               ),
             ),

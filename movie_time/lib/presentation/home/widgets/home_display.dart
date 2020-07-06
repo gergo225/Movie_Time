@@ -5,6 +5,7 @@ import 'package:movie_time/domain/home/home_info.dart';
 import 'package:movie_time/domain/home/movie_list.dart';
 import 'package:movie_time/domain/home/short_movie_info.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
+import 'package:movie_time/presentation/core/utils/res/app_strings.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/movie_info_page.dart';
 import 'package:movie_time/presentation/search/search_page.dart';
@@ -64,13 +65,13 @@ class _HomeDisplayState extends State<HomeDisplay> {
                 // TODO: Add app bar functionality
                 children: [
                   ListTile(
-                    title: Text("Movies"),
+                    title: Text(AppStrings.movies),
                     onTap: () {
                       Navigator.of(context).pop();
                     },
                   ),
                   ListTile(
-                    title: Text("Series"),
+                    title: Text(AppStrings.series),
                     onTap: () {},
                   ),
                 ],
@@ -149,7 +150,7 @@ class _HomeDisplayState extends State<HomeDisplay> {
                                 _buildMenuButton(context),
                                 Spacer(),
                                 Text(
-                                  "Movies",
+                                  AppStrings.movies,
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w600,

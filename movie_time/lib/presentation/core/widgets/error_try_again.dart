@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
+import 'package:movie_time/presentation/core/utils/res/app_strings.dart';
 import 'package:movie_time/presentation/core/widgets/message_display.dart';
 
 class ErrorTryAgain extends StatelessWidget {
@@ -19,7 +20,7 @@ class ErrorTryAgain extends StatelessWidget {
             FlatButton(
               color: AppColors.tryAgainButtonBackground,
               onPressed: tryAgain,
-              child: Text("Try Again"),
+              child: Text(AppStrings.tryAgain),
             ),
           ],
         ),

@@ -1,8 +1,9 @@
 import 'package:equatable/equatable.dart';
+import 'package:movie_time/presentation/core/utils/res/app_strings.dart';
 
-const String SERVER_FAILURE_MESSAGE = "Server Failure";
-const String CONNECTION_FAILURE_MESSAGE = "Connection Failure";
-const String SEARCH_EMPTY_FAILURE_MESSAGE = "Please enter a title to search for";
+const String SERVER_FAILURE_MESSAGE = AppStrings.serverFailureMessage;
+const String CONNECTION_FAILURE_MESSAGE = AppStrings.connectionFailureMessage;
+const String SEARCH_EMPTY_FAILURE_MESSAGE = AppStrings.searchEmptyFailureMessage;
 
 abstract class Failure extends Equatable {
   // If the subclasses have some properties, they'll get passed to this constructor

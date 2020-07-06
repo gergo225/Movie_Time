@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/actor/actor_info.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
+import 'package:movie_time/presentation/core/utils/res/app_strings.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/movie_info_page.dart';
 
@@ -83,7 +84,7 @@ class ActorDisplay extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "Birthday:",
+                      AppStrings.birthday,
                       style: birthdayFontStyle.copyWith(
                         fontWeight: FontWeight.bold,
                         color: AppColors.actorBirthdayPrefix,
@@ -102,7 +103,7 @@ class ActorDisplay extends StatelessWidget {
                 ),
                 SizedBox(height: 12),
                 Text(
-                  "Other movies",
+                  AppStrings.otherMovies,
                   style: subtitleTextStyle,
                 ),
               ],
