@@ -8,11 +8,13 @@ class NoImageWidget extends StatelessWidget {
         super(key: key);
 
   /// Widget with 2/3 aspect ratio
+  /// Fits for posters and profile images
   factory NoImageWidget.poster() {
     return NoImageWidget(aspectRatio: 2 / 3);
   }
 
   /// Widget with 16/9 aspect ratio
+  /// Fits for backdrops
   factory NoImageWidget.wide() {
     return NoImageWidget(aspectRatio: 16/9);
   }
