@@ -21,6 +21,7 @@ class ActorInfo extends Equatable {
   });
 
   String get imagePathUrl => createSmallImageLink(imagePath);
+  String get birthdayString => (birthday != null) ? "$birthday" : "-";
 
   @override
   List get props => [id, name, bio, birthday, imagePath, movies];
