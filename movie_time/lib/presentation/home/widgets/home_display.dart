@@ -44,6 +44,42 @@ class _HomeDisplayState extends State<HomeDisplay> {
     );
 
     return Scaffold(
+      drawer: Container(
+        width: 250,
+        child: Drawer(
+          child: Column(
+            children: [
+              DrawerHeader(
+                child: Column(
+                  children: [
+                    Text("Movie Time app"),
+                    Icon(
+                      Icons.movie,
+                      size: 120,
+                    ),
+                  ],
+                ),
+              ),
+              Column(
+                // TODO: Add app bar functionality
+                children: [
+                  ListTile(
+                    title: Text("Movies"),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  ListTile(
+                    title: Text("Series"),
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+      drawerEnableOpenDragGesture: false,
       body: LayoutBuilder(builder: (context, constraints) {
         final screenWidth = constraints.maxWidth;
 
@@ -110,9 +146,7 @@ class _HomeDisplayState extends State<HomeDisplay> {
                             color: AppColors.appBarBackground,
                             child: Row(
                               children: [
-                                SizedBox(
-                                  width: 32,
-                                ),
+                                _buildMenuButton(context),
                                 Spacer(),
                                 Text(
                                   "Movies",
@@ -136,6 +170,20 @@ class _HomeDisplayState extends State<HomeDisplay> {
           ),
         );
       }),
+    );
+  }
+
+  Widget _buildMenuButton(BuildContext context) {
+    return Material(
+      color: AppColors.appBarIconBackground,
+      type: MaterialType.button,
+      child: IconButton(
+        icon: Icon(Icons.menu),
+        iconSize: 28,
+        onPressed: () {
+          Scaffold.of(context).openDrawer();
+        },
+      ),
     );
   }
 
