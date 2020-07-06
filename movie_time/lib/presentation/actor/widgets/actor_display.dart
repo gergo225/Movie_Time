@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/actor/actor_info.dart';
+import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/movie_info_page.dart';
 
@@ -62,12 +63,12 @@ class ActorDisplay extends StatelessWidget {
   Widget _buildActorDetails() {
     final TextStyle birthdayFontStyle = TextStyle(
       fontSize: 20,
-      color: Colors.grey[600],
+      color: AppColors.actorText,
     );
     final TextStyle subtitleTextStyle = TextStyle(
       fontSize: 22,
       fontWeight: FontWeight.w500,
-      color: Colors.grey,
+      color: AppColors.subtitle,
     );
     final padding = EdgeInsets.symmetric(horizontal: 12);
 
@@ -85,7 +86,7 @@ class ActorDisplay extends StatelessWidget {
                       "Birthday:",
                       style: birthdayFontStyle.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: Colors.grey[800],
+                        color: AppColors.actorBirthdayPrefix,
                       ),
                     ),
                     Text(
@@ -97,7 +98,7 @@ class ActorDisplay extends StatelessWidget {
                 SizedBox(height: 8),
                 Text(
                   actorInfo.bio,
-                  style: TextStyle(color: Colors.grey[600]),
+                  style: TextStyle(color: AppColors.actorText),
                 ),
                 SizedBox(height: 12),
                 Text(

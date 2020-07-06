@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 
 class CustomBackButton extends StatelessWidget {
   @override
@@ -7,7 +8,7 @@ class CustomBackButton extends StatelessWidget {
       borderRadius: BorderRadius.only(bottomRight: Radius.circular(32)),
       child: Material(
         type: MaterialType.button,
-        color: Colors.white54,
+        color: AppColors.backButtonBackground,
         child: BackButton(),
       ),
     );

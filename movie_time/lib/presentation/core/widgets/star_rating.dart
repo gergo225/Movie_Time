@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 
 class StarRating extends StatelessWidget {
   final double rating;
@@ -24,7 +25,7 @@ class StarRating extends StatelessWidget {
       return Icon(
         icon,
         size: starSize,
-        color: Colors.yellow,
+        color: AppColors.star,
       );
     }
 

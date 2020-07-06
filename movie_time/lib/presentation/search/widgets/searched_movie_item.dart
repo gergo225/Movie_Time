@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/search/searched_movie_info.dart';
+import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/movie_info_page.dart';
 
@@ -19,10 +20,9 @@ class SearchedMovieItem extends StatelessWidget {
       onTap: () => openMoviePage(searchedMovieInfo.id, context),
       child: Container(
         height: itemHeight,
-        
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(4)
+          color: AppColors.searchedMovieBackground,
+          borderRadius: BorderRadius.circular(4),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -60,7 +60,9 @@ class SearchedMovieItem extends StatelessWidget {
                           rating: searchedMovieInfo.rating, starSize: 20),
                       Text(
                         "${searchedMovieInfo.rating}",
-                        style: TextStyle(color: Colors.grey[600]),
+                        style: TextStyle(
+                          color: AppColors.searchedMovieRating,
+                        ),
                       ),
                     ],
                   ),

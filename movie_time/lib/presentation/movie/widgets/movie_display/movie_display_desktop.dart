@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
+import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/widgets/platform_independent_image.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/widgets/widgets.dart';
@@ -70,7 +71,7 @@ class MovieDisplayDesktop extends StatelessWidget {
                   Text("Play trailer", style: TextStyle(fontSize: 24)),
                   Icon(
                     Icons.play_arrow,
-                    color: Colors.red,
+                    color: AppColors.trailerPlayButtonWeb,
                     size: 32,
                   ),
                 ]),
@@ -98,7 +99,10 @@ class MovieDisplayDesktop extends StatelessWidget {
         ),
         Text(
           movieInfo.genresString,
-          style: TextStyle(fontSize: 18, color: Colors.grey[700]),
+          style: TextStyle(
+            fontSize: 18,
+            color: AppColors.genresAndRatingWeb,
+          ),
         ),
         SizedBox(height: 8),
         Row(
@@ -110,7 +114,10 @@ class MovieDisplayDesktop extends StatelessWidget {
             ),
             Text(
               movieInfo.rating.toString(),
-              style: TextStyle(fontSize: 24, color: Colors.grey[700]),
+              style: TextStyle(
+                fontSize: 24,
+                color: AppColors.genresAndRatingWeb,
+              ),
             ),
           ],
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/search/search_bloc.dart';
 
@@ -31,7 +32,7 @@ class _SearchInputState extends State<SearchInput> {
               decoration: InputDecoration(
                 hintText: "Search for movies",
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: AppColors.searchBarFill,
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
                 contentPadding: EdgeInsets.only(left: 12),

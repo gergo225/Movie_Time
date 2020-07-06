@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 
 class CustomListItem extends StatelessWidget {
@@ -59,8 +60,8 @@ class CustomListItem extends StatelessWidget {
     Color backgroundColor,
     Color textColor,
   })  : assert(topText != null && bottomText != null),
-        backgroundColor = backgroundColor ?? Colors.white,
-        textColor = textColor ?? Colors.black,
+        backgroundColor = backgroundColor ?? AppColors.defaultCustomListItemBackground,
+        textColor = textColor ?? AppColors.defaultCustomListItemText,
         super(key: key);
 
   @override

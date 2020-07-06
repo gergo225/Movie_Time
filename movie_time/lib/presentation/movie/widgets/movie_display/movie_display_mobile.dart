@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
 import 'package:movie_time/presentation/core/utils/color_utils.dart';
+import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/widgets/widgets.dart';
 import 'package:palette_generator/palette_generator.dart';
@@ -22,11 +23,11 @@ class MovieDisplayMobile extends StatefulWidget {
 class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
   bool initialising = true;
 
-  Color backgroundColor = Colors.white;
-  Color textColor = Colors.black;
-  Color subtitleTextColor = Colors.black;
-  Color actorBackgroundColor = Colors.white;
-  Color actorTextColor = Colors.black;
+  Color backgroundColor = AppColors.defaultMovieBackground;
+  Color textColor = AppColors.defaultMovieText;
+  Color subtitleTextColor = AppColors.defaultMovieSubtitle;
+  Color actorBackgroundColor = AppColors.defaultCustomListItemBackground;
+  Color actorTextColor = AppColors.defaultCustomListItemText;
 
   @override
   void initState() {

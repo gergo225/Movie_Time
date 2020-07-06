@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_time/domain/home/home_info.dart';
 import 'package:movie_time/domain/home/movie_list.dart';
 import 'package:movie_time/domain/home/short_movie_info.dart';
+import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/movie_info_page.dart';
 import 'package:movie_time/presentation/search/search_page.dart';
@@ -103,8 +104,28 @@ class _HomeDisplayState extends State<HomeDisplay> {
                         ),
                         Positioned(
                           top: 0,
+                          left: 0,
                           right: 0,
-                          child: _buildSearchButton(),
+                          child: Container(
+                            color: AppColors.appBarBackground,
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: 32,
+                                ),
+                                Spacer(),
+                                Text(
+                                  "Movies",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Spacer(),
+                                _buildSearchButton(),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -119,20 +140,17 @@ class _HomeDisplayState extends State<HomeDisplay> {
   }
 
   Widget _buildSearchButton() {
-    return ClipRRect(
-      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(24)),
-      child: Material(
-        color: Colors.white54,
-        type: MaterialType.button,
-        child: IconButton(
-          icon: Icon(Icons.search),
-          iconSize: 28,
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => SearchPage(),
-            ));
-          },
-        ),
+    return Material(
+      color: AppColors.appBarIconBackground,
+      type: MaterialType.button,
+      child: IconButton(
+        icon: Icon(Icons.search),
+        iconSize: 28,
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => SearchPage(),
+          ));
+        },
       ),
     );
   }
@@ -149,7 +167,9 @@ class _HomeDisplayState extends State<HomeDisplay> {
         bool isSelected = index == selectedListIndex;
         return FlatButton(
           visualDensity: VisualDensity.compact,
-          color: isSelected ? Colors.blue : Colors.grey.withOpacity(0.4),
+          color: isSelected
+              ? AppColors.categoryBackgroundSelected
+              : AppColors.categoryBackgroundUnselected,
           onPressed: () {
             setState(() {
               if (index != selectedListIndex) {
@@ -166,7 +186,9 @@ class _HomeDisplayState extends State<HomeDisplay> {
             movieListNames[index],
             style: TextStyle(
               fontSize: 17,
-              color: isSelected ? Colors.black.withAlpha(210) : Colors.white,
+              color: isSelected
+                  ? AppColors.categoryTextSelected
+                  : AppColors.categoryTextUnselected,
             ),
           ),
           shape: RoundedRectangleBorder(
@@ -230,10 +252,10 @@ class _HomeDisplayState extends State<HomeDisplay> {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 24,
-                      color: Colors.white.withOpacity(.8),
+                      color: AppColors.homeMovieTitle,
                       shadows: [
                         Shadow(
-                          color: Colors.black,
+                          color: AppColors.homeMovieTitleShadow,
                           blurRadius: 4,
                           offset: Offset(.5, 1),
                         )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/movie/short_actor_info.dart';
 import 'package:movie_time/presentation/actor/actor_page.dart';
+import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 
 class ActorInfoItem extends StatelessWidget {
@@ -34,8 +35,8 @@ class ActorInfoItem extends StatelessWidget {
     Color backgroundColor,
     Color textColor,
   })  : assert(actorInfo != null),
-        backgroundColor = backgroundColor ?? Colors.white,
-        textColor = textColor ?? Colors.black,
+        backgroundColor = backgroundColor ?? AppColors.defaultCustomListItemBackground,
+        textColor = textColor ?? AppColors.defaultCustomListItemText,
         super(key: key);
 
   @override
