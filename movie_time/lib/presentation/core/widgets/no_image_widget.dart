@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/utils/res/app_strings.dart';
+import 'package:movie_time/presentation/core/utils/res/app_text_styles.dart';
 
 class NoImageWidget extends StatelessWidget {
   final double aspectRatio;
@@ -29,10 +29,7 @@ class NoImageWidget extends StatelessWidget {
         child: Center(
           child: Text(
             AppStrings.noImage,
-            style: TextStyle(
-              fontSize: 12,
-              color: AppColors.noImageBackground,
-            ),
+            style: AppTextStyles.noImage,
             textAlign: TextAlign.center,
           ),
         ),

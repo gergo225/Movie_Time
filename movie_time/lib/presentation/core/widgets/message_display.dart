@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_time/presentation/core/utils/res/app_text_styles.dart';
 
 class MessageDisplay extends StatelessWidget {
   final String message;
@@ -14,7 +15,7 @@ class MessageDisplay extends StatelessWidget {
         child: SingleChildScrollView(
           child: Text(
             message,
-            style: TextStyle(fontSize: 16),
+            style: AppTextStyles.messageDisplay,
             textAlign: TextAlign.center,
           ),
         ),

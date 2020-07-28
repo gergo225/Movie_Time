@@ -6,6 +6,7 @@ import 'package:movie_time/domain/movie/movie_info.dart';
 import 'package:movie_time/presentation/core/utils/color_utils.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/utils/res/app_strings.dart';
+import 'package:movie_time/presentation/core/utils/res/app_text_styles.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/widgets/widgets.dart';
 import 'package:palette_generator/palette_generator.dart';
@@ -145,8 +146,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
                         ),
                         Text(
                           widget.movieInfo.genresString,
-                          style: TextStyle(
-                            fontSize: 13,
+                          style: AppTextStyles.movieGenres.copyWith(
                             color: textColor.withOpacity(0.4),
                           ),
                         ),
@@ -182,9 +182,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
       children: [
         Text(
           value,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
+          style: AppTextStyles.movieValueAndDescriptionValue.copyWith(
             color: textColor,
           ),
         ),
@@ -197,9 +195,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
   }
 
   Widget _moviePartBottom(BuildContext context) {
-    final TextStyle subtitleTextStyle = TextStyle(
-      fontSize: 22,
-      fontWeight: FontWeight.w500,
+    final TextStyle subtitleTextStyle = AppTextStyles.subtitle.copyWith(
       color: subtitleTextColor,
     );
     var padding = EdgeInsets.symmetric(horizontal: 12);

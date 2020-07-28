@@ -39,9 +39,9 @@ class AppColors {
   static const categoryTextUnselected = Colors.white;
   static const homeMovieTitle = const Color(0xccffffff);
   static const homeMovieTitleShadow = Colors.black;
-  // Home page - web
-  static const trailerPlayButtonWeb = Colors.red;
-  static const genresAndRatingWeb = const Color(0xff616161);
+  // Home page - desktop
+  static const trailerPlayButtonDesktop = Colors.red;
+  static const genresAndRatingDesktop = const Color(0xff616161);
 
   // Movie page
   static const defaultMovieBackground = Colors.white;

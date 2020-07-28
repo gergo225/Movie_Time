@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/utils/res/app_strings.dart';
+import 'package:movie_time/presentation/core/utils/res/app_text_styles.dart';
 import 'package:movie_time/presentation/core/widgets/platform_independent_image.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/widgets/widgets.dart';
@@ -71,11 +72,11 @@ class MovieDisplayDesktop extends StatelessWidget {
                 child: Row(children: [
                   Text(
                     AppStrings.playTrailer,
-                    style: TextStyle(fontSize: 24),
+                    style: AppTextStyles.moviePlayTrailerDesktop,
                   ),
                   Icon(
                     Icons.play_arrow,
-                    color: AppColors.trailerPlayButtonWeb,
+                    color: AppColors.trailerPlayButtonDesktop,
                     size: 32,
                   ),
                 ]),
@@ -99,14 +100,11 @@ class MovieDisplayDesktop extends StatelessWidget {
       children: [
         Text(
           movieInfo.title,
-          style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+          style: AppTextStyles.movieTitleDesktop,
         ),
         Text(
           movieInfo.genresString,
-          style: TextStyle(
-            fontSize: 18,
-            color: AppColors.genresAndRatingWeb,
-          ),
+          style: AppTextStyles.movieGenresDesktop,
         ),
         SizedBox(height: 8),
         Row(
@@ -118,10 +116,7 @@ class MovieDisplayDesktop extends StatelessWidget {
             ),
             Text(
               movieInfo.rating.toString(),
-              style: TextStyle(
-                fontSize: 24,
-                color: AppColors.genresAndRatingWeb,
-              ),
+              style: AppTextStyles.movieRatingDesktop,
             ),
           ],
         ),
@@ -144,7 +139,7 @@ class MovieDisplayDesktop extends StatelessWidget {
         SizedBox(height: 24),
         Text(
           AppStrings.actors,
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+          style: AppTextStyles.subtitleDesktop,
         ),
         LimitedBox(
           maxWidth: 482,

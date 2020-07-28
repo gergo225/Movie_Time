@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/search/searched_movie_info.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
+import 'package:movie_time/presentation/core/utils/res/app_text_styles.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/movie_info_page.dart';
 
@@ -46,7 +47,7 @@ class SearchedMovieItem extends StatelessWidget {
                     searchedMovieInfo.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    style: AppTextStyles.searchedMovieItemTitle,
                   ),
                   SizedBox(height: 2),
                   Text(

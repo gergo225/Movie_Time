@@ -6,6 +6,7 @@ import 'package:movie_time/domain/home/movie_list.dart';
 import 'package:movie_time/domain/home/short_movie_info.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/utils/res/app_strings.dart';
+import 'package:movie_time/presentation/core/utils/res/app_text_styles.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/movie_info_page.dart';
 import 'package:movie_time/presentation/search/search_page.dart';
@@ -151,10 +152,7 @@ class _HomeDisplayState extends State<HomeDisplay> {
                                 Spacer(),
                                 Text(
                                   AppStrings.movies,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                  style: AppTextStyles.homeAppBarTitle,
                                 ),
                                 Spacer(),
                                 _buildSearchButton(),
@@ -233,12 +231,9 @@ class _HomeDisplayState extends State<HomeDisplay> {
           },
           child: Text(
             movieListNames[index],
-            style: TextStyle(
-              fontSize: 17,
-              color: isSelected
-                  ? AppColors.categoryTextSelected
-                  : AppColors.categoryTextUnselected,
-            ),
+            style: isSelected
+                ? AppTextStyles.homeCategorySelected
+                : AppTextStyles.homeCategoryUnselected,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
@@ -299,18 +294,7 @@ class _HomeDisplayState extends State<HomeDisplay> {
                     movieInfo.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: AppColors.homeMovieTitle,
-                      shadows: [
-                        Shadow(
-                          color: AppColors.homeMovieTitleShadow,
-                          blurRadius: 4,
-                          offset: Offset(.5, 1),
-                        )
-                      ],
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: AppTextStyles.homeMovieTitle,
                   ),
                 ),
               ],
