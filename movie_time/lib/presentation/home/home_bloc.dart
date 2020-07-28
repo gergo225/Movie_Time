@@ -14,7 +14,9 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final GetHomeInfo getHomeInfo;
 
-  HomeBloc({@required this.getHomeInfo}) : assert(getHomeInfo != null);
+  HomeBloc({@required this.getHomeInfo})
+      : assert(getHomeInfo != null),
+        super(null);
 
   @override
   HomeState get initialState => Loading();

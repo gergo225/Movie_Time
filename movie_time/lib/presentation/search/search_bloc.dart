@@ -15,7 +15,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
   SearchBloc({@required SearchMovieByTitle byTitle})
       : assert(byTitle != null),
-        searchMovieByTitle = byTitle;
+        searchMovieByTitle = byTitle,
+        super(null);
 
   @override
   SearchState get initialState => Empty();

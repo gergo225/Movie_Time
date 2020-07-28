@@ -17,7 +17,8 @@ class MovieInfoBloc extends Bloc<MovieInfoEvent, MovieInfoState> {
   MovieInfoBloc({
     @required GetMovieById byId,
   })  : assert(byId != null),
-        getMovieById = byId;
+        getMovieById = byId,
+        super(null);
 
   @override
   MovieInfoState get initialState => Loading();

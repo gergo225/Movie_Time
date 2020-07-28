@@ -13,7 +13,9 @@ part 'actor_state.dart';
 class ActorBloc extends Bloc<ActorEvent, ActorState> {
   final GetActorById getActorById;
 
-  ActorBloc({@required this.getActorById}) : assert(getActorById != null);
+  ActorBloc({@required this.getActorById})
+      : assert(getActorById != null),
+        super(null);
 
   @override
   ActorState get initialState => Loading();
