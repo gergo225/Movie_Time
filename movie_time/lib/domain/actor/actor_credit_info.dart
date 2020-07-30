@@ -2,13 +2,13 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:movie_time/domain/core/image_link_creator.dart';
 
-class ActorMovieInfo extends Equatable {
+class ActorCreditInfo extends Equatable {
   final int id;
   final String title;
   final String character;
   final String posterPath;
 
-  ActorMovieInfo({
+  ActorCreditInfo({
     @required this.id,
     @required this.title,
     @required this.character,

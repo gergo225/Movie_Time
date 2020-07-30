@@ -4,7 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:movie_time/domain/core/failure.dart';
 import 'package:movie_time/domain/movie/get_movie_by_id.dart';
 import 'package:movie_time/domain/movie/movie_info.dart';
-import 'package:movie_time/domain/movie/short_actor_info.dart';
+import 'package:movie_time/domain/core/short_actor_info.dart';
 import 'package:movie_time/presentation/movie/movie_info_bloc.dart';
 
 class MockGetMovieById extends Mock implements GetMovieById {}

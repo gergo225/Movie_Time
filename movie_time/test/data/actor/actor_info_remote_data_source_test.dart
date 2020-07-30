@@ -45,7 +45,7 @@ void main() {
         // act
         dataSource.getActorById(actorId);
         // assert
-        verify(mockHttpClient.get("https://api.themoviedb.org/3/person/$actorId?api_key=$API_KEY&append_to_response=movie_credits"));
+        verify(mockHttpClient.get("https://api.themoviedb.org/3/person/$actorId?api_key=$API_KEY&append_to_response=combined_credits"));
       },
     );
 

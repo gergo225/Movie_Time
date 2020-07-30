@@ -99,9 +99,9 @@ class ActorDisplay extends StatelessWidget {
             child: ListView.separated(
               padding: padding,
               scrollDirection: Axis.horizontal,
-              itemCount: actorInfo.movies.length,
+              itemCount: actorInfo.credits.length,
               itemBuilder: (context, index) {
-                final movieInfo = actorInfo.movies[index];
+                final movieInfo = actorInfo.credits[index];
                 return GestureDetector(
                   onTap: () {
                     _navigateToMovie(context, movieInfo.id);

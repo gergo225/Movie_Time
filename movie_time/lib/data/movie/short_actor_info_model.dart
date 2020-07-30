@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:movie_time/domain/movie/short_actor_info.dart';
+import 'package:movie_time/domain/core/short_actor_info.dart';
 
 class ShortActorInfoModel extends ShortActorInfo {
   ShortActorInfoModel({

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:movie_time/domain/actor/actor_movie_info.dart';
+import 'package:movie_time/domain/actor/actor_credit_info.dart';
 import 'package:movie_time/domain/core/image_link_creator.dart';
 
 class ActorInfo extends Equatable {
@@ -9,7 +9,7 @@ class ActorInfo extends Equatable {
   final String bio;
   final String birthday;
   final String imagePath;
-  final List<ActorMovieInfo> movies;
+  final List<ActorCreditInfo> credits;
 
   ActorInfo({
     @required this.id,
@@ -17,12 +17,12 @@ class ActorInfo extends Equatable {
     @required this.bio,
     @required this.birthday,
     @required this.imagePath,
-    @required this.movies,
+    @required this.credits,
   });
 
   String get imagePathUrl => createSmallImageLink(imagePath);
   String get birthdayString => (birthday != null) ? "$birthday" : "-";
 
   @override
-  List get props => [id, name, bio, birthday, imagePath, movies];
+  List get props => [id, name, bio, birthday, imagePath, credits];
 }

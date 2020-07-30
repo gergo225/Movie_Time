@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:movie_time/domain/core/image_link_creator.dart';
 import 'package:movie_time/domain/core/date_utils.dart';
-import 'package:movie_time/domain/movie/short_actor_info.dart';
+import 'package:movie_time/domain/core/short_actor_info.dart';
 
 class MovieInfo extends Equatable {
   final String title;

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:movie_time/data/actor/actor_movie_info_model.dart';
+import 'package:movie_time/data/actor/actor_credit_info_model.dart';
 import 'package:movie_time/domain/actor/actor_info.dart';
-import 'package:movie_time/domain/actor/actor_movie_info.dart';
+import 'package:movie_time/domain/actor/actor_credit_info.dart';
 
 class ActorInfoModel extends ActorInfo {
   ActorInfoModel({
@@ -10,14 +10,14 @@ class ActorInfoModel extends ActorInfo {
     @required String bio,
     @required String birthday,
     @required String imagePath,
-    @required List<ActorMovieInfo> movies,
+    @required List<ActorCreditInfo> credits,
   }) : super(
           id: id,
           name: name,
           bio: bio,
           birthday: birthday,
           imagePath: imagePath,
-          movies: movies,
+          credits: credits,
         );
 
   factory ActorInfoModel.fromJson(Map<String, dynamic> json) {
@@ -27,9 +27,9 @@ class ActorInfoModel extends ActorInfo {
       bio: json["biography"],
       imagePath: json["profile_path"],
       birthday: json["birthday"],
-      movies: List<ActorMovieInfo>.from(
-        json["movie_credits"]["cast"].map(
-          (actorMovieJson) => ActorMovieInfoModel.fromJson(actorMovieJson),
+      credits: List<ActorCreditInfo>.from(
+        json["combined_credits"]["cast"].map(
+          (actorCreditJson) => ActorCreditInfoModel.fromJson(actorCreditJson),
         ),
       ),
     );

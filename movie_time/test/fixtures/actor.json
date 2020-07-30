@@ -4,53 +4,32 @@
     "deathday": null,
     "id": 287,
     "name": "Brad Pitt",
-    "movie_credits": {
+    "combined_credits": {
         "cast": [
             {
-                "poster_path": "/oV3BVdY3UtEHRxpixmntpxHJwSc.jpg",
-                "adult": false,
-                "backdrop_path": "/3guCfwRt3MrmO6q56I4F5xN1LYB.jpg",
-                "vote_count": 4859,
-                "video": false,
                 "id": 163,
-                "popularity": 28.893,
-                "genre_ids": [
-                    80,
-                    53
-                ],
                 "original_language": "en",
-                "title": "Ocean's Twelve",
                 "original_title": "Ocean's Twelve",
-                "release_date": "2004-12-09",
-                "character": "Rusty Ryan",
-                "vote_average": 6.5,
                 "overview": "Danny Ocean reunites with his old flame and the rest of his merry band of thieves in carrying out three huge heists in Rome, Paris and Amsterdam - but a Europol agent is hot on their heels.",
-                "credit_id": "52fe4221c3a36847f80062e5"
-            }
-        ],
-        "crew": [
-            {
-                "id": 402970,
-                "department": "Crew",
-                "original_language": "en",
-                "original_title": "Notes on an American Film Director at Work",
-                "job": "Thanks",
-                "overview": "Filmmaker Jonas Mekas follows his friend, film director Martin Scorsese, and his cast and crew, through various locations during the shooting of his film The Departed, released in 2006.",
-                "genre_ids": [
-                    99
-                ],
+                "vote_count": 1925,
                 "video": false,
-                "credit_id": "5ebdf4f1bc8abc0022c2e548",
-                "release_date": "2008-01-01",
-                "popularity": 3.428,
-                "vote_average": 0,
-                "vote_count": 0,
-                "title": "Notes on an American Film Director at Work",
+                "media_type": "movie",
+                "credit_id": "52fe4221c3a36847f80062e5",
+                "vote_average": 6.4,
+                "character": "Rusty Ryan",
+                "popularity": 2.985544,
+                "release_date": "2004-12-09",
+                "title": "Ocean's Twelve",
+                "genre_ids": [
+                  80,
+                  53
+                ],
                 "adult": false,
-                "backdrop_path": "/1Q0FrRbywFPjseam7mwt6MYKXe7.jpg",
-                "poster_path": "/8Ah2goGOhoR1i7jwOOaie10reoS.jpg"
-            }
-        ]
+                "backdrop_path": "/5AZ8fm3SZ6ANigK1NtfbhPy6mbm.jpg",
+                "poster_path": "/nS3iDLQuy13XY1JH58NNl1rCuNN.jpg"
+              }
+        ],
+        "id": 287
     },
     "also_known_as": [
         "William Bradley \"Brad\" Pitt",

@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
-import 'package:movie_time/domain/actor/actor_movie_info.dart';
+import 'package:movie_time/domain/actor/actor_credit_info.dart';
 
-class ActorMovieInfoModel extends ActorMovieInfo {
-  ActorMovieInfoModel({
+class ActorCreditInfoModel extends ActorCreditInfo {
+  ActorCreditInfoModel({
     @required int id,
     @required String title,
     @required String character,
@@ -14,8 +14,8 @@ class ActorMovieInfoModel extends ActorMovieInfo {
           posterPath: posterPath,
         );
 
-  factory ActorMovieInfoModel.fromJson(Map<String, dynamic> json) {
-    return ActorMovieInfoModel(
+  factory ActorCreditInfoModel.fromJson(Map<String, dynamic> json) {
+    return ActorCreditInfoModel(
       id: json["id"],
       title: json["title"],
       character: json["character"],

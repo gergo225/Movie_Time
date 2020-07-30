@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_time/domain/movie/short_actor_info.dart';
+import 'package:movie_time/domain/core/short_actor_info.dart';
 import 'package:movie_time/presentation/actor/actor_page.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
