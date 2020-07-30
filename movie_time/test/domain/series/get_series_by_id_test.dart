@@ -4,6 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:movie_time/domain/actor/actor_credit_info.dart';
 import 'package:movie_time/domain/actor/actor_info.dart';
 import 'package:movie_time/domain/core/failure.dart';
+import 'package:movie_time/domain/core/short_actor_info.dart';
 import 'package:movie_time/domain/series/get_series_by_id.dart';
 import 'package:movie_time/domain/series/series_info.dart';
 import 'package:movie_time/domain/series/series_info_repository.dart';
@@ -25,19 +26,11 @@ void main() {
   final seriesInfo = SeriesInfo(
     name: "Test Series Title",
     actors: [
-      ActorInfo(
-        bio: "Well, this is a short one.",
-        name: "Main Man",
-        birthday: "1987-04-12",
-        credits: [
-          ActorCreditInfo(
-              id: 2001,
-              character: "Mr. Nobody",
-              posterPath: "/20gb292209gna2g2g.jpg",
-              title: "This doesn't exist"),
-        ],
+      ShortActorInfo(
+        name: "Mainie Marrgie",
         id: 69,
-        imagePath: "/path1mga1g3ga.jpg",
+        character: "Main Man",
+        profileImagePath: "/path1mga1g3ga.jpg",
       ),
     ],
     backdropPath: "/ba224ga9gb3g0g8n9e.jpg",

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:movie_time/domain/actor/actor_info.dart';
+import 'package:movie_time/domain/core/short_actor_info.dart';
 
 class SeriesInfo extends Equatable {
   final int id;
@@ -14,7 +14,7 @@ class SeriesInfo extends Equatable {
   final String backdropPath;
   final int seasonCount;
   final String status;
-  final List<ActorInfo> actors;
+  final List<ShortActorInfo> actors;
   final String latestEpisodeReleaseDate;
   final String nextEpisodeReleaseDate;
 
