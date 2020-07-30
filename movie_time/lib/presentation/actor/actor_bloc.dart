@@ -15,10 +15,7 @@ class ActorBloc extends Bloc<ActorEvent, ActorState> {
 
   ActorBloc({@required this.getActorById})
       : assert(getActorById != null),
-        super(null);
-
-  @override
-  ActorState get initialState => Loading();
+        super(Loading());
 
   @override
   Stream<ActorState> mapEventToState(

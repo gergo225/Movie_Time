@@ -22,7 +22,7 @@ void main() {
 
   test("initial state should be Empty", () {
     // assert
-    expect(bloc.initialState, equals(Empty()));
+    expect(bloc.state, equals(Empty()));
   });
 
   group("GetSearchesForTitle", () {

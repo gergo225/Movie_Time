@@ -22,7 +22,7 @@ void main() {
   });
 
   test("initial state should be Loading", () {
-    expect(bloc.initialState, equals(Loading()));
+    expect(bloc.state, equals(Loading()));
   });
 
   group("GetInfoForHome", () {
