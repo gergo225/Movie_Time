@@ -1,0 +1,43 @@
+{
+    "_id": "5256c89f19c2956ff6046d47",
+    "air_date": "2011-04-17",
+    "episodes": [
+        {
+            "air_date": "2011-04-17",
+            "crew": [
+                {
+                    "id": 44797,
+                    "credit_id": "5256c8a219c2956ff6046e77",
+                    "name": "Tim Van Patten",
+                    "department": "Directing",
+                    "job": "Director",
+                    "profile_path": "/6b7l9YbkDHDOzOKUFNqBVaPjcgm.jpg"
+                }
+            ],
+            "episode_number": 1,
+            "guest_stars": [
+                {
+                    "id": 117642,
+                    "name": "Jason Momoa",
+                    "credit_id": "5256c8a219c2956ff6046f40",
+                    "character": "Khal Drogo",
+                    "order": 0,
+                    "profile_path": "/PSK6GmsVwdhqz9cd1lwzC6a7EA.jpg"
+                }
+            ],
+            "name": "Winter Is Coming",
+            "overview": "Jon Arryn, the Hand of the King, is dead.",
+            "id": 63056,
+            "production_code": "101",
+            "season_number": 1,
+            "still_path": "/wrGWeW4WKxnaeA8sxJb2T9O6ryo.jpg",
+            "vote_average": 7.11904761904762,
+            "vote_count": 21
+        }
+    ],
+    "name": "Season 1",
+    "overview": "Trouble is brewing in the Seven Kingdoms of Westeros.",
+    "id": 3624,
+    "poster_path": "/olJ6ivXxCMq3cfujo1IRw30OrsQ.jpg",
+    "season_number": 1
+}
