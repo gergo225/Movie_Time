@@ -1,8 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:movie_time/domain/actor/actor_credit_info.dart';
-import 'package:movie_time/domain/actor/actor_info.dart';
 import 'package:movie_time/domain/core/failure.dart';
 import 'package:movie_time/domain/core/short_actor_info.dart';
 import 'package:movie_time/domain/series/get_series_by_id.dart';
