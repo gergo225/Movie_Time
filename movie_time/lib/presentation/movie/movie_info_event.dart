@@ -7,7 +7,7 @@ abstract class MovieInfoEvent extends Equatable {
 }
 
 class GetInfoForMovieById extends MovieInfoEvent {
-  final movieId;
+  final int movieId;
 
   GetInfoForMovieById(this.movieId);
 

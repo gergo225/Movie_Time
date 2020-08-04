@@ -7,7 +7,7 @@ abstract class SearchEvent extends Equatable {
 }
 
 class GetSearchesForTitle extends SearchEvent {
-  final movieTitle;
+  final String movieTitle;
 
   GetSearchesForTitle(this.movieTitle);
 

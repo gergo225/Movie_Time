@@ -7,7 +7,7 @@ abstract class ActorEvent extends Equatable {
 }
 
 class GetInfoForActorById extends ActorEvent {
-  final actorId;
+  final int actorId;
 
   GetInfoForActorById(this.actorId);
 
