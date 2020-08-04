@@ -45,12 +45,16 @@ void main() {
       verify(mockGetActorById(Params(id: actorId)));
     });
 
-    test("should emit [Loading, Loaded] when data is gotten successfully", () async {
+    test("initial state should be Loading", () async {
+      // assert
+      expect(bloc.state, equals(Loading()));
+    });
+
+    test("should emit [Loaded] when data is gotten successfully", () async {
       // arrange
       when(mockGetActorById(any)).thenAnswer((_) async => Right(actorInfo));
       // assert later
       final expected = [
-        Loading(),
         Loaded(actor: actorInfo),
       ];
       expectLater(bloc, emitsInOrder(expected));
@@ -58,12 +62,11 @@ void main() {
       bloc.add(GetInfoForActorById(actorId));
     });
 
-    test("should emit [Loading, Error] when getting data fails", () async {
+    test("should emit [Error] when getting data fails", () async {
       // arrange
       when(mockGetActorById(any)).thenAnswer((_) async => Left(ServerFailure()));
       // assert later
       final expected = [
-        Loading(),
         Error(message: SERVER_FAILURE_MESSAGE),
       ];
       expectLater(bloc, emitsInOrder(expected));

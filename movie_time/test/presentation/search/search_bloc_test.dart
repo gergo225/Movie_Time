@@ -58,7 +58,6 @@ void main() {
             .thenAnswer((_) async => Right(searchResult));
         // assert later
         final expected = [
-          Empty(),
           Loading(),
           Loaded(searchResult: searchResult),
         ];
@@ -76,7 +75,6 @@ void main() {
             .thenAnswer((_) async => Left(ServerFailure()));
         // assert later
         final expected = [
-          Empty(),
           Loading(),
           Error(message: SERVER_FAILURE_MESSAGE),
         ];

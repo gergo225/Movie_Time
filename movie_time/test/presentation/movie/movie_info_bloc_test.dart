@@ -57,14 +57,18 @@ void main() {
       },
     );
 
+    test("initial state should be Loading", () async {
+      // assert
+      expect(bloc.state, equals(Loading()));
+    });
+
     test(
-      "should emit [Loading, Loaded] when data is gotten successfully",
+      "should emit [Loaded] when data is gotten successfully",
       () async {
         // arrange
         when(mockGetMovieById(any)).thenAnswer((_) async => Right(movieInfo));
         // assert later
         final expected = [
-          Loading(),
           Loaded(movie: movieInfo),
         ];
         expectLater(bloc, emitsInOrder(expected));
@@ -74,14 +78,13 @@ void main() {
     );
 
     test(
-      "should emit [Loading, Error] when getting data fails",
+      "should emit [Error] when getting data fails",
       () async {
         // arrange
         when(mockGetMovieById(any))
             .thenAnswer((_) async => Left(ServerFailure()));
         // assert later
         final expected = [
-          Loading(),
           Error(message: SERVER_FAILURE_MESSAGE),
         ];
         expectLater(bloc, emitsInOrder(expected));

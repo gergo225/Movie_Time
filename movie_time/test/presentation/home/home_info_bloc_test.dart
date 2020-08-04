@@ -21,10 +21,6 @@ void main() {
     bloc = HomeBloc(getHomeInfo: mockGetHomeInfo);
   });
 
-  test("initial state should be Loading", () {
-    expect(bloc.state, equals(Loading()));
-  });
-
   group("GetInfoForHome", () {
     final genreMovieList = MovieList(
       listName: "Action",
@@ -64,13 +60,15 @@ void main() {
       verify(mockGetHomeInfo(NoParams()));
     });
 
-    test("should emit [Loading, Loaded] when data is gotten successfully",
-        () async {
+    test("initial state should be Loading", () async {
+      expect(bloc.state, equals(Loading()));
+    });
+
+    test("should emit [Loaded] when data is gotten successfully", () async {
       // arrange
       when(mockGetHomeInfo(any)).thenAnswer((_) async => Right(homeInfo));
       // assert later
       final expected = [
-        Loading(),
         Loaded(homeInfo: homeInfo),
       ];
       expectLater(bloc, emitsInOrder(expected));
@@ -78,12 +76,11 @@ void main() {
       bloc.add(GetInfoForHome());
     });
 
-    test("should emit [Loading, Error] when getting data fails", () async {
+    test("should emit [Error] when getting data fails", () async {
       // arrange
       when(mockGetHomeInfo(any)).thenAnswer((_) async => Left(ServerFailure()));
       // assert later
       final expected = [
-        Loading(),
         Error(message: SERVER_FAILURE_MESSAGE),
       ];
       expectLater(bloc, emitsInOrder(expected));

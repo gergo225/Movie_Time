@@ -23,7 +23,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeEvent event,
   ) async* {
     if (event is GetInfoForHome) {
-      yield Loading();
       final failureOrHome = await getHomeInfo(NoParams());
       yield failureOrHome.fold(
         (failure) => Error(message: mapFailureToMessage(failure)),
