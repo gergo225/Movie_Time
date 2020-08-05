@@ -6,3 +6,4 @@ export 'custom_back_button.dart';
 export 'error_try_again.dart';
 export 'star_rating.dart';
 export 'custom_list_item.dart';
+export 'actor_info_item.dart';
