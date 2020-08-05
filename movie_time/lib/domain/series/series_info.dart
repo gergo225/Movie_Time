@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:movie_time/domain/core/date_utils.dart';
+import 'package:movie_time/domain/core/image_link_creator.dart';
 import 'package:movie_time/domain/core/short_actor_info.dart';
 
 class SeriesInfo extends Equatable {
@@ -52,4 +54,18 @@ class SeriesInfo extends Equatable {
         latestEpisodeReleaseDate,
         nextEpisodeReleaseDate,
       ];
+
+  String get posterPathUrl => createSmallImageLink(posterPath);
+  String get backdropPathUrl => createOriginalImageLink(backdropPath);
+  String get genresString => "${genres.take(3).join(", ")}";
+  String get releaseYearAndMonth => (releaseDate == "")
+      ? "-"
+      : "${releaseDate.substring(0, 4)} ${monthNumberAndName[releaseDate.substring(5, 7)]}";
+  String get latestEpisodeReleaseDateString =>
+      "${latestEpisodeReleaseDate.substring(0, 4)} ${monthNumberAndName[latestEpisodeReleaseDate.substring(5, 7)]} " +
+      "${latestEpisodeReleaseDate.substring(latestEpisodeReleaseDate.length - 2)}";
+  String get nextEpisodeReleaseDateString => (nextEpisodeReleaseDate != null)
+      ? "${latestEpisodeReleaseDate.substring(0, 4)} ${monthNumberAndName[latestEpisodeReleaseDate.substring(5, 7)]} " +
+          "${latestEpisodeReleaseDate.substring(latestEpisodeReleaseDate.length - 2)}"
+      : "-";
 }

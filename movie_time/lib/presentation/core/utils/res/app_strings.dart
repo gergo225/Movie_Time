@@ -1,7 +1,7 @@
 class AppStrings {
   static const String movie = "Movie";
 
-  // Movie page
+  // Movie, series page
   static const String rating = "Rating";
   static const String runtime = "Runtime";
   static const String release = "Release";
@@ -32,4 +32,11 @@ class AppStrings {
   static const String serverFailureMessage = "Server Failure";
   static const String connectionFailureMessage = "Connection Failure";
   static const String searchEmptyFailureMessage = "Please enter a title to search for";
+
+  // Series page
+  static const String status = "Status: ";
+  static const String seasonCount = "Seasons: ";
+  static const String lastAirDate = "Last episode air date: ";
+  static const String nextAirDate = "Next episode air date: ";
+  static const String allSeasons = "All seasons";
 }

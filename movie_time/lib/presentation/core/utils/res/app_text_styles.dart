@@ -75,7 +75,7 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
   );
 
-  // Movie page
+  // Movie, series page
   static const movieGenres = TextStyle(
     fontSize: 13,
   );
@@ -107,5 +107,17 @@ class AppTextStyles {
   static const searchedMovieItemTitle = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
+  );
+
+  // Series page
+  static const seriesInfoPrefix = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+  );
+  static const seriesInfo = TextStyle(
+    fontSize: 16,
+  );
+  static const seriesAllSeasons = TextStyle(
+    fontSize: 20,
   );
 }
