@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:movie_time/domain/core/date_utils.dart';
 import 'package:movie_time/domain/core/image_link_creator.dart';
 import 'package:movie_time/domain/core/short_actor_info.dart';
+import 'package:movie_time/domain/series/short_season_info.dart';
 
 class SeriesInfo extends Equatable {
   final int id;
@@ -19,6 +20,7 @@ class SeriesInfo extends Equatable {
   final List<ShortActorInfo> actors;
   final String latestEpisodeReleaseDate;
   final String nextEpisodeReleaseDate;
+  final List<ShortSeasonInfo> seasons;
 
   SeriesInfo({
     @required this.id,
@@ -35,6 +37,7 @@ class SeriesInfo extends Equatable {
     @required this.actors,
     @required this.latestEpisodeReleaseDate,
     @required this.nextEpisodeReleaseDate,
+    @required this.seasons,
   });
 
   @override
@@ -53,6 +56,7 @@ class SeriesInfo extends Equatable {
         actors,
         latestEpisodeReleaseDate,
         nextEpisodeReleaseDate,
+        seasons,
       ];
 
   String get posterPathUrl => createSmallImageLink(posterPath);

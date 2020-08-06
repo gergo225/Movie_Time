@@ -9,6 +9,7 @@ import 'package:movie_time/domain/series/get_series_season_by_number.dart'
     as season;
 import 'package:movie_time/domain/series/season_info.dart';
 import 'package:movie_time/domain/series/series_info.dart';
+import 'package:movie_time/domain/series/short_season_info.dart';
 import 'package:movie_time/presentation/series/series_bloc.dart';
 
 class MockGetSeriesById extends Mock implements series.GetSeriesById {}
@@ -65,6 +66,12 @@ void main() {
       releaseDate: "2011-04-17",
       seasonCount: 7,
       status: "Returning Series",
+      seasons: [
+        ShortSeasonInfo(
+          name: "Season 1",
+          posterPath: "/zwaj4egrhnXOBIit1tyb4Sbt3KP.jpg",
+        ),
+      ],
     );
 
     test(

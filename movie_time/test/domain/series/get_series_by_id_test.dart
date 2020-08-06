@@ -6,6 +6,7 @@ import 'package:movie_time/domain/core/short_actor_info.dart';
 import 'package:movie_time/domain/series/get_series_by_id.dart';
 import 'package:movie_time/domain/series/series_info.dart';
 import 'package:movie_time/domain/series/series_info_repository.dart';
+import 'package:movie_time/domain/series/short_season_info.dart';
 
 class MockSeriesInfoRepository extends Mock implements SeriesInfoRepository {}
 
@@ -22,31 +23,36 @@ void main() {
 
   final seriesId = 123;
   final seriesInfo = SeriesInfo(
-    name: "Test Series Title",
-    actors: [
-      ShortActorInfo(
-        name: "Mainie Marrgie",
-        id: 69,
-        character: "Main Man",
-        profileImagePath: "/path1mga1g3ga.jpg",
-      ),
-    ],
-    backdropPath: "/ba224ga9gb3g0g8n9e.jpg",
-    episodeRuntimeInMinutes: 48,
-    genres: [
-      "Action",
-      "Comedy",
-    ],
-    id: 1231,
-    latestEpisodeReleaseDate: "2017-08-27",
-    nextEpisodeReleaseDate: null,
-    overview: "How intersting this is!",
-    posterPath: "/wobg2y690b2bnag.jpg",
-    rating: 5.8,
-    releaseDate: "2013-07-03",
-    seasonCount: 8,
-    status: "Returning Series",
-  );
+      name: "Test Series Title",
+      actors: [
+        ShortActorInfo(
+          name: "Mainie Marrgie",
+          id: 69,
+          character: "Main Man",
+          profileImagePath: "/path1mga1g3ga.jpg",
+        ),
+      ],
+      backdropPath: "/ba224ga9gb3g0g8n9e.jpg",
+      episodeRuntimeInMinutes: 48,
+      genres: [
+        "Action",
+        "Comedy",
+      ],
+      id: 1231,
+      latestEpisodeReleaseDate: "2017-08-27",
+      nextEpisodeReleaseDate: null,
+      overview: "How intersting this is!",
+      posterPath: "/wobg2y690b2bnag.jpg",
+      rating: 5.8,
+      releaseDate: "2013-07-03",
+      seasonCount: 8,
+      status: "Returning Series",
+      seasons: [
+        ShortSeasonInfo(
+          name: "Season 1",
+          posterPath: "/zwaj4egrhnXOBIit1tyb4Sbt3KP.jpg",
+        ),
+      ]);
 
   test("should get series info of the series with id from the repository",
       () async {

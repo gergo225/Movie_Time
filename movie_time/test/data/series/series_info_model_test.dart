@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:movie_time/data/core/short_actor_info_model.dart';
 import 'package:movie_time/data/series/series_info_model.dart';
+import 'package:movie_time/data/series/short_season_info_model.dart';
 import 'package:movie_time/domain/series/series_info.dart';
 
 import '../../fixtures/fixture_reader.dart';
@@ -35,6 +36,12 @@ void main() {
     releaseDate: "2011-04-17",
     seasonCount: 7,
     status: "Returning Series",
+    seasons: [
+      ShortSeasonInfoModel(
+        name: "Season 1",
+        posterPath: "/zwaj4egrhnXOBIit1tyb4Sbt3KP.jpg",
+      ),
+    ],
   );
 
   test(

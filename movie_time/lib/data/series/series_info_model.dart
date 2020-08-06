@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:movie_time/data/core/short_actor_info_model.dart';
 import 'package:movie_time/domain/series/series_info.dart';
 
+import 'short_season_info_model.dart';
+
 class SeriesInfoModel extends SeriesInfo {
   SeriesInfoModel({
     @required int id,
@@ -18,6 +20,7 @@ class SeriesInfoModel extends SeriesInfo {
     @required List<ShortActorInfoModel> actors,
     @required String latestEpisodeReleaseDate,
     @required String nextEpisodeReleaseDate,
+    @required List<ShortSeasonInfoModel> seasons,
   }) : super(
           id: id,
           name: name,
@@ -33,6 +36,7 @@ class SeriesInfoModel extends SeriesInfo {
           actors: actors,
           latestEpisodeReleaseDate: latestEpisodeReleaseDate,
           nextEpisodeReleaseDate: nextEpisodeReleaseDate,
+          seasons: seasons,
         );
 
   factory SeriesInfoModel.fromJson(Map<String, dynamic> json) {
@@ -58,6 +62,11 @@ class SeriesInfoModel extends SeriesInfo {
       releaseDate: json["first_air_date"],
       seasonCount: json["number_of_seasons"],
       status: json["status"],
+      seasons: List<ShortSeasonInfoModel>.from(
+        json["seasons"].map(
+          (seasonJson) => ShortSeasonInfoModel.fromJson(seasonJson),
+        ),
+      ),
     );
   }
 }
