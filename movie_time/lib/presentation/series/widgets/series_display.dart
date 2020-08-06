@@ -3,11 +3,13 @@ import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/series/series_info.dart';
+import 'package:movie_time/domain/series/short_season_info.dart';
 import 'package:movie_time/presentation/core/utils/color_utils.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/utils/res/app_strings.dart';
 import 'package:movie_time/presentation/core/utils/res/app_text_styles.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
+import 'package:movie_time/presentation/series/all_seasons_page.dart';
 import 'package:palette_generator/palette_generator.dart';
 
 class SeriesDisplay extends StatefulWidget {
@@ -342,12 +344,19 @@ class _SeriesDisplayState extends State<SeriesDisplay> {
                 ],
               ),
               onPressed: () {
-                // TODO: Navigate to all seasons page
+                _navigateToAllSeasons(context, widget.seriesInfo.seasons);
               },
             ),
           ],
         ),
       ),
     );
+  }
+
+  void _navigateToAllSeasons(
+      BuildContext context, List<ShortSeasonInfo> seasons) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => AllSeasonsPage(seasons: seasons),
+    ));
   }
 }
