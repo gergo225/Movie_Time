@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:movie_time/data/movie/short_actor_info_model.dart';
-import 'package:movie_time/domain/core/short_actor_info.dart';
+import 'package:movie_time/data/core/short_actor_info_model.dart';
 import 'package:movie_time/domain/series/series_info.dart';
 
 class SeriesInfoModel extends SeriesInfo {
@@ -16,7 +15,7 @@ class SeriesInfoModel extends SeriesInfo {
     @required String backdropPath,
     @required int seasonCount,
     @required String status,
-    @required List<ShortActorInfo> actors,
+    @required List<ShortActorInfoModel> actors,
     @required String latestEpisodeReleaseDate,
     @required String nextEpisodeReleaseDate,
   }) : super(

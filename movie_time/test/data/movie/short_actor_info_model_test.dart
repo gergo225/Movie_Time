@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:movie_time/data/movie/short_actor_info_model.dart';
+import 'package:movie_time/data/core/short_actor_info_model.dart';
 import 'package:movie_time/domain/core/short_actor_info.dart';
 
 import '../../fixtures/fixture_reader.dart';
