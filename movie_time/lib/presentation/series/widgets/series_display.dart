@@ -155,8 +155,10 @@ class _SeriesDisplayState extends State<SeriesDisplay> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            _valueAndDescription(context,
-                                widget.seriesInfo.rating.toString(), "Rating"),
+                            _valueAndDescription(
+                                context,
+                                widget.seriesInfo.rating.toString(),
+                                AppStrings.rating),
                             _valueAndDescription(
                                 context,
                                 widget.seriesInfo.episodeRuntimeInMinutes

@@ -154,8 +154,10 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            _valueAndDescription(context,
-                                widget.movieInfo.rating.toString(), "Rating"),
+                            _valueAndDescription(
+                                context,
+                                widget.movieInfo.rating.toString(),
+                                AppStrings.rating),
                             _valueAndDescription(
                                 context,
                                 widget.movieInfo.runtimeInHoursAndMinutes,
