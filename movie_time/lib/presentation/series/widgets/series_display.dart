@@ -344,7 +344,8 @@ class _SeriesDisplayState extends State<SeriesDisplay> {
                 ],
               ),
               onPressed: () {
-                _navigateToAllSeasons(context, widget.seriesInfo.seasons);
+                _navigateToAllSeasons(
+                    context, widget.seriesInfo.id, widget.seriesInfo.seasons);
               },
             ),
           ],
@@ -354,9 +355,10 @@ class _SeriesDisplayState extends State<SeriesDisplay> {
   }
 
   void _navigateToAllSeasons(
-      BuildContext context, List<ShortSeasonInfo> seasons) {
+      BuildContext context, int seriesId, List<ShortSeasonInfo> seasons) {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => AllSeasonsPage(seasons: seasons),
+      builder: (context) =>
+          AllSeasonsPage(seriesId: seriesId, seasons: seasons),
     ));
   }
 }

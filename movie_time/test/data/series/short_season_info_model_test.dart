@@ -8,6 +8,7 @@ import '../../fixtures/fixture_reader.dart';
 
 void main() {
   final shortSeasonInfoModel = ShortSeasonInfoModel(
+    seasonNumber: 1,
     name: "Season 1",
     posterPath: "/zwaj4egrhnXOBIit1tyb4Sbt3KP.jpg",
   );

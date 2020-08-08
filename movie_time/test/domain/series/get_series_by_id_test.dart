@@ -49,6 +49,7 @@ void main() {
       status: "Returning Series",
       seasons: [
         ShortSeasonInfo(
+          seasonNumber: 1,
           name: "Season 1",
           posterPath: "/zwaj4egrhnXOBIit1tyb4Sbt3KP.jpg",
         ),

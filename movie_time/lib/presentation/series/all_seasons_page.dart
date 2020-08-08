@@ -3,9 +3,13 @@ import 'package:movie_time/domain/series/short_season_info.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 
 class AllSeasonsPage extends StatelessWidget {
+  final int seriesId;
   final List<ShortSeasonInfo> seasons;
 
-  AllSeasonsPage({@required this.seasons}) : assert(seasons != null);
+  AllSeasonsPage({
+    @required this.seriesId,
+    @required this.seasons,
+  }) : assert(seasons != null);
 
   @override
   Widget build(BuildContext context) {
