@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/series/episode_info.dart';
 import 'package:movie_time/presentation/core/utils/res/app_text_styles.dart';
+import 'package:movie_time/presentation/series/episode_info_page.dart';
 
 class EpisodeItem extends StatelessWidget {
   final EpisodeInfo episodeInfo;
@@ -18,7 +19,9 @@ class EpisodeItem extends StatelessWidget {
     final double itemHeight = 104;
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        _navigateToEpisode(context, episodeInfo);
+      },
       child: Container(
         color: Colors.black12,
         height: itemHeight,
@@ -52,5 +55,11 @@ class EpisodeItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _navigateToEpisode(BuildContext context, EpisodeInfo episodeInfo) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => EpisodeInfoPage(episodeInfo: episodeInfo),
+    ));
   }
 }

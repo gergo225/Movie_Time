@@ -42,4 +42,7 @@ class AppStrings {
   
   // Season page
   static const String episodes = "Episodes";
+  // Episode page
+  static const String season = "Season";
+  static const String episode = "Episode";
 }
