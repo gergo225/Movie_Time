@@ -27,9 +27,9 @@ class EpisodeInfoPage extends StatelessWidget {
             children: [
               Container(
                 height: topPartHeight,
-                child: _moviePartTop(context),
+                child: _episodePartTop(context),
               ),
-              _moviePartBottom(context),
+              _episodePartBottom(context),
             ],
           ),
           Positioned(
@@ -42,7 +42,7 @@ class EpisodeInfoPage extends StatelessWidget {
     );
   }
 
-  Widget _moviePartTop(BuildContext context) => Padding(
+  Widget _episodePartTop(BuildContext context) => Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -80,7 +80,7 @@ class EpisodeInfoPage extends StatelessWidget {
       children: [
         Text(
           value,
-          style: AppTextStyles.movieValueAndDescriptionValue,
+          style: AppTextStyles.valueAndDescriptionValue,
         ),
         Text(
           description,
@@ -90,12 +90,10 @@ class EpisodeInfoPage extends StatelessWidget {
     );
   }
 
-  Widget _moviePartBottom(BuildContext context) {
-    var padding = EdgeInsets.symmetric(horizontal: 12);
-
+  Widget _episodePartBottom(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: padding,
+        padding: EdgeInsets.symmetric(horizontal: 12),
         child: ListView(
           children: [
             Text(

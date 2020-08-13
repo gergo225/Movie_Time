@@ -146,7 +146,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
                         ),
                         Text(
                           widget.movieInfo.genresString,
-                          style: AppTextStyles.movieGenres.copyWith(
+                          style: AppTextStyles.genres.copyWith(
                             color: textColor.withOpacity(0.4),
                           ),
                         ),
@@ -184,7 +184,7 @@ class _MovieDisplayMobileState extends State<MovieDisplayMobile> {
       children: [
         Text(
           value,
-          style: AppTextStyles.movieValueAndDescriptionValue.copyWith(
+          style: AppTextStyles.valueAndDescriptionValue.copyWith(
             color: textColor,
           ),
         ),

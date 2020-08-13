@@ -14,7 +14,7 @@ class AppColors {
   static const subtitle = Colors.grey;
 
   // Actor page
-  static const actorText  = const Color(0xff757575);
+  static const actorText = const Color(0xff757575);
   static const actorBirthdayPrefix = const Color(0xff424242);
 
   // Custom list item
@@ -52,6 +52,4 @@ class AppColors {
   static const searchBarFill = Colors.white;
   static const searchedMovieBackground = Colors.white;
   static const searchedMovieRating = const Color(0xff757575);
-
-  // 
 }

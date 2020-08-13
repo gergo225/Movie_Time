@@ -76,10 +76,10 @@ class AppTextStyles {
   );
 
   // Movie, series page
-  static const movieGenres = TextStyle(
+  static const genres = TextStyle(
     fontSize: 13,
   );
-  static const movieValueAndDescriptionValue = TextStyle(
+  static const valueAndDescriptionValue = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 16,
   );
@@ -87,15 +87,15 @@ class AppTextStyles {
   static const moviePlayTrailerDesktop = TextStyle(
     fontSize: 24,
   );
-  static const movieTitleDesktop = TextStyle(
+  static const titleDesktop = TextStyle(
     fontSize: 48,
     fontWeight: FontWeight.bold,
   );
-  static const movieGenresDesktop = TextStyle(
+  static const genresDesktop = TextStyle(
     fontSize: 18,
     color: AppColors.genresAndRatingDesktop,
   );
-  static const movieRatingDesktop = TextStyle(
+  static const ratingDesktop = TextStyle(
     fontSize: 24,
     color: AppColors.genresAndRatingDesktop,
   );

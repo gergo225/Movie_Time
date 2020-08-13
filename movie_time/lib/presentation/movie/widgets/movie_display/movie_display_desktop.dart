@@ -100,11 +100,11 @@ class MovieDisplayDesktop extends StatelessWidget {
       children: [
         Text(
           movieInfo.title,
-          style: AppTextStyles.movieTitleDesktop,
+          style: AppTextStyles.titleDesktop,
         ),
         Text(
           movieInfo.genresString,
-          style: AppTextStyles.movieGenresDesktop,
+          style: AppTextStyles.genresDesktop,
         ),
         SizedBox(height: 8),
         Row(
@@ -116,7 +116,7 @@ class MovieDisplayDesktop extends StatelessWidget {
             ),
             Text(
               movieInfo.rating.toString(),
-              style: AppTextStyles.movieRatingDesktop,
+              style: AppTextStyles.ratingDesktop,
             ),
           ],
         ),

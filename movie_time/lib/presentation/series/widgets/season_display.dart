@@ -65,9 +65,9 @@ class _SeasonDisplayState extends State<SeasonDisplay> {
               children: [
                 Container(
                   height: topPartHeight,
-                  child: _moviePartTop(context),
+                  child: _seasonPartTop(context),
                 ),
-                _moviePartBottom(context),
+                _seasonPartBottom(context),
               ],
             ),
             Positioned(
@@ -81,7 +81,7 @@ class _SeasonDisplayState extends State<SeasonDisplay> {
     }
   }
 
-  Widget _moviePartTop(BuildContext context) => Container(
+  Widget _seasonPartTop(BuildContext context) => Container(
         color: backgroundColor,
         padding: const EdgeInsets.all(12),
         child: Row(
@@ -137,7 +137,7 @@ class _SeasonDisplayState extends State<SeasonDisplay> {
       children: [
         Text(
           value,
-          style: AppTextStyles.movieValueAndDescriptionValue.copyWith(
+          style: AppTextStyles.valueAndDescriptionValue.copyWith(
             color: textColor,
           ),
         ),
@@ -149,7 +149,7 @@ class _SeasonDisplayState extends State<SeasonDisplay> {
     );
   }
 
-  Widget _moviePartBottom(BuildContext context) {
+  Widget _seasonPartBottom(BuildContext context) {
     final TextStyle subtitleTextStyle = AppTextStyles.subtitle.copyWith(
       color: subtitleTextColor,
     );

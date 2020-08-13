@@ -78,9 +78,9 @@ class _SeriesDisplayState extends State<SeriesDisplay> {
               children: [
                 Container(
                   height: topPartHeight,
-                  child: _moviePartTop(context),
+                  child: _seriesPartTop(context),
                 ),
-                _moviePartBottom(context),
+                _seriesPartBottom(context),
               ],
             ),
             Positioned(
@@ -94,7 +94,7 @@ class _SeriesDisplayState extends State<SeriesDisplay> {
     }
   }
 
-  Widget _moviePartTop(BuildContext context) => Stack(
+  Widget _seriesPartTop(BuildContext context) => Stack(
         children: [
           Positioned(
             top: 0,
@@ -147,7 +147,7 @@ class _SeriesDisplayState extends State<SeriesDisplay> {
                         ),
                         Text(
                           widget.seriesInfo.genresString,
-                          style: AppTextStyles.movieGenres.copyWith(
+                          style: AppTextStyles.genres.copyWith(
                             color: textColor.withOpacity(0.4),
                           ),
                         ),
@@ -186,7 +186,7 @@ class _SeriesDisplayState extends State<SeriesDisplay> {
       children: [
         Text(
           value,
-          style: AppTextStyles.movieValueAndDescriptionValue.copyWith(
+          style: AppTextStyles.valueAndDescriptionValue.copyWith(
             color: textColor,
           ),
         ),
@@ -198,7 +198,7 @@ class _SeriesDisplayState extends State<SeriesDisplay> {
     );
   }
 
-  Widget _moviePartBottom(BuildContext context) {
+  Widget _seriesPartBottom(BuildContext context) {
     final TextStyle subtitleTextStyle = AppTextStyles.subtitle.copyWith(
       color: subtitleTextColor,
     );
