@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:movie_time/domain/core/image_link_creator.dart';
 
 import 'episode_info.dart';
 
@@ -32,4 +33,7 @@ class SeasonInfo extends Equatable {
         episodes,
         posterPath,
       ];
+
+  String get posterPathUrl => createPosterImageLink(posterPath);
+  String get releaseString => "${releaseDate.replaceAll("-", " ")}";
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:movie_time/domain/series/short_season_info.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 
+import 'season_info_page.dart';
+
 class AllSeasonsPage extends StatelessWidget {
   final int seriesId;
   final List<ShortSeasonInfo> seasons;
@@ -21,31 +23,51 @@ class AllSeasonsPage extends StatelessWidget {
   }
 
   Widget buildBody(BuildContext context) {
-    return Container(
-      child: GridView.extent(
-        maxCrossAxisExtent: 200,
-        childAspectRatio: 2 / 3,
-        children: seasons
-            .map(
-              (seasonInfo) => GridTile(
-                footer: GridTileBar(
-                  title: Text(
-                    seasonInfo.name,
-                    style: TextStyle(
-                      fontSize: 20,
+    return Stack(
+      children: [
+        Container(
+          child: GridView.extent(
+            maxCrossAxisExtent: 200,
+            childAspectRatio: 2 / 3,
+            children: seasons
+                .map(
+                  (seasonInfo) => GestureDetector(
+                    onTap: () {
+                      _navigateToSeason(
+                          context, seriesId, seasonInfo.seasonNumber);
+                    },
+                    child: GridTile(
+                      footer: GridTileBar(
+                        title: Text(
+                          seasonInfo.name,
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      child: PlatformIndependentImage(
+                        boxFit: BoxFit.cover,
+                        errorWidget: NoImageWidget.poster(),
+                        loadingWidget: LoadingWidget(),
+                        imageUrl: seasonInfo.posterPathUrl,
+                      ),
                     ),
                   ),
-                ),
-                child: PlatformIndependentImage(
-                  boxFit: BoxFit.cover,
-                  errorWidget: NoImageWidget.poster(),
-                  loadingWidget: LoadingWidget(),
-                  imageUrl: seasonInfo.posterPathUrl,
-                ),
-              ),
-            )
-            .toList(),
-      ),
+                )
+                .toList(),
+          ),
+        ),
+        CustomBackButton(),
+      ],
     );
+  }
+
+  void _navigateToSeason(BuildContext context, int seriesId, int seasonNumber) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => SeasonInfoPage(
+        seriesId: seriesId,
+        seasonNumber: seasonNumber,
+      ),
+    ));
   }
 }

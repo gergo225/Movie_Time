@@ -39,4 +39,7 @@ class AppStrings {
   static const String lastAirDate = "Last episode air date: ";
   static const String nextAirDate = "Next episode air date: ";
   static const String allSeasons = "All seasons";
+  
+  // Season page
+  static const String episodes = "Episodes";
 }

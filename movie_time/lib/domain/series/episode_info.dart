@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:movie_time/domain/core/image_link_creator.dart';
 
 class EpisodeInfo extends Equatable {
   final int episodeNumber;
@@ -27,4 +28,7 @@ class EpisodeInfo extends Equatable {
         overview,
         backdropPath,
       ];
+
+  String get backdropPathUrl => createOriginalImageLink(backdropPath);
+  String get nameWithNumber => "$episodeNumber. $name";
 }
