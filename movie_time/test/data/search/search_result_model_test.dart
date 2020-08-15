@@ -2,21 +2,35 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:movie_time/data/search/search_result_model.dart';
-import 'package:movie_time/data/search/searched_movie_info_model.dart';
+import 'package:movie_time/data/search/searched_media_info_model.dart';
 import 'package:movie_time/domain/search/search_result.dart';
+import 'package:movie_time/domain/search/searched_media_info.dart';
 
 import '../../fixtures/fixture_reader.dart';
 
 void main() {
-  final searchResultModel = SearchResultModel(results: [
-    SearchedMovieInfoModel(
-      title: "The Avengers",
-      id: 24428,
-      releaseYear: 2012,
-      posterPath: "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
-      rating: 7.33,
-    ),
-  ]);
+  final searchResultModel = SearchResultModel(
+    movies: [
+      SearchedMediaInfoModel(
+        title: "The Avengers",
+        id: 24428,
+        releaseYear: 2012,
+        posterPath: "/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
+        rating: 7.7,
+        mediaType: MediaType.movie,
+      ),
+    ],
+    series: [
+      SearchedMediaInfoModel(
+        title: "Marvel's Avengers Assemble",
+        id: 59427,
+        releaseYear: 2013,
+        posterPath: "/vchDkX1DtqTy3bIDJ7YqmSbX965.jpg",
+        rating: 7.7,
+        mediaType: MediaType.tv,
+      ),
+    ],
+  );
 
   test(
     "should be a subclass of SearchResult entity",
@@ -34,27 +48,6 @@ void main() {
       final result = SearchResultModel.from(jsonMap);
 
       expect(result, searchResultModel);
-    },
-  );
-
-  test(
-    "should return a JSON map containing the proper data",
-    () async {
-      final result = searchResultModel.toJson();
-
-      final expectedJsonMap = {
-        "results": [
-          {
-            "title": "The Avengers",
-            "id": 24428,
-            "release_date": "2012",
-            "poster_path": "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
-            "vote_average": 7.33
-          },
-        ],
-      };
-
-      expect(result, expectedJsonMap);
     },
   );
 }

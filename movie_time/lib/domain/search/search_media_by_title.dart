@@ -6,17 +6,17 @@ import 'package:movie_time/domain/core/usecase.dart';
 import 'search_repository.dart';
 import 'search_result.dart';
 
-class SearchMovieByTitle extends UseCase<SearchResult, Params> { 
+class SearchMediaByTitle extends UseCase<SearchResult, Params> { 
   final SearchRepository repository;
 
-  SearchMovieByTitle(this.repository);
+  SearchMediaByTitle(this.repository);
 
   @override
   Future<Either<Failure, SearchResult>> call(params) async {
     if (params.title.trim().isEmpty) {
       return Left(SearchEmptyFailure());
     }
-    return await repository.searchMovieByTitle(params.title);
+    return await repository.searchMediaByTitle(params.title);
   }
 }
 

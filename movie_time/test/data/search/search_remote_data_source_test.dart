@@ -11,7 +11,6 @@ import 'package:matcher/matcher.dart';
 
 import '../../fixtures/fixture_reader.dart';
 
-
 class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
@@ -33,8 +32,8 @@ void main() {
         .thenAnswer((_) async => http.Response("Something went wrong", 404));
   }
 
-  group("searchMovieByTitle", () {
-    final movieTitle = "Avengers";
+  group("searchMediaByTitle", () {
+    final mediaTitle = "Avengers";
     final searchResultModel =
         SearchResultModel.from(json.decode(fixture("search_result.json")));
 
@@ -44,10 +43,10 @@ void main() {
       // arrange
       setUpMockHttpClientSuccess200();
       // act
-      dataSource.searchMovieByTitle(movieTitle);
+      dataSource.searchMediaByTitle(mediaTitle);
       // assert
       verify(mockHttpClient.get(
-          "https://api.themoviedb.org/3/search/movie?api_key=$API_KEY&language=en-US&query=$movieTitle&page=1"));
+          "https://api.themoviedb.org/3/search/multi?api_key=$API_KEY&language=en-US&query=$mediaTitle&page=1"));
     });
 
     test(
@@ -56,20 +55,21 @@ void main() {
         // arrange
         setUpMockHttpClientSuccess200();
         // act
-        final result = await dataSource.searchMovieByTitle(movieTitle);
+        final result = await dataSource.searchMediaByTitle(mediaTitle);
         // assert
         expect(result, equals(searchResultModel));
       },
     );
 
-    test("should throw a ServerException when the response code is 404 or other", () async {
+    test(
+        "should throw a ServerException when the response code is 404 or other",
+        () async {
       // arrange
       setUpMockHttpClientFailure404();
       // act
-      final call = dataSource.searchMovieByTitle;
+      final call = dataSource.searchMediaByTitle;
       // assert
-      expect(() => call(movieTitle), throwsA(TypeMatcher<ServerException>()));
+      expect(() => call(mediaTitle), throwsA(TypeMatcher<ServerException>()));
     });
-
   });
 }

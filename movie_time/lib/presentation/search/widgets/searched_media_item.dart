@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:movie_time/domain/search/searched_movie_info.dart';
+import 'package:movie_time/domain/search/searched_media_info.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/utils/res/app_text_styles.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
 import 'package:movie_time/presentation/movie/movie_info_page.dart';
+import 'package:movie_time/presentation/series/series_info_page.dart';
 
-class SearchedMovieItem extends StatelessWidget {
-  final SearchedMovieInfo searchedMovieInfo;
+class SearchedMediaItem extends StatelessWidget {
+  final SearchedMediaInfo searchedMediaInfo;
 
-  const SearchedMovieItem({Key key, @required this.searchedMovieInfo})
-      : assert(searchedMovieInfo != null),
+  const SearchedMediaItem({Key key, @required this.searchedMediaInfo})
+      : assert(searchedMediaInfo != null),
         super(key: key);
 
   @override
@@ -18,7 +19,11 @@ class SearchedMovieItem extends StatelessWidget {
     final posterWidth = 2 / 3 * itemHeight;
 
     return InkWell(
-      onTap: () => openMoviePage(searchedMovieInfo.id, context),
+      onTap: () => openMediaPage(
+        context,
+        searchedMediaInfo.id,
+        searchedMediaInfo.mediaType,
+      ),
       child: Container(
         height: itemHeight,
         decoration: BoxDecoration(
@@ -31,7 +36,7 @@ class SearchedMovieItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(4),
               child: PlatformIndependentImage(
-                imageUrl: searchedMovieInfo.posterPathUrl,
+                imageUrl: searchedMediaInfo.posterPathUrl,
                 errorWidget: NoImageWidget.poster(),
                 loadingWidget: LoadingWidget(),
                 width: posterWidth,
@@ -44,23 +49,23 @@ class SearchedMovieItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    searchedMovieInfo.title,
+                    searchedMediaInfo.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.searchedMovieItemTitle,
                   ),
                   SizedBox(height: 2),
                   Text(
-                    searchedMovieInfo.releaseYearString,
+                    searchedMediaInfo.releaseYearString,
                     style: Theme.of(context).textTheme.bodyText2,
                   ),
                   SizedBox(height: 4),
                   Row(
                     children: [
                       StarRating(
-                          rating: searchedMovieInfo.rating, starSize: 20),
+                          rating: searchedMediaInfo.rating, starSize: 20),
                       Text(
-                        "${searchedMovieInfo.rating}",
+                        "${searchedMediaInfo.rating}",
                         style: TextStyle(
                           color: AppColors.searchedMovieRating,
                         ),
@@ -76,10 +81,12 @@ class SearchedMovieItem extends StatelessWidget {
     );
   }
 
-  void openMoviePage(int movieId, BuildContext context) {
+  void openMediaPage(BuildContext context, int mediaId, MediaType mediaType) {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) {
-        return MovieInfoPage(movieId: movieId);
+        return mediaType == MediaType.movie
+            ? MovieInfoPage(movieId: mediaId)
+            : SeriesInfoPage(seriesId: mediaId);
       },
     ));
   }

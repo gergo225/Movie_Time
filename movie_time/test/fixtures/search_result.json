@@ -1,27 +1,49 @@
 {
-    "page": 1,
-    "results": [
-      {
-        "poster_path": "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
-        "adult": false,
-        "overview": "When an unexpected enemy emerges and threatens global safety and security, Nick Fury, director of the international peacekeeping agency known as S.H.I.E.L.D., finds himself in need of a team to pull the world back from the brink of disaster. Spanning the globe, a daring recruitment effort begins!",
-        "release_date": "2012-04-25",
-        "genre_ids": [
-          878,
-          28,
-          12
-        ],
-        "id": 24428,
-        "original_title": "The Avengers",
-        "original_language": "en",
-        "title": "The Avengers",
-        "backdrop_path": "/hbn46fQaRmlpBuUrEiFqv0GDL6Y.jpg",
-        "popularity": 7.353212,
-        "vote_count": 8503,
-        "video": false,
-        "vote_average": 7.33
-      }
-    ],
-    "total_results": 14,
-    "total_pages": 1
-  }
+  "page": 1,
+  "results": [
+    {
+      "poster_path": "/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
+      "popularity": 41.96,
+      "vote_count": 22929,
+      "video": false,
+      "media_type": "movie",
+      "id": 24428,
+      "adult": false,
+      "backdrop_path": "/kwUQFeFXOOpgloMgZaadhzkbTI4.jpg",
+      "original_language": "en",
+      "original_title": "The Avengers",
+      "genre_ids": [
+        28,
+        12,
+        878
+      ],
+      "title": "The Avengers",
+      "vote_average": 7.7,
+      "overview": "When an unexpected enemy emerges and threatens global safety and security, Nick Fury, director of the international peacekeeping agency known as S.H.I.E.L.D., finds himself in need of a team to pull the world back from the brink of disaster. Spanning the globe, a daring recruitment effort begins!",
+      "release_date": "2012-04-25"
+    },
+    {
+      "original_name": "Marvel's Avengers Assemble",
+      "genre_ids": [
+        16,
+        10759
+      ],
+      "media_type": "tv",
+      "name": "Marvel's Avengers Assemble",
+      "popularity": 21.935,
+      "origin_country": [
+        "US"
+      ],
+      "vote_count": 263,
+      "first_air_date": "2013-11-09",
+      "backdrop_path": "/6ZqXMR9aLLdGjbxkIMo77EhZexy.jpg",
+      "original_language": "en",
+      "id": 59427,
+      "vote_average": 7.7,
+      "overview": "The further adventures of the Marvel Universe's mightiest general membership superhero team. With an all-star roster consisting of Iron Man, Captain America, Thor, Hulk, Hawkeye, Falcon and, occasionally--when she feels like it and only when she feels like it--Black Widow, the Avengers are a team in the truest sense. The Avengers save the world from the biggest threats imaginable--threats no single super hero could withstand.",
+      "poster_path": "/vchDkX1DtqTy3bIDJ7YqmSbX965.jpg"
+    }
+  ],
+  "total_results": 14,
+  "total_pages": 1
+}

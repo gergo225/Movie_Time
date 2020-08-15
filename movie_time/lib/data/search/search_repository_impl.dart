@@ -18,11 +18,11 @@ class SearchRepositoryImpl implements SearchRepository {
   });
 
   @override
-  Future<Either<Failure, SearchResult>> searchMovieByTitle(
+  Future<Either<Failure, SearchResult>> searchMediaByTitle(
       String title) async {
         if (await networkInfo.isConnected) {
           try {
-            final searchResult = await remoteDataSource.searchMovieByTitle(title);
+            final searchResult = await remoteDataSource.searchMediaByTitle(title);
             return Right(searchResult);
           } on ServerException {
             return Left(ServerFailure());

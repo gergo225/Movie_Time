@@ -1,27 +1,35 @@
 import 'package:flutter/foundation.dart';
 import 'package:movie_time/domain/search/search_result.dart';
-import 'searched_movie_info_model.dart';
+import 'searched_media_info_model.dart';
 
 class SearchResultModel extends SearchResult {
-  final List<SearchedMovieInfoModel> results;
+  final List<SearchedMediaInfoModel> movies;
+  final List<SearchedMediaInfoModel> series;
 
   SearchResultModel({
-    @required this.results,
-  }) : super(results: results);
+    @required this.movies,
+    @required this.series,
+  }) : super(movies: movies, series: series);
 
   factory SearchResultModel.from(Map<String, dynamic> json) {
+    final movieJsons = json["results"]
+        .where((resultJson) => resultJson["media_type"] == "movie");
+    final seriesJsons =
+        json["results"].where((resultJson) => resultJson["media_type"] == "tv");
+
     return SearchResultModel(
-      results: List<SearchedMovieInfoModel>.from(
-        json["results"]
+      movies: List<SearchedMediaInfoModel>.from(
+        movieJsons
             .where((movieJson) =>
                 movieJson["video"] == false && movieJson["vote_count"] > 0)
             .map((searchMovieJson) =>
-                SearchedMovieInfoModel.from(searchMovieJson)),
+                SearchedMediaInfoModel.from(searchMovieJson)),
+      ),
+      series: List<SearchedMediaInfoModel>.from(
+        seriesJsons.where((seriesJson) => seriesJson["vote_count"] > 0 as bool).map(
+            (searchSeriesJson) =>
+                SearchedMediaInfoModel.from(searchSeriesJson)),
       ),
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {"results": results.map((searchedMovie) => searchedMovie.toJson())};
   }
 }

@@ -26,7 +26,8 @@ class AppStrings {
   static const String series = "Series";
 
   // Search page
-  static const String searchHint = "Search for movies";
+  static const String searchHint = "Search for movies and series";
+  static const String noResults = "No results were found";
 
   // Failure messages
   static const String serverFailureMessage = "Server Failure";

@@ -2,21 +2,21 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie_time/domain/core/failure.dart';
-import 'package:movie_time/domain/search/search_movie_by_title.dart';
+import 'package:movie_time/domain/search/search_media_by_title.dart';
 import 'package:movie_time/domain/search/search_result.dart';
-import 'package:movie_time/domain/search/searched_movie_info.dart';
+import 'package:movie_time/domain/search/searched_media_info.dart';
 import 'package:movie_time/presentation/search/search_bloc.dart';
 
-class MockSearchMovieByTitle extends Mock implements SearchMovieByTitle {}
+class MockSearchMediaByTitle extends Mock implements SearchMediaByTitle {}
 
 void main() {
   SearchBloc bloc;
-  MockSearchMovieByTitle mockSearchMovieByTitle;
+  MockSearchMediaByTitle mockSearchMediaByTitle;
 
   setUp(() {
-    mockSearchMovieByTitle = MockSearchMovieByTitle();
+    mockSearchMediaByTitle = MockSearchMediaByTitle();
     bloc = SearchBloc(
-      byTitle: mockSearchMovieByTitle,
+      byTitle: mockSearchMediaByTitle,
     );
   });
 
@@ -26,27 +26,41 @@ void main() {
   });
 
   group("GetSearchesForTitle", () {
-    final movieTitle = "Avengers";
-    final searchResult = SearchResult(results: [
-      SearchedMovieInfo(
+    final mediaTitle = "Avengers";
+    final searchResult = SearchResult(
+      movies: [
+        SearchedMediaInfo(
           title: "The Avengers",
           id: 24428,
           releaseYear: 2012,
           posterPath: "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
-          rating: 7.33),
-    ]);
+          rating: 7.33,
+          mediaType: MediaType.movie,
+        ),
+      ],
+      series: [
+        SearchedMediaInfo(
+          title: "Marvel's Avengers Assemble",
+          releaseYear: 2013,
+          id: 59427,
+          posterPath: "/vchDkX1DtqTy3bIDJ7YqmSbX965.jpg",
+          rating: 7.7,
+          mediaType: MediaType.tv,
+        ),
+      ],
+    );
 
     test(
       "should get search results from the usecase",
       () async {
         // arrange
-        when(mockSearchMovieByTitle(any))
+        when(mockSearchMediaByTitle(any))
             .thenAnswer((_) async => Right(searchResult));
         // act
-        bloc.add(GetSearchesForTitle(movieTitle));
-        await untilCalled(mockSearchMovieByTitle(any));
+        bloc.add(GetSearchesForTitle(mediaTitle));
+        await untilCalled(mockSearchMediaByTitle(any));
         // assert
-        verify(mockSearchMovieByTitle(Params(title: movieTitle)));
+        verify(mockSearchMediaByTitle(Params(title: mediaTitle)));
       },
     );
 
@@ -54,7 +68,7 @@ void main() {
       "should emit [Loading, Loaded] when data is gotten successfully",
       () async {
         // arrange
-        when(mockSearchMovieByTitle(any))
+        when(mockSearchMediaByTitle(any))
             .thenAnswer((_) async => Right(searchResult));
         // assert later
         final expected = [
@@ -63,7 +77,7 @@ void main() {
         ];
         expectLater(bloc, emitsInOrder(expected));
         // act
-        bloc.add(GetSearchesForTitle(movieTitle));
+        bloc.add(GetSearchesForTitle(mediaTitle));
       },
     );
 
@@ -71,7 +85,7 @@ void main() {
       "should emit [Loading, Error] when getting data fails",
       () async {
         // arrange
-        when(mockSearchMovieByTitle(any))
+        when(mockSearchMediaByTitle(any))
             .thenAnswer((_) async => Left(ServerFailure()));
         // assert later
         final expected = [
@@ -80,7 +94,7 @@ void main() {
         ];
         expectLater(bloc, emitsInOrder(expected));
         // act
-        bloc.add(GetSearchesForTitle(movieTitle));
+        bloc.add(GetSearchesForTitle(mediaTitle));
       },
     );
   });

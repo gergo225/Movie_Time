@@ -17,7 +17,7 @@ import 'package:movie_time/domain/home/get_home_info.dart';
 import 'package:movie_time/domain/home/home_info_repository.dart';
 import 'package:movie_time/domain/movie/get_movie_by_id.dart';
 import 'package:movie_time/domain/movie/movie_info_repository.dart';
-import 'package:movie_time/domain/search/search_movie_by_title.dart';
+import 'package:movie_time/domain/search/search_media_by_title.dart';
 import 'package:movie_time/domain/search/search_repository.dart';
 import 'package:movie_time/domain/series/get_series_by_id.dart';
 import 'package:movie_time/domain/series/get_series_season_by_number.dart';
@@ -112,7 +112,7 @@ void setUpSearchFeature() {
   // Bloc
   sl.registerFactory(() => SearchBloc(byTitle: sl()));
   // Use cases
-  sl.registerLazySingleton(() => SearchMovieByTitle(sl()));
+  sl.registerLazySingleton(() => SearchMediaByTitle(sl()));
   // Repository
   sl.registerLazySingleton<SearchRepository>(
     () => SearchRepositoryImpl(

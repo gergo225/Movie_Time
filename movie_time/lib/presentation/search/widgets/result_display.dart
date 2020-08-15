@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/search/search_result.dart';
+import 'package:movie_time/presentation/core/utils/res/app_strings.dart';
+import 'package:movie_time/presentation/core/utils/res/app_text_styles.dart';
 import 'package:movie_time/presentation/core/widgets/widgets.dart';
-import 'searched_movie_item.dart';
-
-const String NO_SEARCH_RESULTS_MESSAGE = "No results were found";
+import 'searched_media_item.dart';
 
 class ResultDisplay extends StatelessWidget {
   final SearchResult searchResult;
@@ -14,16 +14,41 @@ class ResultDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (searchResult.results.length == 0) {
-      return MessageDisplay(message: NO_SEARCH_RESULTS_MESSAGE);
+    if (searchResult.movies.length + searchResult.series.length == 0) {
+      return MessageDisplay(message: AppStrings.noResults);
     } else {
-      return ListView.separated(
-        padding: EdgeInsets.zero,
-        itemCount: searchResult.results.length,
-        itemBuilder: (_, index) => SearchedMovieItem(
-          searchedMovieInfo: searchResult.results[index],
-        ),
-        separatorBuilder: (_, __) => SizedBox(height: 8),
+      return ListView(
+        children: [
+          Text(
+            AppStrings.movies,
+            style: AppTextStyles.subtitle,
+          ),
+          ListView.separated(
+            shrinkWrap: true,
+            physics: ClampingScrollPhysics(),
+            padding: EdgeInsets.zero,
+            itemCount: searchResult.movies.length,
+            itemBuilder: (_, index) => SearchedMediaItem(
+              searchedMediaInfo: searchResult.movies[index],
+            ),
+            separatorBuilder: (_, __) => SizedBox(height: 8),
+          ),
+          SizedBox(height: 16),
+          Text(
+            AppStrings.series,
+            style: AppTextStyles.subtitle,
+          ),
+          ListView.separated(
+            shrinkWrap: true,
+            physics: ClampingScrollPhysics(),
+            padding: EdgeInsets.zero,
+            itemCount: searchResult.series.length,
+            itemBuilder: (_, index) => SearchedMediaItem(
+              searchedMediaInfo: searchResult.series[index],
+            ),
+            separatorBuilder: (_, __) => SizedBox(height: 8),
+          ),
+        ],
       );
     }
   }
