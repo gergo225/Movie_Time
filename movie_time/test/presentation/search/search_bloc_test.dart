@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie_time/domain/core/failure.dart';
+import 'package:movie_time/domain/core/media_type.dart';
 import 'package:movie_time/domain/search/search_media_by_title.dart';
 import 'package:movie_time/domain/search/search_result.dart';
 import 'package:movie_time/domain/search/searched_media_info.dart';

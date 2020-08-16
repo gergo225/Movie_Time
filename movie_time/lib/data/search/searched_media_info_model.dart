@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:movie_time/domain/core/media_type.dart';
 import 'package:movie_time/domain/search/searched_media_info.dart';
 
 class SearchedMediaInfoModel extends SearchedMediaInfo {

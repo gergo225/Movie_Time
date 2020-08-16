@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:movie_time/data/search/search_result_model.dart';
 import 'package:movie_time/data/search/searched_media_info_model.dart';
+import 'package:movie_time/domain/core/media_type.dart';
 import 'package:movie_time/domain/search/search_result.dart';
-import 'package:movie_time/domain/search/searched_media_info.dart';
 
 import '../../fixtures/fixture_reader.dart';
 

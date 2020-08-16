@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:movie_time/domain/core/media_type.dart';
 import 'package:movie_time/domain/search/search_media_by_title.dart';
 import 'package:movie_time/domain/search/search_repository.dart';
 import 'package:movie_time/domain/search/search_result.dart';

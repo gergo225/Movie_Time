@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:movie_time/domain/core/image_link_creator.dart';
-
-enum MediaType { tv, movie }
+import 'package:movie_time/domain/core/media_type.dart';
 
 class SearchedMediaInfo extends Equatable {
   final String title;

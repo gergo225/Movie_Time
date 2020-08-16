@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_time/domain/core/media_type.dart';
 import 'package:movie_time/domain/search/searched_media_info.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/utils/res/app_text_styles.dart';
