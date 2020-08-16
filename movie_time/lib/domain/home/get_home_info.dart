@@ -4,7 +4,7 @@ import 'package:movie_time/domain/core/genre_utils.dart';
 import 'package:movie_time/domain/core/usecase.dart';
 import 'package:movie_time/domain/home/home_info.dart';
 import 'package:movie_time/domain/home/home_info_repository.dart';
-import 'package:movie_time/domain/home/movie_list.dart';
+import 'package:movie_time/domain/home/media_list.dart';
 
 class GetHomeInfo extends UseCase<HomeInfo, NoParams> {
   final HomeInfoRepository repository;
@@ -16,11 +16,12 @@ class GetHomeInfo extends UseCase<HomeInfo, NoParams> {
     bool failureOccurred = false;
     Failure failure;
 
-    Either<Failure, MovieList> eitherTrendingOrFailure =
+    // Get movies
+    Either<Failure, MediaList> eitherTrendingOrFailureMovies =
         await repository.getTrendingMovies();
 
-    MovieList trendingMovies;
-    eitherTrendingOrFailure.fold(
+    MediaList trendingMovies;
+    eitherTrendingOrFailureMovies.fold(
       (f) {
         failureOccurred = true;
         failure = f;
@@ -30,9 +31,9 @@ class GetHomeInfo extends UseCase<HomeInfo, NoParams> {
       },
     );
 
-    Map<int, MovieList> genreMovies = {};
+    Map<int, MediaList> genreMovies = {};
 
-    await Future.forEach(GenreUtil.allGenres, (genreId) async {
+    await Future.forEach(GenreUtil.allMovieGenres, (genreId) async {
       final failureOrMovies = await repository.getMoviesByGenre(genreId);
 
       failureOrMovies.fold(
@@ -44,6 +45,31 @@ class GetHomeInfo extends UseCase<HomeInfo, NoParams> {
           genreMovies[genreId] = movieList;
         },
       );
+    });
+
+    // Get series
+    Either<Failure, MediaList> eitherTrendingOrFailureSeries =
+        await repository.getTrendingSeries();
+
+    MediaList trendingSeries;
+    eitherTrendingOrFailureSeries.fold((f) {
+      failureOccurred = true;
+      failure = f;
+    }, (seriesList) {
+      trendingSeries = seriesList;
+    });
+
+    Map<int, MediaList> genreSeries = {};
+
+    await Future.forEach(GenreUtil.allSeriesGenres, (genreId) async {
+      final failureOrSeries = await repository.getSeriesByGenre(genreId);
+
+      failureOrSeries.fold((f) {
+        failureOccurred = true;
+        failure = f;
+      }, (seriesList) {
+        genreSeries[genreId] = seriesList;
+      });
     });
 
     if (failureOccurred) {
@@ -60,6 +86,13 @@ class GetHomeInfo extends UseCase<HomeInfo, NoParams> {
           horrorMovies: genreMovies[GenreUtil.horror],
           romanceMovies: genreMovies[GenreUtil.romance],
           thrillerMovies: genreMovies[GenreUtil.thriller],
+          trendingSeries: trendingSeries,
+          actionSeries: genreSeries[GenreUtil.action],
+          animationSeries: genreSeries[GenreUtil.animation],
+          dramaSeries: genreSeries[GenreUtil.drama],
+          comedySeries: genreSeries[GenreUtil.comedy],
+          scifiSeries: genreSeries[GenreUtil.scienceFiction],
+          horrorSeries: genreSeries[GenreUtil.horror],
         ),
       );
     }

@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:movie_time/domain/home/home_info.dart';
-import 'package:movie_time/domain/home/movie_list.dart';
-import 'package:movie_time/domain/home/short_movie_info.dart';
+import 'package:movie_time/domain/home/media_list.dart';
+import 'package:movie_time/domain/home/short_media_info.dart';
 import 'package:movie_time/presentation/core/utils/res/app_colors.dart';
 import 'package:movie_time/presentation/core/utils/res/app_strings.dart';
 import 'package:movie_time/presentation/core/utils/res/app_text_styles.dart';
@@ -29,7 +29,7 @@ class _HomeDisplayState extends State<HomeDisplay> {
 
   @override
   Widget build(BuildContext context) {
-    List<MovieList> movieLists = [
+    List<MediaList> movieLists = [
       widget.homeInfo.trendingMovies,
       widget.homeInfo.actionMovies,
       widget.homeInfo.adventureMovies,
@@ -102,11 +102,11 @@ class _HomeDisplayState extends State<HomeDisplay> {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: movieLists[selectedListIndex].movieList.length,
+                    itemCount: movieLists[selectedListIndex].mediaList.length,
                     itemBuilder: (context, index) {
                       return PlatformIndependentImage(
                         imageUrl: movieLists[selectedListIndex]
-                            .movieList[index]
+                            .mediaList[index]
                             .posterPathUrl,
                         errorWidget: Container(),
                         loadingWidget: Container(),
@@ -244,7 +244,7 @@ class _HomeDisplayState extends State<HomeDisplay> {
   }
 
   Widget _buildTrendingMovies(
-      BuildContext context, MovieList movieList, Size screenSize) {
+      BuildContext context, MediaList movieList, Size screenSize) {
     final pageViewHeight = screenSize.height * 0.8;
     final pageViewWidth = screenSize.width * pageController.viewportFraction;
     double titleHeight = 73;
@@ -260,10 +260,10 @@ class _HomeDisplayState extends State<HomeDisplay> {
       height: pageViewHeight,
       child: PageView.builder(
         controller: pageController,
-        itemCount: movieList.movieList.length,
+        itemCount: movieList.mediaList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          ShortMovieInfo movieInfo = movieList.movieList[index];
+          ShortMediaInfo movieInfo = movieList.mediaList[index];
           return Container(
             padding: EdgeInsets.symmetric(
               vertical: 8,

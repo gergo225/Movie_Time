@@ -1,17 +1,25 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:movie_time/domain/home/movie_list.dart';
+import 'package:movie_time/domain/home/media_list.dart';
 
 class HomeInfo extends Equatable {
-  final MovieList trendingMovies;
-  final MovieList actionMovies;
-  final MovieList adventureMovies;
-  final MovieList animationMovies;
-  final MovieList dramaMovies;
-  final MovieList comedyMovies;
-  final MovieList thrillerMovies;
-  final MovieList horrorMovies;
-  final MovieList romanceMovies;
+  final MediaList trendingMovies;
+  final MediaList actionMovies;
+  final MediaList adventureMovies;
+  final MediaList animationMovies;
+  final MediaList dramaMovies;
+  final MediaList comedyMovies;
+  final MediaList thrillerMovies;
+  final MediaList horrorMovies;
+  final MediaList romanceMovies;
+
+  final MediaList trendingSeries;
+  final MediaList actionSeries;
+  final MediaList animationSeries;
+  final MediaList dramaSeries;
+  final MediaList comedySeries;
+  final MediaList scifiSeries;
+  final MediaList horrorSeries;
 
   HomeInfo({
     @required this.trendingMovies,
@@ -23,6 +31,13 @@ class HomeInfo extends Equatable {
     @required this.thrillerMovies,
     @required this.horrorMovies,
     @required this.romanceMovies,
+    @required this.trendingSeries,
+    @required this.actionSeries,
+    @required this.animationSeries,
+    @required this.dramaSeries,
+    @required this.comedySeries,
+    @required this.scifiSeries,
+    @required this.horrorSeries,
   });
 
   @override
@@ -35,5 +50,12 @@ class HomeInfo extends Equatable {
         thrillerMovies,
         horrorMovies,
         romanceMovies,
+        trendingSeries,
+        actionSeries,
+        animationSeries,
+        dramaSeries,
+        comedySeries,
+        scifiSeries,
+        horrorSeries,
       ];
 }

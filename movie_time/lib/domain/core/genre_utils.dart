@@ -7,7 +7,7 @@ class GenreUtil {
   static int get horror => 27;
   static int get romance => 10749;
   static int get thriller => 53;
-  
+
   static int get crime => 80;
   static int get documentary => 99;
   static int get family => 10751;
@@ -19,7 +19,7 @@ class GenreUtil {
   static int get war => 10752;
   static int get western => 37;
 
-  static List<int> get allGenres => [
+  static List<int> get allMovieGenres => [
         action,
         adventure,
         animation,
@@ -28,6 +28,15 @@ class GenreUtil {
         horror,
         romance,
         thriller,
+      ];
+
+  static List<int> get allSeriesGenres => [
+        action,
+        animation,
+        drama,
+        comedy,
+        scienceFiction,
+        horror,
       ];
 
   static Map<int, String> genreIdAndName = {

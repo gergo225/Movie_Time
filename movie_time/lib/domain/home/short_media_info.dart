@@ -1,23 +1,23 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:movie_time/domain/core/image_link_creator.dart';
+import 'package:movie_time/domain/core/media_type.dart';
 
-class ShortMovieInfo extends Equatable {
+class ShortMediaInfo extends Equatable {
   final int id;
   final String title;
-  final List<String> genres;
   final String posterPath;
+  final MediaType mediaType;
 
-  ShortMovieInfo({
+  ShortMediaInfo({
     @required this.id,
     @required this.title,
-    @required this.genres,
     @required this.posterPath,
+    @required this.mediaType,
   });
 
   @override
-  List get props => [id, title, genres, posterPath];
+  List get props => [id, title, posterPath, mediaType];
 
   String get posterPathUrl => createLargeImageLink(posterPath);
-  String get genresString => "${genres.take(3).join(", ")}";
 }

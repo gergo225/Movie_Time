@@ -5,9 +5,9 @@ import 'package:movie_time/data/home/home_info_remote_datasource.dart';
 import 'package:movie_time/domain/core/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:movie_time/domain/home/home_info_repository.dart';
-import 'package:movie_time/domain/home/movie_list.dart';
+import 'package:movie_time/domain/home/media_list.dart';
 
-typedef Future<MovieList> _TrendingOrGenreChooser();
+typedef Future<MediaList> _TrendingOrGenreChooser();
 
 class HomeInfoRepositoryImpl implements HomeInfoRepository {
   final NetworkInfo networkInfo;
@@ -19,26 +19,39 @@ class HomeInfoRepositoryImpl implements HomeInfoRepository {
   });
 
   @override
-  Future<Either<Failure, MovieList>> getMoviesByGenre(
-      int genreId) async {
-    return await _getMovieList(() {
+  Future<Either<Failure, MediaList>> getMoviesByGenre(int genreId) async {
+    return await _getMediaList(() {
       return remoteDataSource.getMoviesByGenre(genreId);
     });
   }
 
   @override
-  Future<Either<Failure, MovieList>> getTrendingMovies() async {
-    return await _getMovieList(() {
+  Future<Either<Failure, MediaList>> getTrendingMovies() async {
+    return await _getMediaList(() {
       return remoteDataSource.getTrendingMovies();
     });
   }
 
-  Future<Either<Failure, MovieList>> _getMovieList(
+  @override
+  Future<Either<Failure, MediaList>> getSeriesByGenre(int genreId) async {
+    return await _getMediaList(() {
+      return remoteDataSource.getSeriesByGenre(genreId);
+    });
+  }
+
+  @override
+  Future<Either<Failure, MediaList>> getTrendingSeries() async {
+    return await _getMediaList(() {
+      return remoteDataSource.getTrendingSeries();
+    });
+  }
+
+  Future<Either<Failure, MediaList>> _getMediaList(
       _TrendingOrGenreChooser getTrendingOrGenre) async {
     if (await networkInfo.isConnected) {
       try {
-        final remoteMovieList = await getTrendingOrGenre();
-        return Right(remoteMovieList);
+        final remoteMediaList = await getTrendingOrGenre();
+        return Right(remoteMediaList);
       } on ServerException {
         return Left(ServerFailure());
       }
