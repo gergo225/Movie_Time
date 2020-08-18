@@ -11,18 +11,20 @@ class ErrorTryAgain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            MessageDisplay(message: errorMessage),
-            FlatButton(
-              color: AppColors.tryAgainButtonBackground,
-              onPressed: tryAgain,
-              child: Text(AppStrings.tryAgain),
-            ),
-          ],
+    return Material(
+      child: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MessageDisplay(message: errorMessage),
+              FlatButton(
+                color: AppColors.tryAgainButtonBackground,
+                onPressed: tryAgain,
+                child: Text(AppStrings.tryAgain),
+              ),
+            ],
+          ),
         ),
       ),
     );
